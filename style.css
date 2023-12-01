@@ -135,6 +135,7 @@ a.tbl-biru {
     color: #ffffff;
     cursor: pointer;
     font-weight: bold;
+    margin-right: 10px;
 }
 
 a.tbl-biru:hover {
@@ -233,11 +234,6 @@ footer {
     margin-top: 100px;
 }
 
-footer h2 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: small;
-}
-
 footer p {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-top: 5px;
@@ -247,3 +243,5 @@ footer p {
 .text-box h2 {
     text-align: center;
 }
+
+
