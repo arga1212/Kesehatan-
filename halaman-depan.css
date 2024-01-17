@@ -57,7 +57,7 @@ a.tbl-opening {
     color: #ffffff;
     cursor: pointer;
     font-weight: bold;
-    position: fixed;
+    position: absolute;
     margin-left: 720px;
     margin-top: 40px;
 }
@@ -67,3 +67,12 @@ a.tbl-opening:hover {
     text-decoration: none;
 }
 
+.tabel {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+    margin-top: 600px;
+    margin-left: 360px ;
+    margin-bottom: 100px;
+}

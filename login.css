@@ -9,7 +9,7 @@ body {
     padding: 0px;
     font-family: 'Open Sans', sans-serif;
     width: 100%;
-    background-color: #F86F03;
+    background-color: #8ADAB2;
     justify-content: center;
     height: 100vh;
 
@@ -23,7 +23,7 @@ nav {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    background: #F2BE22;
+    background: #ECF4D6;
     z-index: 1;
 }
 
@@ -51,7 +51,7 @@ nav {
 }
 
 a.tbl-opening {
-    background: #B31312;
+    background: #164863;
     border-radius: 20px;
     margin-top: 20px;
     padding: 15px 20px 15px 20px;
@@ -64,7 +64,7 @@ a.tbl-opening {
 }
 
 a.tbl-opening:hover {
-    background: #884A39;
+    background: #DDF2FD;
     text-decoration: none;
 }
 
