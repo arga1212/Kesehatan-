@@ -69,7 +69,7 @@ body {
 
 .form a{
     font-size: 16px;
-    color: aquamarine   ;
+    color: aquamarine;
     text-decoration: none;
 }
 
@@ -89,7 +89,7 @@ body {
 }
 
 .form input .button:hover{
-    background: #FD8D14;
+    background: #FFFF;
 }  
 
 .signup{
@@ -104,4 +104,4 @@ body {
 
 .signup label:hover {
     text-decoration: underline;
-}
+} 
