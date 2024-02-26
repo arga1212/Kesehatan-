@@ -116,10 +116,10 @@ section {
 
 
 .gambarsehat2 img {
-    border-radius: 40px;
+    border-radius: 50px;
     padding: 5px;
-    width: 65%;
-    margin-left: 190px;
+    width: 55%;
+    margin-left: 250px;
     margin-right: 40px;
     margin-top: 150px;
 }

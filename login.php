@@ -54,7 +54,7 @@ body {
     transform: translate(-50%, -50%);
     max-width: 430px;
     width: 100%;
-    background-color: #FFB996 ;
+    background-color: #50C4ED ;
     border-radius: 7px;
     box-shadow: 0px 5px 10px rgba(0,0,0,0, 3);
 }
@@ -138,7 +138,7 @@ button[type="submit"] {
         width: 100%;
         padding: 10px;
         margin-top: 20px;
-        background-color: #FFCF81;
+        background-color: #0C2D57;
         color: white;
         border: none;
         border-radius: 5px;
