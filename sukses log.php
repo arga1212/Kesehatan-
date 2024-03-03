@@ -87,7 +87,7 @@ a.tbl-opening:hover {
         <h2>You have successfully logged in</h2>
     </div>
 
-    <p><a href="index.php" target="_blank" class="tbl-opening">Back to home</a></p>  
+    <p><a href="after-login.php" target="_blank" class="tbl-opening">Back to home</a></p>  
     
 </body>
 </html>
