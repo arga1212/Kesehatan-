@@ -284,8 +284,7 @@ footer p {
                         <li><a href="#example">Example</a></li>
                         <li><a href="#partners">Partners</a></li>
                         <li><a href="biodata.php">About</a></li>
-                        <li><a href="login.php" class="tbl-biru">Sign up</a></li>
-                        <li><a href="halaman-depan.html" class="tbl-biru">Back</a></li>
+                        <li><a href="crud.php">CRUD</a></li>
                     </ul>
                 </div>
             </div>

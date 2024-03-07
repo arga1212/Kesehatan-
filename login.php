@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'function.php';
 
 if(isset($_POST['login'])){
@@ -16,6 +17,7 @@ if(isset($_POST['login'])){
     $row = mysqli_fetch_assoc($result);
     
     if ($password == $row["password"]) {
+        $_SESSION['login']==true;
         header("location: sukses log.php");
         exit;
     }
