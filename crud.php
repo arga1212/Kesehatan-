@@ -37,7 +37,7 @@ $result = mysqli_query($conn, $query);
 
         }
         th{
-            background-color: rgb(128, 127, 128);
+            background-color: #F8F4EC;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
         }
@@ -49,10 +49,12 @@ $result = mysqli_query($conn, $query);
         }
 
 .data {
+   font-size:80px;
    text-align: center;
    color: #0C2D57;
    font-weight: bold;
    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
 a.add-user {
@@ -97,21 +99,25 @@ a.kembali:hover  {
 }
 
 a.edit {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
     display: inline-block;
     padding: 5px 10px;
-    background-color: rgb(0, 99, 212); 
+    background-color:#211C6A ; 
     color: white; 
     text-decoration: none;
-    border-radius: 3px;
+    border-radius: 10px;
 }
 
 a.hapus {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
     display: inline-block;
     padding: 5px 10px;
     background-color: rgb(235, 71, 76); 
     color: white; 
     text-decoration: none;
-    border-radius: 3px;
+    border-radius: 10px;
 }
 
 

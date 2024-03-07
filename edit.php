@@ -1,33 +1,55 @@
 <?php
-require 'function.php';
 
-$id_user = $_GET["id"];
+require "function.php";
 
+// cek apakah tombol simpan sudah diklik atau belum
+if(isset($_POST['simpan'])){
 
-if(isset($_POST["submit"])) 
+    // ambil data dari formulir
+    $id= $_POST['id'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    if (edit($_POST) > 0 ){
-        echo "<script>
-        alert('data user berhasil diedit ')
-        </script>";
+    // buat query update
+    $sql = "UPDATE user SET username='$username', email='$email', password='$password' WHERE id_user=$id";
+    $query = mysqli_query($conn, $sql);
+
+    // apakah query update berhasil?
+    if($query) {
+        // jika berhasil, alihkan ke halaman data.php atau halaman lain yang diinginkan
+        header('Location: crud.php');
+        exit; // pastikan untuk keluar dari skrip setelah mengalihkan pengguna
+    } else {
+        // jika gagal, tampilkan pesan error
+        echo "Error: " . mysqli_error($conn);
     }
-    else{
-        echo mysqli_error($conn);
-      }
+}
+
+// ambil ID dari query string
+$id = $_GET['id'];
+
+// buat query untuk mengambil data pengguna berdasarkan ID
+$sql = "SELECT * FROM user WHERE id_user='$id'";
+$query = mysqli_query($conn, $sql);
+$user = mysqli_fetch_assoc($query);
+
+// jika data yang akan di-update tidak ditemukan, tampilkan pesan
+if(mysqli_num_rows($query) < 1) {
+    echo "Data tidak ditemukan...";
+    exit; // keluar dari skrip jika data tidak ditemukan
+}
+
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add User</title>
+    <title>Edit Data</title>
     <style>
-*{margin: 0;
+       *{margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins , sans serif';
@@ -159,21 +181,24 @@ a.back
     text-align: center;
 }
 
-
     </style>
+
 </head>
 <body>
 
-    <div class="container">
+
+<div class="container">
         <input type="checkbox" id="check">
         <div class="form">
-            <header>Add User</header>
+            <header>Edit User</header>
             <form action="" method="post">
-            <input type="text" id="username" name="username" placeholder="USERNAME" >
-            <input type="email" id="email" name="email" placeholder="EMAIL"  required>
-            <input type="password" id="password" name="password" placeholder="PASSWORD" required>
-            <button type="submit" name="submit">Add User</button>
-            <a class = 'back' href="crud.php">Back</a>
+            <input type="hidden" name="id" value="<?php echo $user['id_user']; ?>">
+
+           <input type="text" id="username" name="username" value="<?php echo $user['username']; ?>" required>
+           <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>" required>
+           <input type="password" id="password" name="password" value="<?php echo $user['password']; ?>" required>
+
+           <button type="submit" name="simpan">Save</button>
 
         </ul>
         </div>
@@ -183,7 +208,5 @@ a.back
     </div>
         </div>
      </div>
-
-     
 </body>
 </html>
