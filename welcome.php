@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION["login"])) {
+    header("location: login.php");
+}
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -283,7 +297,8 @@ footer p {
                         <li><a href="#courses">How</a></li>
                         <li><a href="#example">Example</a></li>
                         <li><a href="#partners">Partners</a></li>
-                        <li><a href="biodata.html">About</a></li>
+                        <li><a href="biodata.php">About</a></li>
+                        <li><a href="login.php" class="tbl-biru">Sign up</a></li>
                     </ul>
                 </div>
             </div>
@@ -384,14 +399,14 @@ footer p {
                 <div class="kartu-partner">
                   <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcREa8iWL-chl4bXzv_h7Z3iqjK4SrPOfc1mvKlzMJW_RaK3KYqr"/>
                   <p> DR.Reisa</p>
-                  <p><a href="https://instagram.com/reisabrotoasmoro?igshid=MzMyNGUyNmU2YQ" target="_blank" class="tbl-dokter">Click here</a></p>   
+                  <p><a href="" target="_blank" class="tbl-dokter">Click here</a></p>   
 
                 </div>
 
                 <div class="kartu-partner">
                   <img src="https://www.qoala.app/id/blog/wp-content/uploads/2020/12/dr-Richard-Lee-Biodata-Biografi-dan-Fakta-Terkini-Dokter-Kecantikan-Pemilik-Klinik-Athena.jpg"/>
                   <p> DR.Richard Lee</p>
-                  <p><a href="https://instagram.com/dr.richard_lee?igshid=MzMyNGUyNmU2YQ==" target="_blank" class="tbl-dokter">Click here</a></p>   
+                  <p><a href="" target="_blank" class="tbl-dokter">Click here</a></p>   
                 </div>
             </div>
         </div>

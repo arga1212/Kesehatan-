@@ -2,6 +2,10 @@
 session_start();
 require 'function.php';
 
+if(isset($_SESSION["email"])) {
+    header("location: admin.php");
+}
+
 if(isset($_POST['login'])){
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -17,10 +21,22 @@ if(isset($_POST['login'])){
     $row = mysqli_fetch_assoc($result);
     
     if ($password == $row["password"]) {
-        $_SESSION['login']==true;
-        header("location: sukses log.php");
+        $_SESSION['email']= $row['email'];
+        $_SESSION['level']=$row['level'];
+        
+        if($row['level']== 'admin'){
+            header("location: admin.php");
+        }
+        else {
+            header("location: index.php");
+        }
+    } else {
+        echo '<script> 
+        alert("password atau email salah")
+        </script>';
         exit;
     }
+       
   }
 
   $eror = true;

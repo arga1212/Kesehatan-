@@ -175,9 +175,9 @@ a.back
             <input type="password" id="password" name="password" placeholder="PASSWORD" required>
             <button type="submit" name="submit">Add User</button>
             <a class = 'back' href="crud.php">Back</a>
+        </div>
 
         </ul>
-        </div>
 
     </form>
    

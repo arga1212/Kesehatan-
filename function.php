@@ -12,6 +12,7 @@ function registrasi($data){
     $username = $data['username'];
     $email = $data['email'];
     $password = $data['password'];
+    $level = "user";
 
     
     $result = mysqli_query($conn, "SELECT email FROM user WHERE email = '$email'");
@@ -24,10 +25,9 @@ function registrasi($data){
     }
 
     
-    mysqli_query($conn , "INSERT INTO user VALUES (NULL, '$username', '$email', '$password' )");
+    mysqli_query($conn , "INSERT INTO user VALUES (NULL, '$username', '$email', '$password', '$level' )");
 
     return mysqli_affected_rows($conn);
-
 }
 
 ?>

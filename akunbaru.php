@@ -145,6 +145,8 @@ body {
 }
 
 
+
+
     </style>
     
 </head>
@@ -157,7 +159,7 @@ body {
                 <input type="text" name="username" id="username" placeholder="Masukkan Username" required>
                 <input type="text" name="email" id="email" placeholder="Masukkan email" required>
                 <input type="password" name="password" id="password" placeholder="Masukkan password" required>
-                <input type="submit" value="Register" class="button" name="register">
+                <input type="submit" value="Register" class="button" name="register">  
 
             <div class="backtologin">
             <span class="backtologin"> lanjut login!
