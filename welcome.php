@@ -19,7 +19,7 @@ if(isset($_SESSION["login"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kesehatan</title>
     <style>
-        * { 
+* { 
     text-decoration: none;
     margin: 0px;
     padding: 0px;
@@ -30,7 +30,6 @@ body {
     padding: 0px;
     font-family: 'Open Sans', sans-serif;
     width: 100%;
-    
 }
 
 .wrapper {

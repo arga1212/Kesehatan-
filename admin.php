@@ -285,7 +285,7 @@ footer p {
                         <li><a href="#partners">Partners</a></li>
                         <li><a href="biodata.php">About</a></li>
                         <li><a href="crud.php">CRUD</a></li>
-                        <li><a href="logout.php" class="tbl-biru">Logut</a></li>
+                        <li><a href="logout.php" class="tbl-biru">Logut</a></li>=
                     </ul>
                 </div>
             </div>
