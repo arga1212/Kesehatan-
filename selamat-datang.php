@@ -339,7 +339,7 @@ footer p {
     </nav>
     <div class="wrapper">
         <!--untuk home-->
-        <section id="home">
+        <section id="home   ">
         <div  class="gambarsehat">
         <img src="kesehatan.jpg"/>
         </div>

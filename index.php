@@ -43,6 +43,7 @@ body {
     float: left;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #FFF6E9;
+    text-decoration:none;
 }
 
 .menu {
@@ -58,7 +59,7 @@ nav {
     position: -webkit-sticky;
     top: 0;
     background: #50C4ED;
-    z-index: 1;
+    z-index: 1000;
 }
 
 nav ul {
@@ -165,7 +166,7 @@ width: 1000px;
 }
 
 a.tbl-biru {
-    background: #0C2D57;
+    background: #092635;
     border-radius: 20px;
     margin-top: 20px;
     padding: 15px 20px 15px 20px;
@@ -176,8 +177,14 @@ a.tbl-biru {
 }
 
 a.tbl-biru:hover {
-    background: #427D9D;
+    background: #6AD4DD;
     text-decoration: none;
+    transition: ease-in;
+    -webkit-transition: .3s linear; 
+    -moz-transition:.3s linear; 
+    -ms-transition:.3s linear; 
+    -o-transition:.3s linear;
+    transition: .3s linear; 
 }
 
 a.tbl-birubiru {
@@ -311,13 +318,35 @@ footer p {
     -o-transition:.3s linear;
     transition: .3s linear; 
 }
-.grid h2>a { margin: 13px 0;}
+.grid h5>a{ 
+margin: 13px 0;
+text-decoration: none;
+margin-bottom: 20px;
+font-size:12px;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: black;
+}
 .grid:last-child{margin-right: 30px;}
 .grid:hover{
     color: #fff;
-    background:#ff545a;
+    background:#5356FF;
     box-shadow: 0 5px 10px rgba(71,71,71,.4);
 }
+
+.grid img{
+width: 85%;
+padding: auto;
+margin-right: 30px;
+
+}
+
+.grid a{
+    margin-left: 60px;
+    margin-right: 50px;
+    position: relative;
+    
+}
+
 .welcome{
     display: block;
     position: relative;
@@ -334,7 +363,8 @@ footer p {
 .teks p{
 font-weight: normal;
 margin-top: 20px;
-font-size: 17px;     
+font-size: 17px;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifs;   
 }
 
 .foto img {
@@ -353,6 +383,85 @@ float: right;
 margin-right: 95px;
 margin-bottom: px
 }
+
+
+
+.layanan{
+    display: block;
+    z-index: 1;
+    margin-top: 80px;
+    position: relative;
+    margin-left: 250px;
+
+}
+
+.layanan ul li{
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 15px;
+   
+}
+
+.service{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    height: 190px;
+    background:#fff;
+    border-radius: 3px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 100px;
+    box-shadow: 0 0px 10px rgba(71,71,71,.2);
+    -webkit-transition: .3s linear; 
+    -moz-transition:.3s linear; 
+    -ms-transition:.3s linear; 
+    -o-transition:.3s linear;
+    transition: .3s linear; 
+}
+.service h5>a{ 
+margin: 13px 0;
+text-decoration: none;
+margin-bottom: 20px;
+font-size:12px;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: black;
+}
+.service: last-child{margin-right: 30px;}
+
+.service:hover{
+    color: #fff;
+    background:#5356FF;
+    box-shadow: 0 5px 10px rgba(71,71,71,.4);
+}
+
+.service img{
+width: 85%;
+padding: auto;
+margin-right: 30px;
+
+}
+
+.service a{
+    margin-left: 60px;
+    margin-right: 50px;
+    position: relative;
+    
+}
+
+.tes h2{
+text-align: center;
+margin-top:100px;
+}
+
+.tes p{
+    text-align:center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
     </style>
 </head>
 <body>
@@ -372,11 +481,14 @@ margin-bottom: px
             </div>
         </div>
     </nav>
+</div>
 
-    </div>
-     <div class="foto">
+<br>
+<br>
+<br>
+    
+<div class="foto">
       <img src="dokter.png">
-
      </div>
     <div class="welcome">
         <div class="teks">
@@ -384,36 +496,128 @@ margin-bottom: px
     <p> Konsultasi dengan dokter terbaik sesuai yang anda butuhkan Dan 
         Pembelian obat semuanya bisa di sehat aja </p>
     
+<section id="list-topics" class="list-topics">
 
-    <section id="list-topics" class="list-topics">
 			<div class="list">
 					<ul>
 						<li>
 
 							<div class="grid">
-								<h2><a href="#">Doctor</a></h2>
-								<p>150 listings</p>
+                                <a href="dokter.php">
+                                <img src="medical-team.png" alt="" srcset="">
+                                </a>
+								<h5><a href="#">Konsultasi dengan dokter anda</a></h5>
+
+							</div>
+						</li>
+						<li>
+
+							<div class="grid">
+                                <a href="https://campus.quipper.com/aptitude_test">
+                                <img src="healthcare.png" alt="" srcset="">
+                                </a>
+								<h5><a href="#">Mau beli obat ? Disini aja!</a></h5>
+
+							</div>
+						</li>
+						<li>
+
+							<div class="grid">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+
 							</div>
 						</li>
 
-                        <li>
-							<div class="grid">
-								<h2><a href="#">resturent</a></h2>
-								<p>150 listings</p>
-							</div>
-						</li>
-
-                        <li>
-							<div class="grid">
-								<h2><a href="#">resturent</a></h2>
-								<p>150 listings</p>
-							</div>
-                            </div>
-						</li>
                         </ul>
+</section>
                       
 </div>
 </div>
+
+<br>
+
+			
+<section id="courses" class="courses">
+<div class="layanan">
+    <div class="tes">
+    <h2>Layanan tambahan untuk anda</h2>
+   <p>Beberapa tes yang bisa anda coba</p>
+   </div>
+    <ul>
+        <li>
+							<div class="service">
+                                <a href="dokter.php">
+                                <img src="medical-team.png" alt="" srcset="">
+                                </a>
+								<h5><a href="#">Konsultasi dengan dokter anda</a></h5>
+
+							</div>
+                            </li>
+
+                            <li>
+							<div class="service">
+                                <a href="https://campus.quipper.com/aptitude_test">
+                                <img src="healthcare.png" alt="" srcset="">
+                                </a>
+								<h5><a href="#">Mau beli obat ? Disini aja!</a></h5>
+
+							</div>
+
+                            </li>
+
+                            <li>
+							<div class="service">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+
+							</div>
+                            </li>
+                            <li>
+							<div class="service">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+
+							</div>
+                            </li>
+                            
+                            <br>
+
+                            <li>
+							<div class="service">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+
+							</div>
+                            </li>
+                            <li>
+							<div class="service">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+
+							</div>
+                            </li>
+                            <li>
+							<div class="service">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+
+							</div>
+                            </li>
+                            <li>
+							<div class="service">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+
+							</div>
+                            </li>
+                           
+                            </ul>
+                           
+                      
+</div>
+</section>
+
 
 </body>
 </html>
