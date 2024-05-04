@@ -1,17 +1,5 @@
 <?php
-
-session_start();
-
-if(isset($_SESSION["login"])) {
-    header("location: login.php");
-}
-
 ?>
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,17 +7,25 @@ if(isset($_SESSION["login"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kesehatan</title>
     <style>
-* { 
-    text-decoration: none;
-    margin: 0px;
-    padding: 0px;
+    
+    *{
+    padding: 0;
+    margin: 0;
 }
 
+*{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box;
+}
 body {
     margin: 0px;
     padding: 0px;
     font-family: 'Open Sans', sans-serif;
     width: 100%;
+    
 }
 
 .wrapper {
@@ -282,6 +278,44 @@ footer p {
     text-align: center;
 }
 
+.list-topics-content {
+    position: relative;
+    top: -98px;
+    z-index: 1;
+}
+.list-topics-content ul li { display: inline-block;}
+
+.single-list-topics-content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 205px;
+    height: 170px;
+    background:#fff;
+    border-radius: 3px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0px 10px rgba(71,71,71,.2);
+    -webkit-transition: .3s linear; 
+    -moz-transition:.3s linear; 
+    -ms-transition:.3s linear; 
+    -o-transition:.3s linear;
+    transition: .3s linear; 
+}
+.single-list-topics-content h2>a { margin: 13px 0;}
+/.single-list-topics-content:last-child{margin-right: 0;}/
+
+.single-list-topics-icon [class^="flaticon-"]:before,.single-list-topics-icon [class*=" flaticon-"]:before,.single-list-topics-icon [class^="flaticon-"]:after,.single-list-topics-icon [class*=" flaticon-"]:after {font-size: 45px;color:#343a3f;}
+.single-list-topics-content:hover .single-list-topics-icon [class^="flaticon-"]:before,.single-list-topics-content:hover .single-list-topics-icon [class*=" flaticon-"]:before,.single-list-topics-content:hover .single-list-topics-icon [class^="flaticon-"]:after,.single-list-topics-content:hover .single-list-topics-icon [class*=" flaticon-"]:after {color:#fff;}
+
+.single-list-topics-content:hover h2>a,.single-list-topics-content:hover p{color: #fff!important;}
+.single-list-topics-content:hover{
+    color: #fff;
+    background:#ff545a;
+    box-shadow: 0 5px 10px rgba(71,71,71,.4);
+}
+
 
 
     </style>
@@ -296,8 +330,8 @@ footer p {
                         <li><a href="#courses">How</a></li>
                         <li><a href="#example">Example</a></li>
                         <li><a href="#partners">Partners</a></li>
-                        <li><a href="biodata.php">About</a></li>
-                        <li><a href="login.php" class="tbl-biru">Sign up</a></li>
+                        <li><a href="biodata.html">About</a></li>
+                        <li><a href="logout.php" class="tbl-biru">Logut</a></li>
                     </ul>
                 </div>
             </div>
@@ -345,7 +379,7 @@ footer p {
 
         <!--untuk example-->
         <section id="example">
-            <div class="tengah">
+            <div class="tengah">z
                 <div class="text-box">
                     <p class="deskripsi">Contoh kegiatan untuk menjaga kesehatan</p>
                     <h2> Example</h2>
@@ -398,20 +432,21 @@ footer p {
                 <div class="kartu-partner">
                   <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcREa8iWL-chl4bXzv_h7Z3iqjK4SrPOfc1mvKlzMJW_RaK3KYqr"/>
                   <p> DR.Reisa</p>
-                  <p><a href="" target="_blank" class="tbl-dokter">Click here</a></p>   
+                  <p><a href="dokter.php" target="_blank" class="tbl-dokter">Click here</a></p>   
 
                 </div>
 
                 <div class="kartu-partner">
                   <img src="https://www.qoala.app/id/blog/wp-content/uploads/2020/12/dr-Richard-Lee-Biodata-Biografi-dan-Fakta-Terkini-Dokter-Kecantikan-Pemilik-Klinik-Athena.jpg"/>
                   <p> DR.Richard Lee</p>
-                  <p><a href="" target="_blank" class="tbl-dokter">Click here</a></p>   
+                  <p><a href="dokter.php" target="_blank" class="tbl-dokter">Click here</a></p>   
                 </div>
             </div>
         </div>
     </div>
 </section>
     
+
 
 <footer>
         <p>@Copyright2023ArgaSIJA1</p>

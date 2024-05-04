@@ -1,5 +1,17 @@
 <?php
+
+session_start();
+
+if(isset($_SESSION["login"])) {
+    header("location: login.php");
+}
+
 ?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +19,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kesehatan</title>
     <style>
-        * { 
-    text-decoration: none;
-    margin: 0px;
-    padding: 0px;
+    *{
+    padding: 0;
+    margin: 0;
 }
-
 body {
     margin: 0px;
     padding: 0px;
@@ -270,9 +280,79 @@ footer p {
 .text-box h2 {
     text-align: center;
 }
+.list{
+    position: relative;
+    z-index: 1;
+    margin-top: 30px;
+}
 
+.list ul li{
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 15px;
+   
+}
 
+.grid{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 190px;
+    height: 150px;
+    background:#fff;
+    border-radius: 3px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0px 10px rgba(71,71,71,.2);
+    -webkit-transition: .3s linear; 
+    -moz-transition:.3s linear; 
+    -ms-transition:.3s linear; 
+    -o-transition:.3s linear;
+    transition: .3s linear; 
+}
+.grid h2>a { margin: 13px 0;}
+.grid:last-child{margin-right: 30px;}
+.grid:hover{
+    color: #fff;
+    background:#ff545a;
+    box-shadow: 0 5px 10px rgba(71,71,71,.4);
+}
+.welcome{
+    display: block;
+    position: relative;
+}
+.teks{
+    margin-top: 60px;
+    margin-left:70px
+}
+.teks h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin-top:30px;
+}
 
+.teks p{
+font-weight: normal;
+margin-top: 20px;
+font-size: 17px;     
+}
+
+.foto img {
+    border-radius: 30px;
+    padding: 5px;
+    width: 105%;
+    margin-left: 0px;
+    margin-right: 90px;
+    margin-top: 0px;
+    margin-bottom: 50px
+}
+
+.foto{
+width: 500px;
+float: right;
+margin-right: 95px;
+margin-bottom: px
+}
     </style>
 </head>
 <body>
@@ -285,126 +365,55 @@ footer p {
                         <li><a href="#courses">How</a></li>
                         <li><a href="#example">Example</a></li>
                         <li><a href="#partners">Partners</a></li>
-                        <li><a href="biodata.html">About</a></li>
-                        <li><a href="logout.php" class="tbl-biru">Logut</a></li>
+                        <li><a href="biodata.php">About</a></li>
+                        <li><a href="login.php" class="tbl-biru">Login</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-    <div class="wrapper">
-        <!--untuk home-->
-        <section id="home">
-        <div  class="gambarsehat">
-        <img src="kesehatan.jpg"/>
-        </div>
-            <div class="text-box">
-                <p class="deskripsi">Kenapa perlu belajar menjaga kesehatan??</p>
-                <h5>Menjaga kesehatan tentu saja merupakan hal yang sangat penting bagi tubuh</h5>
-                <p>Dengan menjaga kesehatan maka tubuh otomatis tubuh kita akan terasa lebih segar dan bugar dalam menjalani aktivitas setiap hari nya, Dan juga bagi kita para siswa tentu saja akan sangat menguntungkan jika kita selalu menjaga kesehatan 
-                    kita akan menjadi fokus untuk belajar dan tidak meninggalkan materi yang ada disekolah
-                </p>
-                <p><a href="https://rsud.kulonprogokab.go.id/detil/190/jaga-kesehatan-dan-kebugaran-tubuh#:~:text=Menjaga%20kesehatan%20dan%20kebugaran%20tubuh,tetap%20menjalankan%20aktifitas%20sehari%2Dhari." target="_blank" class="tbl-birubiru">Pelajari lebih lanjut</a></p>    
-            </div>
-        </section>
 
-        <hr>
-
-        <!--Untuk Courses-->
-        <section id="courses">
-            <div class="text-box">
-                <h1>Bagaimana caranya menjaga kesehatan yang baik dan benar??</h1>
-                <br>
-                <h3>Do you know?</h3> 
-                <p>Dilansir dari halodoc, ada 5 cara sederhana untuk menjaga kesehatan diantranya: </p>
-                <p>1. Makan yang teratur dan cukup tidak berlebihan dan tidak kekurangan</p>
-                <p>2. Istirahat cukup</p>
-                <p>3. Olahraga rutin</p>
-                <p>4. Bermeditasi dengan tujuan menenangkan pikiran</p>
-                <p>5. Memiliki sikap positif</p>
-                <p><a href="https://www.halodoc.com/artikel/5-cara-sederhana-untuk-menjaga-kesehatan" class="tbl-birubiru">Pelajari lebih lanjut</a></p>
-            </div>
-            <div class="gambarsehat2"  >
-            <img src="kesehatan2.jpg"/>
-            </div>
-
-        </section>
-
-        <hr>
-
-        <!--untuk example-->
-        <section id="example">
-            <div class="tengah">
-                <div class="text-box">
-                    <p class="deskripsi">Contoh kegiatan untuk menjaga kesehatan</p>
-                    <h2> Example</h2>
-                    <p>Beberapa contoh kegiatan</p>
-                </div>
-
-                <div class="tutor-list">
-                      <div class="kartu-tutor">
-                        <img src="https://img.freepik.com/free-photo/flat-lay-batch-cooking-composition_23-2148765597.jpg?w=1060&t=st=1693324640~exp=1693325240~hmac=041f04aba07ce6847681d0f4a0dae5debd517761d72388e62abc465efec91911"/>
-                        <p>Makan yang cukup dan bergizi</p>
-                      </div>
-
-                      <div class="kartu-tutor">
-                        <img src="https://img.freepik.com/free-vector/sleep-analysis-concept-illustration_114360-6818.jpg?size=626&ext=jpg&uid=R125519887&ga=GA1.1.300703531.1693283522&semt=sph"/>
-                      <p> Istirahat cukup </p>
-                    </div>
-
-
-                      <div class="kartu-tutor">
-                        <img src="https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?size=626&ext=jpg&uid=R125519887&ga=GA1.1.300703531.1693283522&semt=sph"/>
-                    <p>Olahraga</p>
-                    </div>
-
-
-                      <div class="kartu-tutor">
-                        <img src="https://img.freepik.com/free-vector/person-keeping-social-distance-avoiding-contact-woman-separating-from-crowd-meditating-transparent-bubble_74855-11009.jpg?size=626&ext=jpg&uid=R125519887&ga=GA1.1.300703531.1693283522&semt=sph"/>
-                      <p>Bermeditasi untuk menenangkan pikiran</p>
-                    </div>
-
-                    <div class="kartu-tutor">
-                        <img src="https://img.freepik.com/free-vector/public-approval-concept-illustration_52683-32169.jpg?size=626&ext=jpg&uid=R125519887&ga=GA1.1.300703531.1693283522&semt=ais"/>
-                      <p>Bersikap positif</p>
-                    </div>
-            </div>
-
-            <hr> 
-
-        </section>
-
-        <!--untuk partners-->
-        <div class="tengah">
-            <section id="partners">
-                <div class="text-box">
-                    <p class="deskripsi">Our partners</p>
-                    <h5>This is our top partners</h5>
-                    <p> You can call them when you need something
-                    </p>
-         
-            <div class="partner-list">
-                <div class="kartu-partner">
-                  <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcREa8iWL-chl4bXzv_h7Z3iqjK4SrPOfc1mvKlzMJW_RaK3KYqr"/>
-                  <p> DR.Reisa</p>
-                  <p><a href="dokter.php" target="_blank" class="tbl-dokter">Click here</a></p>   
-
-                </div>
-
-                <div class="kartu-partner">
-                  <img src="https://www.qoala.app/id/blog/wp-content/uploads/2020/12/dr-Richard-Lee-Biodata-Biografi-dan-Fakta-Terkini-Dokter-Kecantikan-Pemilik-Klinik-Athena.jpg"/>
-                  <p> DR.Richard Lee</p>
-                  <p><a href="dokter.php" target="_blank" class="tbl-dokter">Click here</a></p>   
-                </div>
-            </div>
-        </div>
     </div>
-</section>
+     <div class="foto">
+      <img src="dokter.png">
+
+     </div>
+    <div class="welcome">
+        <div class="teks">
+    <h2>Solusi kesehatan terbaik untuk anda </h2>
+    <p> Konsultasi dengan dokter terbaik sesuai yang anda butuhkan Dan 
+        Pembelian obat semuanya bisa di sehat aja </p>
     
 
-<footer>
-        <p>@Copyright2023ArgaSIJA1</p>
-</footer>
+    <section id="list-topics" class="list-topics">
+			<div class="list">
+					<ul>
+						<li>
+
+							<div class="grid">
+								<h2><a href="#">Doctor</a></h2>
+								<p>150 listings</p>
+							</div>
+						</li>
+
+                        <li>
+							<div class="grid">
+								<h2><a href="#">resturent</a></h2>
+								<p>150 listings</p>
+							</div>
+						</li>
+
+                        <li>
+							<div class="grid">
+								<h2><a href="#">resturent</a></h2>
+								<p>150 listings</p>
+							</div>
+                            </div>
+						</li>
+                        </ul>
+                      
+</div>
+</div>
 
 </body>
 </html>
