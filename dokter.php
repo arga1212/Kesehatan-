@@ -3,9 +3,7 @@
 
 ?>
 
-
-
-<!DOCTYPE html>
+<!DO CTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

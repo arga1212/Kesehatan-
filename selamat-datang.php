@@ -1,5 +1,4 @@
-<?php
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,18 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kesehatan</title>
     <style>
-    
     *{
     padding: 0;
     margin: 0;
-}
-
-*{
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	-o-box-sizing:border-box;
-	-ms-box-sizing:border-box;
-	box-sizing:border-box;
 }
 body {
     margin: 0px;
@@ -40,6 +30,7 @@ body {
     float: left;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #FFF6E9;
+    text-decoration:none;
 }
 
 .menu {
@@ -55,7 +46,7 @@ nav {
     position: -webkit-sticky;
     top: 0;
     background: #50C4ED;
-    z-index: 1;
+    z-index: 1000;
 }
 
 nav ul {
@@ -95,14 +86,14 @@ section {
 .text-box .deskripsi {
     font-size: 25px;
     font-weight: bold;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #352F44;
     margin-top: 60px;
 }
 
 
 .text-box h5 {
-    font-family: 'comic sans ms';
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 800;
     font-size: 20px;
     margin-bottom: 20px;
@@ -113,14 +104,15 @@ section {
 }
 
 .text-box h3 {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 30px;
 }
 
 .text-box p {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 800;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400px;
     font-size: medium;
+    text-align: center;
 }
 
 
@@ -152,7 +144,8 @@ width: 1000px;
 
 .text-box h2 {
     color: black;
-    font-family: 'comic sans ms';
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
 }
 
 .text-box h1 {
@@ -162,7 +155,7 @@ width: 1000px;
 }
 
 a.tbl-biru {
-    background: #0C2D57;
+    background: #092635;
     border-radius: 20px;
     margin-top: 20px;
     padding: 15px 20px 15px 20px;
@@ -173,8 +166,14 @@ a.tbl-biru {
 }
 
 a.tbl-biru:hover {
-    background: #427D9D;
+    background: #6AD4DD;
     text-decoration: none;
+    transition: ease-in;
+    -webkit-transition: .3s linear; 
+    -moz-transition:.3s linear; 
+    -ms-transition:.3s linear; 
+    -o-transition:.3s linear;
+    transition: .3s linear; 
 }
 
 a.tbl-birubiru {
@@ -263,35 +262,29 @@ p {
     text-decoration: none;
 }
 
-footer {
-    text-align: center;
-    margin-top: 100px;
-}
-
-footer p {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top: 5px;
-    font-weight: 600;
-}
-
 .text-box h2 {
     text-align: center;
 }
-
-.list-topics-content {
+.list{
     position: relative;
-    top: -98px;
     z-index: 1;
+    margin-top: 30px;
 }
-.list-topics-content ul li { display: inline-block;}
 
-.single-list-topics-content{
+.list ul li{
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 15px;
+   
+}
+
+.grid{
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 205px;
-    height: 170px;
+    width: 190px;
+    height: 150px;
     background:#fff;
     border-radius: 3px;
     margin-right: 20px;
@@ -303,18 +296,243 @@ footer p {
     -o-transition:.3s linear;
     transition: .3s linear; 
 }
-.single-list-topics-content h2>a { margin: 13px 0;}
-/.single-list-topics-content:last-child{margin-right: 0;}/
-
-.single-list-topics-icon [class^="flaticon-"]:before,.single-list-topics-icon [class*=" flaticon-"]:before,.single-list-topics-icon [class^="flaticon-"]:after,.single-list-topics-icon [class*=" flaticon-"]:after {font-size: 45px;color:#343a3f;}
-.single-list-topics-content:hover .single-list-topics-icon [class^="flaticon-"]:before,.single-list-topics-content:hover .single-list-topics-icon [class*=" flaticon-"]:before,.single-list-topics-content:hover .single-list-topics-icon [class^="flaticon-"]:after,.single-list-topics-content:hover .single-list-topics-icon [class*=" flaticon-"]:after {color:#fff;}
-
-.single-list-topics-content:hover h2>a,.single-list-topics-content:hover p{color: #fff!important;}
-.single-list-topics-content:hover{
+.grid h5>a{ 
+margin: 13px 0;
+text-decoration: none;
+margin-bottom: 20px;
+font-size:12px;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: black;
+}
+.grid:last-child{margin-right: 30px;}
+.grid:hover{
     color: #fff;
-    background:#ff545a;
+    background:#5356FF;
     box-shadow: 0 5px 10px rgba(71,71,71,.4);
 }
+
+.grid img{
+width: 85%;
+padding: auto;
+margin-right: 30px;
+
+}
+
+.grid a{
+    margin-left: 60px;
+    margin-right: 50px;
+    position: relative;
+    
+}
+
+.welcome{
+    display: block;
+    position: relative;
+}
+.teks{
+    margin-top: 60px;
+    margin-left:70px
+}
+.teks h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin-top:30px;
+}
+
+.teks p{
+font-weight: normal;
+margin-top: 20px;
+font-size: 17px;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifs;   
+}
+
+.foto img {
+    border-radius: 30px;
+    padding: 5px;
+    width: 105%;
+    margin-left: 0px;
+    margin-right: 90px;
+    margin-top: 0px;
+    margin-bottom: 50px
+}
+
+.foto{
+width: 500px;
+float: right;
+margin-right: 95px;
+margin-bottom: px
+}
+
+
+
+.layanan{
+    display: block;
+    z-index: 1;
+    margin-top: 80px;
+    position: relative;
+    margin-left: 250px;
+
+}
+
+.layanan ul li{
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 15px;
+   
+}
+
+.service{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    height: 190px;
+    background:#fff;
+    border-radius: 3px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 100px;
+    box-shadow: 0 0px 10px rgba(71,71,71,.2);
+    -webkit-transition: .3s linear; 
+    -moz-transition:.3s linear; 
+    -ms-transition:.3s linear; 
+    -o-transition:.3s linear;
+    transition: .3s linear; 
+}
+.service h5>a{ 
+margin: 13px 0;
+text-decoration: none;
+margin-bottom: 20px;
+font-size:12px;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: black;
+}
+.service: last-child{margin-right: 30px;}
+
+.service:hover{
+    color: #fff;
+    background:#5356FF;
+    box-shadow: 0 5px 10px rgba(71,71,71,.4);
+}
+
+.service img{
+width: 85%;
+padding: auto;
+margin-right: 30px;
+
+}
+
+.service a{
+    margin-left: 60px;
+    margin-right: 50px;
+    position: relative;
+    
+}
+
+.tes h2{
+text-align: center;
+margin-top:100px;
+}
+
+.tes p{
+    text-align:center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dokter{
+    display: block;
+    z-index: 1;
+    margin-top: 80px;
+    position: relative;
+    margin-left: 150px;
+    margin-right: 50px; 
+
+}
+
+.dokter ul li{
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 15px;
+   
+}
+
+
+.favorite{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 350px;
+    height: 400px;
+    background:#fff;
+    border-radius: 3px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 100px;
+    box-shadow: 0 0px 10px rgba(71,71,71,.2);
+    -webkit-transition: .3s linear; 
+    -moz-transition:.3s linear; 
+    -ms-transition:.3s linear; 
+    -o-transition:.3s linear;
+    transition: .3s linear; 
+}
+.favorite h5>a{ 
+margin: 13px 0;
+text-decoration: none;
+margin-bottom: 40px;
+font-size:12px;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: black;
+}
+.favorite: last-child{margin-right: 30px;}
+
+.favorite:hover{
+    color: #fff;
+    background:#5356FF;
+    box-shadow: 0 5px 10px rgba(71,71,71,.4);
+}
+
+.favorite img{
+width: 60%;
+margin-right: 10px;
+margin-left: 40px;
+margin-bottom: 50px
+
+}
+
+.favorite a{
+    margin-left: 60px;
+    margin-right: 50px;
+    position: relative;
+    
+}
+
+
+.copyright {
+     margin-top: 90px;
+     padding-bottom: 25px;
+     background: #50C4ED;   
+}
+
+.copyright p {
+     color: #fff;
+     font-size: 17 px;
+     line-height: 22px;
+     text-align: center;
+     padding-top: 25px;
+     font-weight: 400;
+     font-weight: normal;
+}
+
+.copyright a {
+     color: #fff;
+}
+
+.copyright a:hover {
+     color: #3e0bce;
+}
+
+
 
 
 
@@ -326,64 +544,161 @@ footer p {
             <div class="logo"><a href=''>Sehat aja</a></div>
                 <div class="menu">
                     <ul>
-                        <li><a href="#home">Why</a></li>
-                        <li><a href="#courses">How</a></li>
+                        <li><a href="#list-topics">Home</a></li>
+                        <li><a href="#courses">Courses</a></li>
                         <li><a href="#example">Example</a></li>
-                        <li><a href="#partners">Partners</a></li>
-                        <li><a href="biodata.html">About</a></li>
-                        <li><a href="logout.php" class="tbl-biru">Logut</a></li>
+                        <li><a href="#partner">Partners</a></li>
+                        <li><a href="biodata.php">About</a></li>
+                        <li><a href="logout.php" class="tbl-biru">Logout</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-    <div class="wrapper">
-        <!--untuk home-->
-        <section id="home   ">
-        <div  class="gambarsehat">
-        <img src="kesehatan.jpg"/>
-        </div>
-            <div class="text-box">
-                <p class="deskripsi">Kenapa perlu belajar menjaga kesehatan??</p>
-                <h5>Menjaga kesehatan tentu saja merupakan hal yang sangat penting bagi tubuh</h5>
-                <p>Dengan menjaga kesehatan maka tubuh otomatis tubuh kita akan terasa lebih segar dan bugar dalam menjalani aktivitas setiap hari nya, Dan juga bagi kita para siswa tentu saja akan sangat menguntungkan jika kita selalu menjaga kesehatan 
-                    kita akan menjadi fokus untuk belajar dan tidak meninggalkan materi yang ada disekolah
-                </p>
-                <p><a href="https://rsud.kulonprogokab.go.id/detil/190/jaga-kesehatan-dan-kebugaran-tubuh#:~:text=Menjaga%20kesehatan%20dan%20kebugaran%20tubuh,tetap%20menjalankan%20aktifitas%20sehari%2Dhari." target="_blank" class="tbl-birubiru">Pelajari lebih lanjut</a></p>    
-            </div>
-        </section>
+</div>
 
-        <hr>
+<br>
+<br>
+<br>
+<br>
+    
+<div class="foto">
+      <img src="dokter.png">
+     </div>
+    <div class="welcome">
+        <div class="teks">
+    <h2>Solusi kesehatan terbaik untuk anda </h2>
+    <p> Konsultasi dengan dokter terbaik sesuai yang anda butuhkan Dan 
+        Pembelian obat semuanya bisa di sehat aja </p>
+    
+<section id="list-topics" class="list-topics">
 
-        <!--Untuk Courses-->
-        <section id="courses">
-            <div class="text-box">
-                <h1>Bagaimana caranya menjaga kesehatan yang baik dan benar??</h1>
-                <br>
-                <h3>Do you know?</h3> 
-                <p>Dilansir dari halodoc, ada 5 cara sederhana untuk menjaga kesehatan diantranya: </p>
-                <p>1. Makan yang teratur dan cukup tidak berlebihan dan tidak kekurangan</p>
-                <p>2. Istirahat cukup</p>
-                <p>3. Olahraga rutin</p>
-                <p>4. Bermeditasi dengan tujuan menenangkan pikiran</p>
-                <p>5. Memiliki sikap positif</p>
-                <p><a href="https://www.halodoc.com/artikel/5-cara-sederhana-untuk-menjaga-kesehatan" class="tbl-birubiru">Pelajari lebih lanjut</a></p>
-            </div>
-            <div class="gambarsehat2"  >
-            <img src="kesehatan2.jpg"/>
-            </div>
+			<div class="list">
+					<ul>
+						<li>
 
-        </section>
+							<div class="grid">
+                                <a href="dokter.php">
+                                <img src="medical-team.png" alt="" srcset="">
+                                </a>
+								<h5><a href="#">Konsultasi dengan dokter anda</a></h5>
 
-        <hr>
+							</div>
+						</li>
+						<li>
 
-        <!--untuk example-->
-        <section id="example">
-            <div class="tengah">z
+							<div class="grid">
+                                <a href="https://campus.quipper.com/aptitude_test">
+                                <img src="healthcare.png" alt="" srcset="">
+                                </a>
+								<h5><a href="#">Mau beli obat ? Disini aja!</a></h5>
+
+							</div>
+						</li>
+						<li>
+
+							<div class="grid">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+
+							</div>
+						</li>
+
+                        </ul>
+</section>
+                      
+</div>
+</div>
+
+<br>
+
+			
+<section id="courses" class="courses">
+<div class="layanan">
+    <div class="tes">
+    <h2>Layanan tambahan untuk anda</h2>
+   <p>Beberapa tes yang bisa anda coba</p>
+   </div>
+    <ul>
+        <li>
+							<div class="service">
+                                <a href="https://campus.quipper.com/aptitude_test">
+                                <img src="study.png" alt="" srcset="">
+                                </a>
+								<h5><a href="https://campus.quipper.com/aptitude_test">Tes minat dan bakat</a></h5>
+
+							</div>
+                            </li>
+
+                            <li>
+							<div class="service">
+                                <a href="https://campus.quipper.com/aptitude_test">
+                                <img src="belajar.png" alt="" srcset="">
+                                </a>
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.!</a></h5>
+
+							</div>
+
+                            </li>
+
+                            <li>
+							<div class="service">
+                               <a href="https://campus.quipper.com/aptitude_test">
+                                <img src="study.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+
+							</div>
+                            </li>
+                            <li>
+							<div class="service">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="belajar.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+
+							</div>
+                            </li>
+                            
+                            <br>
+
+                            <li>
+							<div class="service">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="study.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+
+							</div>
+                            </li>
+                            <li>
+							<div class="service">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="belajar.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+
+							</div>
+                            </li>
+                            <li>
+							<div class="service">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="study.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+
+							</div>
+                            </li>
+                            <li>
+							<div class="service">
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="belajar.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+
+							</div>
+                            </li>
+                            </ul>
+                           
+                      
+</div>
+</section>
+
+
+<section id="example">
+            <div class="tengah">
                 <div class="text-box">
                     <p class="deskripsi">Contoh kegiatan untuk menjaga kesehatan</p>
-                    <h2> Example</h2>
-                    <p>Beberapa contoh kegiatan</p>
+                    <p>Beberapa contoh kegiatan yang bisa anda lakukan</p>
                 </div>
 
                 <div class="tutor-list">
@@ -414,43 +729,75 @@ footer p {
                       <p>Bersikap positif</p>
                     </div>
             </div>
-
-            <hr> 
-
         </section>
 
-        <!--untuk partners-->
-        <div class="tengah">
-            <section id="partners">
-                <div class="text-box">
-                    <p class="deskripsi">Our partners</p>
-                    <h5>This is our top partners</h5>
-                    <p> You can call them when you need something
-                    </p>
-         
-            <div class="partner-list">
-                <div class="kartu-partner">
-                  <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcREa8iWL-chl4bXzv_h7Z3iqjK4SrPOfc1mvKlzMJW_RaK3KYqr"/>
-                  <p> DR.Reisa</p>
-                  <p><a href="dokter.php" target="_blank" class="tbl-dokter">Click here</a></p>   
 
-                </div>
+        <section id="partner" class="partner">
+<div class="dokter">
+    <div class="tes">
+    <h2>Dokter top 3 di sehat aja</h2>
+   <p>Dokter dibawah ini adalah para favorit pengguna sehat aja!</p>
+   </div>
+    <ul>
+        <li>
+							<div class="favorite">
+                                <a href="dokter.php">
+                                <img src="doctor.png" alt="" srcset="">
+                                </a>
+								<h5><a href="dokter.php">Dr.Nabil SP.OG</a></h5>
+                                <p>Lorem ipsum dolor sit.</p>
 
-                <div class="kartu-partner">
-                  <img src="https://www.qoala.app/id/blog/wp-content/uploads/2020/12/dr-Richard-Lee-Biodata-Biografi-dan-Fakta-Terkini-Dokter-Kecantikan-Pemilik-Klinik-Athena.jpg"/>
-                  <p> DR.Richard Lee</p>
-                  <p><a href="dokter.php" target="_blank" class="tbl-dokter">Click here</a></p>   
-                </div>
-            </div>
-        </div>
-    </div>
+							</div>
+                            </li>
+
+                            <li>
+							<div class="favorite">
+                                <a href="dokter.php">
+                                <img src="doctor.png" alt="" srcset="">
+                                </a>
+								<h5><a href="dokter.php">Dr.Jawa SP.A</a></h5>
+                                <p>Lorem ipsum dolor sit.</p>
+
+							</div>
+
+                            </li>
+
+                            <li>
+							<div class="favorite">
+                               <a href="dokter.php">
+                                <img src="doctor.png"></a> 
+								<h5><a href="dokter.php">Dr. Louis SP.B</a></h5>
+                                <p>Lorem ipsum dolor sit.</p>
+
+							</div>
+                            </li>
+</div>
 </section>
-    
 
 
 <footer>
-        <p>@Copyright2023ArgaSIJA1</p>
-</footer>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p>© 2024 All Rights Reserved.</a></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

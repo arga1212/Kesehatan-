@@ -99,14 +99,14 @@ section {
 .text-box .deskripsi {
     font-size: 25px;
     font-weight: bold;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #352F44;
     margin-top: 60px;
 }
 
 
 .text-box h5 {
-    font-family: 'comic sans ms';
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 800;
     font-size: 20px;
     margin-bottom: 20px;
@@ -117,14 +117,15 @@ section {
 }
 
 .text-box h3 {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 30px;
 }
 
 .text-box p {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 800;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400px;
     font-size: medium;
+    text-align: center;
 }
 
 
@@ -156,7 +157,8 @@ width: 1000px;
 
 .text-box h2 {
     color: black;
-    font-family: 'comic sans ms';
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
 }
 
 .text-box h1 {
@@ -271,17 +273,6 @@ p {
     background: #AEDEFC;
     transition: ease-in;
     text-decoration: none;
-}
-
-footer {
-    text-align: center;
-    margin-top: 100px;
-}
-
-footer p {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top: 5px;
-    font-weight: 600;
 }
 
 .text-box h2 {
@@ -461,6 +452,102 @@ margin-top:100px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.dokter{
+    display: block;
+    z-index: 1;
+    margin-top: 80px;
+    position: relative;
+    margin-left: 150px;
+    margin-right: 50px; 
+
+}
+
+.dokter ul li{
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 15px;
+   
+}
+
+
+.favorite{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 350px;
+    height: 400px;
+    background:#fff;
+    border-radius: 3px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 100px;
+    box-shadow: 0 0px 10px rgba(71,71,71,.2);
+    -webkit-transition: .3s linear; 
+    -moz-transition:.3s linear; 
+    -ms-transition:.3s linear; 
+    -o-transition:.3s linear;
+    transition: .3s linear; 
+}
+.favorite h5>a{ 
+margin: 13px 0;
+text-decoration: none;
+margin-bottom: 40px;
+font-size:12px;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: black;
+}
+.favorite: last-child{margin-right: 30px;}
+
+.favorite:hover{
+    color: #fff;
+    background:#5356FF;
+    box-shadow: 0 5px 10px rgba(71,71,71,.4);
+}
+
+.favorite img{
+width: 60%;
+margin-right: 10px;
+margin-left: 40px;
+margin-bottom: 50px
+
+}
+
+.favorite a{
+    margin-left: 60px;
+    margin-right: 50px;
+    position: relative;
+    
+}
+
+
+.copyright {
+     margin-top: 90px;
+     padding-bottom: 25px;
+     background: #50C4ED;   
+}
+
+.copyright p {
+     color: #fff;
+     font-size: 17 px;
+     line-height: 22px;
+     text-align: center;
+     padding-top: 25px;
+     font-weight: 400;
+     font-weight: normal;
+}
+
+.copyright a {
+     color: #fff;
+}
+
+.copyright a:hover {
+     color: #3e0bce;
+}
+
+
+
+
 
     </style>
 </head>
@@ -470,10 +557,10 @@ margin-top:100px;
             <div class="logo"><a href=''>Sehat aja</a></div>
                 <div class="menu">
                     <ul>
-                        <li><a href="#home">Why</a></li>
-                        <li><a href="#courses">How</a></li>
+                        <li><a href="#list-topics">Home</a></li>
+                        <li><a href="#courses">Courses</a></li>
                         <li><a href="#example">Example</a></li>
-                        <li><a href="#partners">Partners</a></li>
+                        <li><a href="#partner">Partners</a></li>
                         <li><a href="biodata.php">About</a></li>
                         <li><a href="login.php" class="tbl-biru">Login</a></li>
                     </ul>
@@ -483,6 +570,7 @@ margin-top:100px;
     </nav>
 </div>
 
+<br>
 <br>
 <br>
 <br>
@@ -547,10 +635,10 @@ margin-top:100px;
     <ul>
         <li>
 							<div class="service">
-                                <a href="dokter.php">
-                                <img src="medical-team.png" alt="" srcset="">
+                                <a href="https://campus.quipper.com/aptitude_test">
+                                <img src="study.png" alt="" srcset="">
                                 </a>
-								<h5><a href="#">Konsultasi dengan dokter anda</a></h5>
+								<h5><a href="https://campus.quipper.com/aptitude_test">Tes minat dan bakat</a></h5>
 
 							</div>
                             </li>
@@ -558,9 +646,9 @@ margin-top:100px;
                             <li>
 							<div class="service">
                                 <a href="https://campus.quipper.com/aptitude_test">
-                                <img src="healthcare.png" alt="" srcset="">
+                                <img src="belajar.png" alt="" srcset="">
                                 </a>
-								<h5><a href="#">Mau beli obat ? Disini aja!</a></h5>
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.!</a></h5>
 
 							</div>
 
@@ -568,15 +656,16 @@ margin-top:100px;
 
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+                               <a href="https://campus.quipper.com/aptitude_test">
+                                <img src="study.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
 
 							</div>
                             </li>
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="belajar.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
 
 							</div>
                             </li>
@@ -585,38 +674,142 @@ margin-top:100px;
 
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="study.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
 
 							</div>
                             </li>
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="belajar.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
 
 							</div>
                             </li>
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="study.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
 
 							</div>
                             </li>
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
+                               <a href="https://campus.quipper.com/aptitude_test"><img src="belajar.png"></a> 
+								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
 
 							</div>
                             </li>
-                           
                             </ul>
                            
                       
 </div>
 </section>
+
+
+<section id="example">
+            <div class="tengah">
+                <div class="text-box">
+                    <p class="deskripsi">Contoh kegiatan untuk menjaga kesehatan</p>
+                    <p>Beberapa contoh kegiatan yang bisa anda lakukan</p>
+                </div>
+
+                <div class="tutor-list">
+                      <div class="kartu-tutor">
+                        <img src="https://img.freepik.com/free-photo/flat-lay-batch-cooking-composition_23-2148765597.jpg?w=1060&t=st=1693324640~exp=1693325240~hmac=041f04aba07ce6847681d0f4a0dae5debd517761d72388e62abc465efec91911"/>
+                        <p>Makan yang cukup dan bergizi</p>
+                      </div>
+
+                      <div class="kartu-tutor">
+                        <img src="https://img.freepik.com/free-vector/sleep-analysis-concept-illustration_114360-6818.jpg?size=626&ext=jpg&uid=R125519887&ga=GA1.1.300703531.1693283522&semt=sph"/>
+                      <p> Istirahat cukup </p>
+                    </div>
+
+
+                      <div class="kartu-tutor">
+                        <img src="https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?size=626&ext=jpg&uid=R125519887&ga=GA1.1.300703531.1693283522&semt=sph"/>
+                    <p>Olahraga</p>
+                    </div>
+
+
+                      <div class="kartu-tutor">
+                        <img src="https://img.freepik.com/free-vector/person-keeping-social-distance-avoiding-contact-woman-separating-from-crowd-meditating-transparent-bubble_74855-11009.jpg?size=626&ext=jpg&uid=R125519887&ga=GA1.1.300703531.1693283522&semt=sph"/>
+                      <p>Bermeditasi untuk menenangkan pikiran</p>
+                    </div>
+
+                    <div class="kartu-tutor">
+                        <img src="https://img.freepik.com/free-vector/public-approval-concept-illustration_52683-32169.jpg?size=626&ext=jpg&uid=R125519887&ga=GA1.1.300703531.1693283522&semt=ais"/>
+                      <p>Bersikap positif</p>
+                    </div>
+            </div>
+        </section>
+
+
+        <section id="partner" class="partner">
+<div class="dokter">
+    <div class="tes">
+    <h2>Dokter top 3 di sehat aja</h2>
+   <p>Dokter dibawah ini adalah para favorit pengguna sehat aja!</p>
+   </div>
+    <ul>
+        <li>
+							<div class="favorite">
+                                <a href="dokter.php">
+                                <img src="doctor.png" alt="" srcset="">
+                                </a>
+								<h5><a href="dokter.php">Dr.Nabil SP.OG</a></h5>
+                                <p>Lorem ipsum dolor sit.</p>
+
+							</div>
+                            </li>
+
+                            <li>
+							<div class="favorite">
+                                <a href="dokter.php">
+                                <img src="doctor.png" alt="" srcset="">
+                                </a>
+								<h5><a href="dokter.php">Dr.Jawa SP.A</a></h5>
+                                <p>Lorem ipsum dolor sit.</p>
+
+							</div>
+
+                            </li>
+
+                            <li>
+							<div class="favorite">
+                               <a href="dokter.php">
+                                <img src="doctor.png"></a> 
+								<h5><a href="dokter.php">Dr. Louis SP.B</a></h5>
+                                <p>Lorem ipsum dolor sit.</p>
+
+							</div>
+                            </li>
+</div>
+</section>
+
+
+<footer>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p>© 2024 All Rights Reserved.</a></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+
+
+
+
+
+
+
+
+
+
 
 
 </body>
