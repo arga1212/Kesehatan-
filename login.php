@@ -14,31 +14,27 @@ if(isset($_POST['login'])){
     // pengambilan data
     $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username' " );
 
-  // pengecekan username
-  if(mysqli_num_rows($result) === 1 ){
-    
-    // pengecekan pass
-    $row = mysqli_fetch_assoc($result);
-    
-    if ($password == $row["password"]) {
-        $_SESSION['email']= $row['email'];
-        $_SESSION['level']=$row['level'];
-        
-        if($row['level']== 'admin'){
-            header("location: admin.php");
+    if(mysqli_num_rows($result) === 1 ){
+        $row = mysqli_fetch_assoc($result);
+        if ($password == $row["password"]) {
+            $_SESSION['login'] = true;
+            $_SESSION['email'] = $email;
+            $_SESSION['username']= $row['username'];
+            $level = $row['level'];
+            if($row['level']== 'admin'){
+                header("location: admin.php");
+            }
+            else {
+                header("location: selamat-datang.php"); 
+            }
+        } else {
+            echo '<script> 
+            alert("password atau email salah")
+            </script>';
+            exit;
         }
-        else {
-            header("location: selamat-datang.php");
-        }
-    } else {
-        echo '<script> 
-        alert("password atau email salah")
-        </script>';
-        exit;
-    }
-       
-  }
-
+           
+      }
   $eror = true;
 }
 

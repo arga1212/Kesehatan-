@@ -1,3 +1,17 @@
+<?php
+require 'function.php';
+
+session_start();
+
+$query = "SELECT * FROM user";
+$result = mysqli_query($conn, $query);
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,80 +92,6 @@ section {
     margin-bottom: 50px;
 }
 
-.text-box{
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-.text-box .deskripsi {
-    font-size: 25px;
-    font-weight: bold;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: #352F44;
-    margin-top: 60px;
-}
-
-
-.text-box h5 {
-    font-family: 'comic sans ms';
-    font-weight: 800;
-    font-size: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    color: #352F44;
-    width: 100%;
-    line-height: 30px;
-}
-
-.text-box h3 {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 30px;
-}
-
-.text-box p {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 800;
-    font-size: medium;
-}
-
-
-.gambarsehat2 img {
-    border-radius: 50px;
-    padding: 5px;
-    width: 55%;
-    margin-left: 250px;
-    margin-right: 40px;
-    margin-top: 150px;
-}
-
-.gambarsehat2 {
-    width: 1000px;
-}
-
-.gambarsehat img {
-    border-radius: 40px;
-    padding: 5px;
-    width: 90%;
-    margin-left: 1px;
-    margin-right: 50px;
-    margin-top: 80px;
-}
-
-.gambarsehat {
-width: 1000px;
-}
-
-.text-box h2 {
-    color: black;
-    font-family: 'comic sans ms';
-}
-
-.text-box h1 {
-    font-family: 'Times New Roman', Times, serif;
-    color: black;
-    margin-top: 58px;
-}
-
 a.tbl-biru {
     background: #0C2D57;
     border-radius: 20px;
@@ -168,108 +108,110 @@ a.tbl-biru:hover {
     text-decoration: none;
 }
 
-a.tbl-birubiru {
-    background: #0174BE;
+table {
+            border-collapse: collapse;
+            width: 100%; 
+            margin-right: 30px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+            border-color: #000;
+            background-color: #fff;
+            color: #000;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+            
+
+        }
+        th{
+            background-color: #F8F4EC;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+
+        body {
+            background-color: #F8F4EC;
+            color: #fff;
+
+        }
+
+.data {
+   font-size:80px;
+   text-align: center;
+   color: #0C2D57;
+   font-weight: bold;
+   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+a.add-user {
+    display: inline-block;
+    background: #0C2D57;
     border-radius: 20px;
-    margin-top: 20px;
-    padding: 15px 20px 15px 20px;
+    padding: 1.5%;
     color: #ffffff;
     cursor: pointer;
     font-weight: bold;
+    font-size:20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    float: right;
+    margin-bottom: 25px;
+    margin-right: 30px;
 }
 
-a.tbl-birubiru:hover {
-    background: #AEDEFC;
-    transition: ease-in;
+a.add-user:hover {
+    background: #427D9D;
     text-decoration: none;
 }
-p {
-    margin: 10px 0px 10px 0px;
-    padding: 10px 0px 10px 0px;
-    color: black;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
-.tengah {
-     text-align: center;
-     width: 100%;
-}
-
-.tutor-list{
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-}
-
-.kartu-tutor {
-    width: 20%;
-    margin: 0 auto;
-}
-
-.kartu-tutor img {
-    width: 80%;
-    border-radius: 50%;
-    border: 1px solid #ddd;
-    padding: 5px;
-}
-
-.partner-list {
-    width: 100;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.kartu-partner {
-    width: 20%;
-    margin: 0 auto;
-}
-
-.kartu-partner img {
-    width: 80%;
-    border-radius: 50%;
-}
-
-.kartu-partner p {
-    font-family: 'comic sans ms';   
-    font-weight: 500;
-    font-size: 25px;
-    color: #352F44;
-}
-
-.tbl-dokter {
-    background: #3876BF;
+a.kembali 
+{
+    display: inline-block;
+    background: #0C2D57;
     border-radius: 20px;
-    margin-top: 20px;
-    padding: 15px 20px 15px 20px;
+    padding: 1.5%;
     color: #ffffff;
     cursor: pointer;
     font-weight: bold;
+    font-size:20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    float: left;
+    margin-bottom: 25px;
+    margin-left: 30px;
 }
 
-.tbl-dokter:hover {
-    background: #AEDEFC;
-    transition: ease-in;
+a.kembali:hover  {
+    background: #427D9D;
     text-decoration: none;
 }
 
-footer {
-    text-align: center;
-    margin-top: 100px;
+a.edit {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px 10px;
+    background-color:#211C6A ; 
+    color: white; 
+    text-decoration: none;
+    border-radius: 10px;
 }
 
-footer p {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top: 5px;
-    font-weight: 600;
+a.hapus {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: rgb(235, 71, 76); 
+    color: white; 
+    text-decoration: none;
+    border-radius: 10px;
 }
-
-.text-box h2 {
-    text-align: center;
-}
-
-
 
     </style>
 </head>
@@ -285,125 +227,65 @@ footer p {
                         <li><a href="#partners">Partners</a></li>
                         <li><a href="biodata.php">About</a></li>
                         <li><a href="crud.php">CRUD</a></li>
-                        <li><a href="logout.php" class="tbl-biru">Logut</a></li>=
+                        <li><a href="logout.php" class="tbl-biru">Logut</a></li>
+                        <?php
+                        if ($_SESSION['admin']) {
+                        echo "halo,". $_SESSION['username'];
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-    <div class="wrapper">
-        <!--untuk home-->
-        <section id="home">
-        <div  class="gambarsehat">
-        <img src="kesehatan.jpg"/>
-        </div>
-            <div class="text-box">
-                <p class="deskripsi">Kenapa perlu belajar menjaga kesehatan??</p>
-                <h5>Menjaga kesehatan tentu saja merupakan hal yang sangat penting bagi tubuh</h5>
-                <p>Dengan menjaga kesehatan maka tubuh otomatis tubuh kita akan terasa lebih segar dan bugar dalam menjalani aktivitas setiap hari nya, Dan juga bagi kita para siswa tentu saja akan sangat menguntungkan jika kita selalu menjaga kesehatan 
-                    kita akan menjadi fokus untuk belajar dan tidak meninggalkan materi yang ada disekolah
-                </p>
-                <p><a href="https://rsud.kulonprogokab.go.id/detil/190/jaga-kesehatan-dan-kebugaran-tubuh#:~:text=Menjaga%20kesehatan%20dan%20kebugaran%20tubuh,tetap%20menjalankan%20aktifitas%20sehari%2Dhari." target="_blank" class="tbl-birubiru">Pelajari lebih lanjut</a></p>    
-            </div>
-        </section>
 
-        <hr>
-
-        <!--Untuk Courses-->
-        <section id="courses">
-            <div class="text-box">
-                <h1>Bagaimana caranya menjaga kesehatan yang baik dan benar??</h1>
-                <br>
-                <h3>Do you know?</h3> 
-                <p>Dilansir dari halodoc, ada 5 cara sederhana untuk menjaga kesehatan diantranya: </p>
-                <p>1. Makan yang teratur dan cukup tidak berlebihan dan tidak kekurangan</p>
-                <p>2. Istirahat cukup</p>
-                <p>3. Olahraga rutin</p>
-                <p>4. Bermeditasi dengan tujuan menenangkan pikiran</p>
-                <p>5. Memiliki sikap positif</p>
-                <p><a href="https://www.halodoc.com/artikel/5-cara-sederhana-untuk-menjaga-kesehatan" class="tbl-birubiru">Pelajari lebih lanjut</a></p>
-            </div>
-            <div class="gambarsehat2"  >
-            <img src="kesehatan2.jpg"/>
-            </div>
-
-        </section>
-
-        <hr>
-
-        <!--untuk example-->
-        <section id="example">
-            <div class="tengah">
-                <div class="text-box">
-                    <p class="deskripsi">Contoh kegiatan untuk menjaga kesehatan</p>
-                    <h2> Example</h2>
-                    <p>Beberapa contoh kegiatan</p>
-                </div>
-
-                <div class="tutor-list">
-                      <div class="kartu-tutor">
-                        <img src="https://img.freepik.com/free-photo/flat-lay-batch-cooking-composition_23-2148765597.jpg?w=1060&t=st=1693324640~exp=1693325240~hmac=041f04aba07ce6847681d0f4a0dae5debd517761d72388e62abc465efec91911"/>
-                        <p>Makan yang cukup dan bergizi</p>
-                      </div>
-
-                      <div class="kartu-tutor">
-                        <img src="https://img.freepik.com/free-vector/sleep-analysis-concept-illustration_114360-6818.jpg?size=626&ext=jpg&uid=R125519887&ga=GA1.1.300703531.1693283522&semt=sph"/>
-                      <p> Istirahat cukup </p>
-                    </div>
+    <h1 class="data">Data Tabel User</h1>
+<a href="add.php" class = "add-user">ADD USER</a> 
 
 
-                      <div class="kartu-tutor">
-                        <img src="https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?size=626&ext=jpg&uid=R125519887&ga=GA1.1.300703531.1693283522&semt=sph"/>
-                    <p>Olahraga</p>
-                    </div>
+<table>
+    <tr>
+        <th>id_user</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Operation</th>
 
+    </tr>
 
-                      <div class="kartu-tutor">
-                        <img src="https://img.freepik.com/free-vector/person-keeping-social-distance-avoiding-contact-woman-separating-from-crowd-meditating-transparent-bubble_74855-11009.jpg?size=626&ext=jpg&uid=R125519887&ga=GA1.1.300703531.1693283522&semt=sph"/>
-                      <p>Bermeditasi untuk menenangkan pikiran</p>
-                    </div>
+    <?php
 
-                    <div class="kartu-tutor">
-                        <img src="https://img.freepik.com/free-vector/public-approval-concept-illustration_52683-32169.jpg?size=626&ext=jpg&uid=R125519887&ga=GA1.1.300703531.1693283522&semt=ais"/>
-                      <p>Bersikap positif</p>
-                    </div>
-            </div>
+     if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>" . $row["id_user"] . "</td>";
+            echo "<td>" . $row["username"] . "</td>";
+            echo "<td>" . $row["email"] . "</td>";
+            echo "<td>" . $row["password"] . "</td>";
+            echo "<td>";
+            echo "<a class='edit'href='edit.php?id=".$row['id_user']."'>Edit</a> | ";
+            echo "<a class='hapus'href='delete.php?id=".$row['id_user']."'>Hapus</a>";
+            echo "</td>";
 
-            <hr> 
+            echo "</tr>";
+        }
+    } else {
+        echo "<tr><td colspan='3'>Tidak ada data yang ditemukan</td></tr>";
+    }
 
-        </section>
+  
+    ?>
+</table>
 
-        <!--untuk partners-->
-        <div class="tengah">
-            <section id="partners">
-                <div class="text-box">
-                    <p class="deskripsi">Our partners</p>
-                    <h5>This is our top partners</h5>
-                    <p> You can call them when you need something
-                    </p>
-         
-            <div class="partner-list">
-                <div class="kartu-partner">
-                  <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcREa8iWL-chl4bXzv_h7Z3iqjK4SrPOfc1mvKlzMJW_RaK3KYqr"/>
-                  <p> DR.Reisa</p>
-                  <p><a href="https://instagram.com/reisabrotoasmoro?igshid=MzMyNGUyNmU2YQ" target="_blank" class="tbl-dokter">Click here</a></p>   
+<a class = 'kembali' href="admin.php">Back</a>
+<a href="add.php" class = "add-user">add user</a>   
 
-                </div>
+</body>
+</html>
 
-                <div class="kartu-partner">
-                  <img src="https://www.qoala.app/id/blog/wp-content/uploads/2020/12/dr-Richard-Lee-Biodata-Biografi-dan-Fakta-Terkini-Dokter-Kecantikan-Pemilik-Klinik-Athena.jpg"/>
-                  <p> DR.Richard Lee</p>
-                  <p><a href="https://instagram.com/dr.richard_lee?igshid=MzMyNGUyNmU2YQ==" target="_blank" class="tbl-dokter">Click here</a></p>   
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    
-
-<footer>
-        <p>@Copyright2023ArgaSIJA1</p>
-</footer>
+<?php
+mysqli_close($conn);
+?>
 
 </body>
 </html>

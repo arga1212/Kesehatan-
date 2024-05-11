@@ -1,3 +1,13 @@
+<?php
+require 'function.php';
+
+session_start();
+
+
+?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -550,6 +560,11 @@ margin-bottom: 50px
                         <li><a href="#partner">Partners</a></li>
                         <li><a href="biodata.php">About</a></li>
                         <li><a href="logout.php" class="tbl-biru">Logout</a></li>
+                        <?php
+                        if ($_SESSION['admin']) {
+                        echo "halo,". $_SESSION['username'];
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>

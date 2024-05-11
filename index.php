@@ -3,7 +3,7 @@
 session_start();
 
 if(isset($_SESSION["login"])) {
-    header("location: login.php");
+    header("location:index.php");
 }
 
 ?>
@@ -39,10 +39,10 @@ body {
 
 .logo a {
     font-size: 50px;
-    font-weight: 800;
+    font-weight: 700;
     float: left;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #FFF6E9;
+    color: #0F1035;
     text-decoration:none;
 }
 
@@ -58,7 +58,7 @@ nav {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    background: #50C4ED;
+    background: #FFF6E9;
     z-index: 1000;
 }
 
@@ -544,9 +544,47 @@ margin-bottom: 50px
 .copyright a:hover {
      color: #3e0bce;
 }
+.banner {
+    display: flex;
+    width: 100%;
+    height: 300px; 
+    background-image: url('obat.jpg');
+    background-size: cover; 
+    background-position: center;
+    position: relative;
+}
 
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: 
+}
 
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
 
+.banner-content h1 {
+    font-size: 36px; 
+    margin-bottom: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.banner-content p {
+    font-size: 18px; 
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
 
 
     </style>
@@ -554,7 +592,8 @@ margin-bottom: 50px
 <body>
     <nav>
         <div class="wrapper">
-            <div class="logo"><a href=''>Sehat aja</a></div>
+            <div class="logo">
+                <a href=''>Sehat aja</a></div>
                 <div class="menu">
                     <ul>
                         <li><a href="#list-topics">Home</a></li>
@@ -570,10 +609,24 @@ margin-bottom: 50px
     </nav>
 </div>
 
+<div class="banner">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+        <h1>Selamat Datang Di Sehat Aja!</h1>
+        <p>Temukan berbagai macam obat dengan harga terbaik.</p>
+    </div>
+</div>
+
+<br><br>
 <br>
 <br>
 <br>
 <br>
+<br>
+<br>
+
+
+
     
 <div class="foto">
       <img src="dokter.png">
@@ -581,26 +634,12 @@ margin-bottom: 50px
     <div class="welcome">
         <div class="teks">
     <h2>Solusi kesehatan terbaik untuk anda </h2>
-    <p> Konsultasi dengan dokter terbaik sesuai yang anda butuhkan Dan 
-        Pembelian obat semuanya bisa di sehat aja </p>
-    
+    <p> Cari obat dengan harga terbaik dan kualitas terpercaya? Di Sehat Aja!</p>
 <section id="list-topics" class="list-topics">
-
 			<div class="list">
 					<ul>
 						<li>
-
-							<div class="grid">
-                                <a href="dokter.php">
-                                <img src="medical-team.png" alt="" srcset="">
-                                </a>
-								<h5><a href="#">Konsultasi dengan dokter anda</a></h5>
-
-							</div>
-						</li>
-						<li>
-
-							<div class="grid">
+                                <div class="grid">
                                 <a href="https://campus.quipper.com/aptitude_test">
                                 <img src="healthcare.png" alt="" srcset="">
                                 </a>
@@ -608,15 +647,6 @@ margin-bottom: 50px
 
 							</div>
 						</li>
-						<li>
-
-							<div class="grid">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
-
-							</div>
-						</li>
-
                         </ul>
 </section>
                       
@@ -800,17 +830,6 @@ margin-bottom: 50px
             </div>
          </div>
       </footer>
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
