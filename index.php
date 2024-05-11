@@ -17,7 +17,16 @@ if(isset($_SESSION["login"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kesehatan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poetsen+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <title>Sehat aja</title>
     <style>
     *{
     padding: 0;
@@ -38,12 +47,13 @@ body {
 }
 
 .logo a {
-    font-size: 50px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
     font-weight: 700;
     float: left;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #0F1035;
+    color:#002D73;
     text-decoration:none;
+    margin-left: -100px;
 }
 
 .menu {
@@ -58,7 +68,7 @@ nav {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    background: #FFF6E9;
+    background: #AED6F1;
     z-index: 1000;
 }
 
@@ -104,57 +114,6 @@ section {
     margin-top: 60px;
 }
 
-
-.text-box h5 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 800;
-    font-size: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    color: #352F44;
-    width: 100%;
-    line-height: 30px;
-}
-
-.text-box h3 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 30px;
-}
-
-.text-box p {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 400px;
-    font-size: medium;
-    text-align: center;
-}
-
-
-.gambarsehat2 img {
-    border-radius: 50px;
-    padding: 5px;
-    width: 55%;
-    margin-left: 250px;
-    margin-right: 40px;
-    margin-top: 150px;
-}
-
-.gambarsehat2 {
-    width: 1000px;
-}
-
-.gambarsehat img {
-    border-radius: 40px;
-    padding: 5px;
-    width: 90%;
-    margin-left: 1px;
-    margin-right: 50px;
-    margin-top: 80px;
-}
-
-.gambarsehat {
-width: 1000px;
-}
-
 .text-box h2 {
     color: black;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -190,13 +149,17 @@ a.tbl-biru:hover {
 }
 
 a.tbl-birubiru {
+    width: 100px;
+    height: 90px;
+    text-decoration: none;
     background: #0174BE;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-top: 20px;
     padding: 15px 20px 15px 20px;
     color: #ffffff;
     cursor: pointer;
     font-weight: bold;
+    
 }
 
 a.tbl-birubiru:hover {
@@ -235,46 +198,6 @@ p {
     padding: 5px;
 }
 
-.partner-list {
-    width: 100;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.kartu-partner {
-    width: 20%;
-    margin: 0 auto;
-}
-
-.kartu-partner img {
-    width: 80%;
-    border-radius: 50%;
-}
-
-.kartu-partner p {
-    font-family: 'comic sans ms';   
-    font-weight: 500;
-    font-size: 25px;
-    color: #352F44;
-}
-
-.tbl-dokter {
-    background: #3876BF;
-    border-radius: 20px;
-    margin-top: 20px;
-    padding: 15px 20px 15px 20px;
-    color: #ffffff;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.tbl-dokter:hover {
-    background: #AEDEFC;
-    transition: ease-in;
-    text-decoration: none;
-}
-
 .text-box h2 {
     text-align: center;
 }
@@ -292,11 +215,12 @@ p {
 }
 
 .grid{
-    display: flex;
+    display: grid;
+    place-items: center;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 190px;
+    width: 600px;
     height: 150px;
     background:#fff;
     border-radius: 3px;
@@ -309,15 +233,28 @@ p {
     -o-transition:.3s linear;
     transition: .3s linear; 
 }
-.grid h5>a{ 
-margin: 13px 0;
-text-decoration: none;
-margin-bottom: 20px;
-font-size:12px;
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-color: black;
+
+.content {
+  text-align: center;
 }
-.grid:last-child{margin-right: 30px;}
+.content p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.content h5 {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 10px; 
+}
+
+.gambar {
+  margin-bottom: 20px;
+}
+
+.grid p{
+    font-size:5px;
+    margin-left: 135px;
+}
 .grid:hover{
     color: #fff;
     background:#5356FF;
@@ -325,17 +262,14 @@ color: black;
 }
 
 .grid img{
-width: 85%;
+width: 20%;
 padding: auto;
-margin-right: 30px;
+float: left;
 
 }
 
 .grid a{
-    margin-left: 60px;
-    margin-right: 50px;
-    position: relative;
-    
+   margin-bottom: 30px;
 }
 
 .welcome{
@@ -544,47 +478,61 @@ margin-bottom: 50px
 .copyright a:hover {
      color: #3e0bce;
 }
-.banner {
+.home {
     display: flex;
-    width: 100%;
-    height: 300px; 
-    background-image: url('obat.jpg');
-    background-size: cover; 
-    background-position: center;
     position: relative;
 }
 
-.banner-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: 
+.content {
+  overflow: auto;
 }
 
-.banner-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
+.content h1{
+    margin-top: 90px;
+    font-size: 45px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 1000;
+  font-style: normal;  
+  color: #005EB2 ; 
+  text-align: justify;
+  margin-left: 18px;
+}
+.content h5{
+    margin-left: 40px;
+    margin-top: 40px;
+    font-size: 30px;
+    font-family:  "Montserrat", sans-serif;
+    font-weight: 800;
+    margin-left: 20px;
+  font-style: normal;  
+  color:#5DBEFF; 
+  text-align: left;
 }
 
-.banner-content h1 {
-    font-size: 36px; 
-    margin-bottom: 20px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.content p {
+    text-align: justify;
+  font-size: 19px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  margin-top: 40px;
+  margin-left: -1px ; 
+  margin-left: 30px;     
+  color:#8DC9FF;
+  
+
 }
 
-.banner-content p {
-    font-size: 18px; 
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 600;
+.gambar {
+  float: right;
+  margin-right: 5px; 
+  width: 50%;
 }
+
+.u {
+    margin-top: 90px;
+}
+
 
 
     </style>
@@ -609,52 +557,19 @@ margin-bottom: 50px
     </nav>
 </div>
 
-<div class="banner">
-    <div class="banner-overlay"></div>
-    <div class="banner-content">
-        <h1>Selamat Datang Di Sehat Aja!</h1>
-        <p>Temukan berbagai macam obat dengan harga terbaik.</p>
+<div class="home">
+<div class="content">
+    <img src="home.jpg" alt="Gambar" class="gambar">
+    <h1>Welcome in Sehat Aja!</h1>
+    <h5>Temukan berbagai kebutuhan obat anda cuma di sehat aja</h5>
+    <p class="teks">Kenapa harus sehat aja? Karena kami menyediakan layanan pembelian obat secara mudah, aman, nyaman, dan murah, Jaminan barang original
+        100% Segera order dengan klik tombol dibawah ini 
+    </p>
+    <div class='u'>
+    <a href="login.php" class="tbl-birubiru">YUK ORDER SEKARANG!</a> 
     </div>
 </div>
-
-<br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-
-    
-<div class="foto">
-      <img src="dokter.png">
-     </div>
-    <div class="welcome">
-        <div class="teks">
-    <h2>Solusi kesehatan terbaik untuk anda </h2>
-    <p> Cari obat dengan harga terbaik dan kualitas terpercaya? Di Sehat Aja!</p>
-<section id="list-topics" class="list-topics">
-			<div class="list">
-					<ul>
-						<li>
-                                <div class="grid">
-                                <a href="https://campus.quipper.com/aptitude_test">
-                                <img src="healthcare.png" alt="" srcset="">
-                                </a>
-								<h5><a href="#">Mau beli obat ? Disini aja!</a></h5>
-
-							</div>
-						</li>
-                        </ul>
-</section>
-                      
 </div>
-</div>
-
-<br>
-
 			
 <section id="courses" class="courses">
 <div class="layanan">
