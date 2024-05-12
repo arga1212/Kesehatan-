@@ -1,11 +1,5 @@
 <?php
-
-session_start();
-
-if(isset($_SESSION["login"])) {
-    header("location:index.php");
-}
-
+    
 ?>
 
 
@@ -215,17 +209,17 @@ p {
 }
 
 .grid{
-    display: grid;
-    place-items: center;
+    display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 600px;
+    width: 200px;
     height: 150px;
     background:#fff;
     border-radius: 3px;
     margin-right: 20px;
     margin-bottom: 20px;
+    margin-left: 190px;
     box-shadow: 0 0px 10px rgba(71,71,71,.2);
     -webkit-transition: .3s linear; 
     -moz-transition:.3s linear; 
@@ -233,6 +227,36 @@ p {
     -o-transition:.3s linear;
     transition: .3s linear; 
 }
+.grid h5{ 
+margin: 13px 0;
+margin-top: 20px;
+margin-right: 10px;
+text-decoration: none;
+margin-bottom: 20px;
+font-size:12px;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: black;
+}
+.grid:last-child{margin-right: 30px;}
+.grid:hover{
+    color: #fff;
+    background:#5356FF;
+    box-shadow: 0 5px 10px rgba(71,71,71,.4);
+}
+
+.grid img{
+width: 30%;
+padding: auto;
+margin-right: 20px;
+}
+
+.grid a{
+    margin-left: 60px;
+    margin-right: 50px;
+    position: relative;
+    
+}
+
 
 .content {
   text-align: center;
@@ -261,12 +285,6 @@ p {
     box-shadow: 0 5px 10px rgba(71,71,71,.4);
 }
 
-.grid img{
-width: 20%;
-padding: auto;
-float: left;
-
-}
 
 .grid a{
    margin-bottom: 30px;
@@ -278,38 +296,20 @@ float: left;
 }
 .teks{
     margin-top: 60px;
-    margin-left:70px
 }
 .teks h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     margin-top:30px;
+    text-align: center;
 }
 
 .teks p{
 font-weight: normal;
 margin-top: 20px;
 font-size: 17px;
-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifs;   
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifs;
+text-align: center;
 }
-
-.foto img {
-    border-radius: 30px;
-    padding: 5px;
-    width: 105%;
-    margin-left: 0px;
-    margin-right: 90px;
-    margin-top: 0px;
-    margin-bottom: 50px
-}
-
-.foto{
-width: 500px;
-float: right;
-margin-right: 95px;
-margin-bottom: px
-}
-
-
 
 .layanan{
     display: block;
@@ -375,86 +375,6 @@ margin-right: 30px;
     position: relative;
     
 }
-
-.tes h2{
-text-align: center;
-margin-top:100px;
-}
-
-.tes p{
-    text-align:center;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.dokter{
-    display: block;
-    z-index: 1;
-    margin-top: 80px;
-    position: relative;
-    margin-left: 150px;
-    margin-right: 50px; 
-
-}
-
-.dokter ul li{
-    display: inline-block;
-    margin-left: 30px;
-    margin-top: 15px;
-   
-}
-
-
-.favorite{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 350px;
-    height: 400px;
-    background:#fff;
-    border-radius: 3px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    margin-top: 100px;
-    box-shadow: 0 0px 10px rgba(71,71,71,.2);
-    -webkit-transition: .3s linear; 
-    -moz-transition:.3s linear; 
-    -ms-transition:.3s linear; 
-    -o-transition:.3s linear;
-    transition: .3s linear; 
-}
-.favorite h5>a{ 
-margin: 13px 0;
-text-decoration: none;
-margin-bottom: 40px;
-font-size:12px;
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-color: black;
-}
-.favorite: last-child{margin-right: 30px;}
-
-.favorite:hover{
-    color: #fff;
-    background:#5356FF;
-    box-shadow: 0 5px 10px rgba(71,71,71,.4);
-}
-
-.favorite img{
-width: 60%;
-margin-right: 10px;
-margin-left: 40px;
-margin-bottom: 50px
-
-}
-
-.favorite a{
-    margin-left: 60px;
-    margin-right: 50px;
-    position: relative;
-    
-}
-
-
 .copyright {
      margin-top: 90px;
      padding-bottom: 25px;
@@ -533,6 +453,16 @@ margin-bottom: 50px
     margin-top: 90px;
 }
 
+.tes h2{
+text-align: center;
+margin-top:100px;
+}
+
+.tes p{
+    text-align:center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 
 
     </style>
@@ -544,7 +474,7 @@ margin-bottom: 50px
                 <a href=''>Sehat aja</a></div>
                 <div class="menu">
                     <ul>
-                        <li><a href="#list-topics">Home</a></li>
+                        <li><a href="#home">Home</a></li>
                         <li><a href="#courses">Courses</a></li>
                         <li><a href="#example">Example</a></li>
                         <li><a href="#partner">Partners</a></li>
@@ -689,48 +619,47 @@ margin-bottom: 50px
             </div>
         </section>
 
-
+<br>
+<br>
+<br>
+<div class="welcome">
+        <div class="teks">
+    <h2>Kenapa harus sehat aja </h2>
+    <p> 3 Alasan Kenapa  Harus Pilih Sehat Aja! </p>
         <section id="partner" class="partner">
-<div class="dokter">
-    <div class="tes">
-    <h2>Dokter top 3 di sehat aja</h2>
-   <p>Dokter dibawah ini adalah para favorit pengguna sehat aja!</p>
-   </div>
-    <ul>
-        <li>
-							<div class="favorite">
-                                <a href="dokter.php">
-                                <img src="doctor.png" alt="" srcset="">
+        <div class="list">
+					<ul>
+						<li>
+
+							<div class="grid">
+                                <img src="positive-feedback.png" alt="" srcset="">
                                 </a>
-								<h5><a href="dokter.php">Dr.Nabil SP.OG</a></h5>
-                                <p>Lorem ipsum dolor sit.</p>
-
+								<h5>Mudah digunakan</h5>
 							</div>
-                            </li>
+						</li>
+						<li>
 
-                            <li>
-							<div class="favorite">
-                                <a href="dokter.php">
-                                <img src="doctor.png" alt="" srcset="">
+							<div class="grid">
+                                <img src="rating-assessment.png" alt="" srcset="">
                                 </a>
-								<h5><a href="dokter.php">Dr.Jawa SP.A</a></h5>
-                                <p>Lorem ipsum dolor sit.</p>
+								<h5>Rating Terbaik</h5>
 
 							</div>
+						</li>
+						<li>
 
-                            </li>
-
-                            <li>
-							<div class="favorite">
-                               <a href="dokter.php">
-                                <img src="doctor.png"></a> 
-								<h5><a href="dokter.php">Dr. Louis SP.B</a></h5>
-                                <p>Lorem ipsum dolor sit.</p>
+							<div class="grid">
+                               <img src="pay.png">
+								<h5>Harga Terbaik</h5>
 
 							</div>
-                            </li>
-</div>
+						</li>
+
+                        </ul>
 </section>
+                      
+</div>
+</div>
 
 
 <footer>

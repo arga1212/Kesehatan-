@@ -8,10 +8,6 @@ $result = mysqli_query($conn, $query);
 ?>
 
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -226,12 +222,11 @@ a.hapus {
                         <li><a href="#example">Example</a></li>
                         <li><a href="#partners">Partners</a></li>
                         <li><a href="biodata.php">About</a></li>
-                        <li><a href="crud.php">CRUD</a></li>
                         <li><a href="logout.php" class="tbl-biru">Logut</a></li>
                         <?php
-                        if ($_SESSION['admin']) {
-                        echo "halo,". $_SESSION['username'];
-                        }
+                        
+                        echo "Halo,". $_SESSION['username'];
+                        
                         ?>
                     </ul>
                 </div>
@@ -266,7 +261,6 @@ a.hapus {
             echo "<a class='edit'href='edit.php?id=".$row['id_user']."'>Edit</a> | ";
             echo "<a class='hapus'href='delete.php?id=".$row['id_user']."'>Hapus</a>";
             echo "</td>";
-
             echo "</tr>";
         }
     } else {

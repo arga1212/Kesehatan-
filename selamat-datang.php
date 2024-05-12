@@ -3,8 +3,8 @@ require 'function.php';
 
 session_start();
 
-
 ?>
+
 
 
 
@@ -14,7 +14,16 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kesehatan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poetsen+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <title>Sehat aja</title>
     <style>
     *{
     padding: 0;
@@ -35,12 +44,13 @@ body {
 }
 
 .logo a {
-    font-size: 50px;
-    font-weight: 800;
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
     float: left;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #FFF6E9;
+    color:#002D73;
     text-decoration:none;
+    margin-left: -100px;
 }
 
 .menu {
@@ -55,7 +65,7 @@ nav {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    background: #50C4ED;
+    background: #AED6F1;
     z-index: 1000;
 }
 
@@ -101,57 +111,6 @@ section {
     margin-top: 60px;
 }
 
-
-.text-box h5 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 800;
-    font-size: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    color: #352F44;
-    width: 100%;
-    line-height: 30px;
-}
-
-.text-box h3 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 30px;
-}
-
-.text-box p {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 400px;
-    font-size: medium;
-    text-align: center;
-}
-
-
-.gambarsehat2 img {
-    border-radius: 50px;
-    padding: 5px;
-    width: 55%;
-    margin-left: 250px;
-    margin-right: 40px;
-    margin-top: 150px;
-}
-
-.gambarsehat2 {
-    width: 1000px;
-}
-
-.gambarsehat img {
-    border-radius: 40px;
-    padding: 5px;
-    width: 90%;
-    margin-left: 1px;
-    margin-right: 50px;
-    margin-top: 80px;
-}
-
-.gambarsehat {
-width: 1000px;
-}
-
 .text-box h2 {
     color: black;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -187,13 +146,17 @@ a.tbl-biru:hover {
 }
 
 a.tbl-birubiru {
+    width: 100px;
+    height: 90px;
+    text-decoration: none;
     background: #0174BE;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-top: 20px;
     padding: 15px 20px 15px 20px;
     color: #ffffff;
     cursor: pointer;
     font-weight: bold;
+    
 }
 
 a.tbl-birubiru:hover {
@@ -232,46 +195,6 @@ p {
     padding: 5px;
 }
 
-.partner-list {
-    width: 100;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.kartu-partner {
-    width: 20%;
-    margin: 0 auto;
-}
-
-.kartu-partner img {
-    width: 80%;
-    border-radius: 50%;
-}
-
-.kartu-partner p {
-    font-family: 'comic sans ms';   
-    font-weight: 500;
-    font-size: 25px;
-    color: #352F44;
-}
-
-.tbl-dokter {
-    background: #3876BF;
-    border-radius: 20px;
-    margin-top: 20px;
-    padding: 15px 20px 15px 20px;
-    color: #ffffff;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.tbl-dokter:hover {
-    background: #AEDEFC;
-    transition: ease-in;
-    text-decoration: none;
-}
-
 .text-box h2 {
     text-align: center;
 }
@@ -293,12 +216,13 @@ p {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 190px;
+    width: 200px;
     height: 150px;
     background:#fff;
     border-radius: 3px;
     margin-right: 20px;
     margin-bottom: 20px;
+    margin-left: 190px;
     box-shadow: 0 0px 10px rgba(71,71,71,.2);
     -webkit-transition: .3s linear; 
     -moz-transition:.3s linear; 
@@ -306,8 +230,10 @@ p {
     -o-transition:.3s linear;
     transition: .3s linear; 
 }
-.grid h5>a{ 
+.grid h5{ 
 margin: 13px 0;
+margin-top: 20px;
+margin-right: 10px;
 text-decoration: none;
 margin-bottom: 20px;
 font-size:12px;
@@ -322,10 +248,9 @@ color: black;
 }
 
 .grid img{
-width: 85%;
+width: 30%;
 padding: auto;
-margin-right: 30px;
-
+margin-right: 20px;
 }
 
 .grid a{
@@ -335,44 +260,59 @@ margin-right: 30px;
     
 }
 
+
+.content {
+  text-align: center;
+}
+.content p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.content h5 {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 10px; 
+}
+
+.gambar {
+  margin-bottom: 20px;
+}
+
+.grid p{
+    font-size:5px;
+    margin-left: 135px;
+}
+.grid:hover{
+    color: #fff;
+    background:#5356FF;
+    box-shadow: 0 5px 10px rgba(71,71,71,.4);
+}
+
+
+.grid a{
+   margin-bottom: 30px;
+}
+
 .welcome{
     display: block;
     position: relative;
 }
 .teks{
     margin-top: 60px;
-    margin-left:70px
 }
 .teks h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     margin-top:30px;
+    text-align: center;
 }
 
 .teks p{
 font-weight: normal;
 margin-top: 20px;
 font-size: 17px;
-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifs;   
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifs;
+text-align: center;
 }
-
-.foto img {
-    border-radius: 30px;
-    padding: 5px;
-    width: 105%;
-    margin-left: 0px;
-    margin-right: 90px;
-    margin-top: 0px;
-    margin-bottom: 50px
-}
-
-.foto{
-width: 500px;
-float: right;
-margin-right: 95px;
-margin-bottom: px
-}
-
-
 
 .layanan{
     display: block;
@@ -438,86 +378,6 @@ margin-right: 30px;
     position: relative;
     
 }
-
-.tes h2{
-text-align: center;
-margin-top:100px;
-}
-
-.tes p{
-    text-align:center;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.dokter{
-    display: block;
-    z-index: 1;
-    margin-top: 80px;
-    position: relative;
-    margin-left: 150px;
-    margin-right: 50px; 
-
-}
-
-.dokter ul li{
-    display: inline-block;
-    margin-left: 30px;
-    margin-top: 15px;
-   
-}
-
-
-.favorite{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 350px;
-    height: 400px;
-    background:#fff;
-    border-radius: 3px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    margin-top: 100px;
-    box-shadow: 0 0px 10px rgba(71,71,71,.2);
-    -webkit-transition: .3s linear; 
-    -moz-transition:.3s linear; 
-    -ms-transition:.3s linear; 
-    -o-transition:.3s linear;
-    transition: .3s linear; 
-}
-.favorite h5>a{ 
-margin: 13px 0;
-text-decoration: none;
-margin-bottom: 40px;
-font-size:12px;
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-color: black;
-}
-.favorite: last-child{margin-right: 30px;}
-
-.favorite:hover{
-    color: #fff;
-    background:#5356FF;
-    box-shadow: 0 5px 10px rgba(71,71,71,.4);
-}
-
-.favorite img{
-width: 60%;
-margin-right: 10px;
-margin-left: 40px;
-margin-bottom: 50px
-
-}
-
-.favorite a{
-    margin-left: 60px;
-    margin-right: 50px;
-    position: relative;
-    
-}
-
-
 .copyright {
      margin-top: 90px;
      padding-bottom: 25px;
@@ -541,8 +401,77 @@ margin-bottom: 50px
 .copyright a:hover {
      color: #3e0bce;
 }
+.home {
+    display: flex;
+    position: relative;
+}
 
+.content {
+  overflow: auto;
+}
 
+.content h1{
+    margin-top: 90px;
+    font-size: 45px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 1000;
+  font-style: normal;  
+  color: #005EB2 ; 
+  text-align: justify;
+  margin-left: 18px;
+}
+.content h5{
+    margin-left: 40px;
+    margin-top: 40px;
+    font-size: 30px;
+    font-family:  "Montserrat", sans-serif;
+    font-weight: 800;
+    margin-left: 20px;
+  font-style: normal;  
+  color:#5DBEFF; 
+  text-align: left;
+}
+
+.content p {
+    text-align: justify;
+  font-size: 19px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  margin-top: 40px;
+  margin-left: -1px ; 
+  margin-left: 30px;     
+  color:#8DC9FF;
+  
+
+}
+
+.gambar {
+  float: right;
+  margin-right: 5px; 
+  width: 50%;
+}
+
+.u {
+    margin-top: 90px;
+}
+
+.tes h2{
+text-align: center;
+margin-top:100px;
+}
+
+.tes p{
+    text-align:center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.halo {
+    font-weight: bold;
+    float: right;
+    margin-left: 20px;
+    font-family: "Montserrat", sans-serif;
+}
 
 
 
@@ -551,20 +480,21 @@ margin-bottom: 50px
 <body>
     <nav>
         <div class="wrapper">
-            <div class="logo"><a href=''>Sehat aja</a></div>
+            <div class="logo">
+                <a href=''>Sehat aja</a></div>
                 <div class="menu">
                     <ul>
-                        <li><a href="#list-topics">Home</a></li>
+                        <li><a href="#home">Home</a></li>
                         <li><a href="#courses">Courses</a></li>
                         <li><a href="#example">Example</a></li>
                         <li><a href="#partner">Partners</a></li>
                         <li><a href="biodata.php">About</a></li>
-                        <li><a href="logout.php" class="tbl-biru">Logout</a></li>
-                        <?php
-                        if ($_SESSION['admin']) {
-                        echo "halo,". $_SESSION['username'];
-                        }
+                        
+                       <?php
+                        echo '<div class="halo">' . "Halo,". $_SESSION['username'] .'</div>';
                         ?>
+                        
+                        
                     </ul>
                 </div>
             </div>
@@ -572,61 +502,19 @@ margin-bottom: 50px
     </nav>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-    
-<div class="foto">
-      <img src="dokter.png">
-     </div>
-    <div class="welcome">
-        <div class="teks">
-    <h2>Solusi kesehatan terbaik untuk anda </h2>
-    <p> Konsultasi dengan dokter terbaik sesuai yang anda butuhkan Dan 
-        Pembelian obat semuanya bisa di sehat aja </p>
-    
-<section id="list-topics" class="list-topics">
-
-			<div class="list">
-					<ul>
-						<li>
-
-							<div class="grid">
-                                <a href="dokter.php">
-                                <img src="medical-team.png" alt="" srcset="">
-                                </a>
-								<h5><a href="#">Konsultasi dengan dokter anda</a></h5>
-
-							</div>
-						</li>
-						<li>
-
-							<div class="grid">
-                                <a href="https://campus.quipper.com/aptitude_test">
-                                <img src="healthcare.png" alt="" srcset="">
-                                </a>
-								<h5><a href="#">Mau beli obat ? Disini aja!</a></h5>
-
-							</div>
-						</li>
-						<li>
-
-							<div class="grid">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="education.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Mental health test</a></h5>
-
-							</div>
-						</li>
-
-                        </ul>
-</section>
-                      
+<div class="home">
+<div class="content">
+    <img src="home.jpg" alt="Gambar" class="gambar">
+    <h1>Welcome in Sehat Aja!</h1>
+    <h5>Temukan berbagai kebutuhan obat anda cuma di sehat aja</h5>
+    <p class="teks">Kenapa harus sehat aja? Karena kami menyediakan layanan pembelian obat secara mudah, aman, nyaman, dan murah, Jaminan barang original
+        100% Segera order dengan klik tombol dibawah ini 
+    </p>
+    <div class='u'>
+    <a href="buy.php" class="tbl-birubiru">YUK ORDER SEKARANG!</a> 
+    </div>
 </div>
 </div>
-
-<br>
-
 			
 <section id="courses" class="courses">
 <div class="layanan">
@@ -746,48 +634,49 @@ margin-bottom: 50px
             </div>
         </section>
 
-
+<br>
+<br>
+<br>
+<div class="welcome">
+        <div class="teks">
+    <h2>Kenapa harus sehat aja </h2>
+    <p> 3 Alasan Kenapa  Harus Pilih Sehat Aja! </p>
         <section id="partner" class="partner">
-<div class="dokter">
-    <div class="tes">
-    <h2>Dokter top 3 di sehat aja</h2>
-   <p>Dokter dibawah ini adalah para favorit pengguna sehat aja!</p>
-   </div>
-    <ul>
-        <li>
-							<div class="favorite">
-                                <a href="dokter.php">
-                                <img src="doctor.png" alt="" srcset="">
+        <div class="list">
+					<ul>
+						<li>
+
+							<div class="grid">
+                                <img src="positive-feedback.png" alt="" srcset="">
                                 </a>
-								<h5><a href="dokter.php">Dr.Nabil SP.OG</a></h5>
-                                <p>Lorem ipsum dolor sit.</p>
-
+								<h5>Mudah digunakan</h5>
 							</div>
-                            </li>
+						</li>
+						<li>
 
-                            <li>
-							<div class="favorite">
-                                <a href="dokter.php">
-                                <img src="doctor.png" alt="" srcset="">
+							<div class="grid">
+                                <img src="rating-assessment.png" alt="" srcset="">
                                 </a>
-								<h5><a href="dokter.php">Dr.Jawa SP.A</a></h5>
-                                <p>Lorem ipsum dolor sit.</p>
+								<h5>Rating Terbaik</h5>
 
 							</div>
+						</li>
+						<li>
 
-                            </li>
-
-                            <li>
-							<div class="favorite">
-                               <a href="dokter.php">
-                                <img src="doctor.png"></a> 
-								<h5><a href="dokter.php">Dr. Louis SP.B</a></h5>
-                                <p>Lorem ipsum dolor sit.</p>
+							<div class="grid">
+                               <img src="pay.png">
+								<h5>Harga Terbaik</h5>
 
 							</div>
-                            </li>
-</div>
+						</li>
+
+                        </ul>
 </section>
+                      
+</div>
+</div>
+
+<li><a href="logout.php" class="tbl-biru">Logut</a></li>
 
 
 <footer>
@@ -802,17 +691,6 @@ margin-bottom: 50px
             </div>
          </div>
       </footer>
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
