@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Bulan Mei 2024 pada 09.15
+-- Waktu pembuatan: 13 Bulan Mei 2024 pada 05.36
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -55,22 +55,24 @@ CREATE TABLE `obat` (
   `nama_obat` varchar(1000) NOT NULL,
   `stok_obat` varchar(100) NOT NULL,
   `harga_obat` varchar(100) NOT NULL,
-  `id_kat` int(11) NOT NULL
+  `id_kat` int(11) NOT NULL,
+  `img` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `obat`
 --
 
-INSERT INTO `obat` (`id_obat`, `nama_obat`, `stok_obat`, `harga_obat`, `id_kat`) VALUES
-(2, 'Pandol - Anti nyeri dan sakit kepala', '100', '10.000', 5),
-(3, 'Bodrek ', '10', '9.000', 5),
-(4, 'Paramex', '10', '8.500', 5),
-(5, 'Sanmol-Paracetamol', '20', '7.500', 5),
-(6, 'Hufagrip', '9', '20.000', 1),
-(7, 'Activec', '9', '25.000', 1),
-(8, 'Siladex', '8', '17.000', 1),
-(9, 'Obh combi', '5', '30.000', 1);
+INSERT INTO `obat` (`id_obat`, `nama_obat`, `stok_obat`, `harga_obat`, `id_kat`, `img`) VALUES
+(2, 'Pandol - Anti nyeri dan sakit kepala', '100', '10.000', 5, ''),
+(3, 'Bodrek ', '10', '9.000', 5, ''),
+(4, 'Paramex', '10', '8.500', 5, ''),
+(5, 'Sanmol-Paracetamol', '20', '7.500', 5, ''),
+(6, 'Hufagrip', '9', '20.000', 1, ''),
+(7, 'Activec', '9', '25.000', 1, ''),
+(8, 'Siladex', '8', '17.000', 1, ''),
+(9, 'Obh combi', '5', '30.000', 1, ''),
+(10, 'intunal', '80', '7.000', 3, '');
 
 -- --------------------------------------------------------
 
@@ -86,7 +88,8 @@ CREATE TABLE `pembelian` (
   `total` varchar(10000) NOT NULL,
   `Alamat` varchar(1000) NOT NULL,
   `id_obat` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL
+  `id_user` int(11) NOT NULL,
+  `payment` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -114,7 +117,9 @@ INSERT INTO `user` (`id_user`, `username`, `email`, `password`, `level`) VALUES
 (43, 'louisgay', 'gay@g.c', '12', 'user'),
 (44, 'arga', 'arga@gmail.c', '1', 'user'),
 (45, 'u', 'u@i', '0', 'user'),
-(46, 'keren', 'keren@g.c', '1', 'user');
+(46, 'keren', 'keren@g.c', '1', 'user'),
+(47, 'Nabil ganz', 'nabilganz@gmail.com', '111', 'user'),
+(48, 'jawa', 'jawa@f.c', '34', 'user');
 
 --
 -- Indexes for dumped tables
@@ -161,7 +166,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT untuk tabel `obat`
 --
 ALTER TABLE `obat`
-  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `pembelian`
@@ -173,7 +178,7 @@ ALTER TABLE `pembelian`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
