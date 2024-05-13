@@ -115,7 +115,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<div class="service">';
     echo '<h2>' . $row['nama_obat'] . '</h2>';
     echo '<p>Harga: ' . $row['harga_obat'] . '</p>'; // hargaobat
-    echo '<a href="login.php" class="tbl-biru">Login</a></li>';
+    echo '<a href="payment.php" class="tbl-biru">Login</a></li>';
 }
 ?>
 </div>
