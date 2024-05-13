@@ -32,6 +32,7 @@ mysqli_close($koneksi);
     margin-right: 10px;
     float: right;
     margin-bottom: 40px;
+    width: 70px;
 }
 
 .tbl-biru:hover {
@@ -95,31 +96,66 @@ margin-top: 40px;
 .tes p {
     text-align: center;
 }
-.content {
-            display: flex;
-            flex-wrap: wrap;
-        }
+.layanan{
+    display: inline-block;
+    z-index: 1;
+    margin-top: 80px;
+    position: relative;
+    margin-left: 250px;
+
+}
+
+.service{
+    display: grid;
+
+    justify-content: center;
+    width: 400px;
+    height: 200px;
+    background:#fff;
+    border-radius: 3px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 100px;
+    box-shadow: 0 0px 10px rgba(71,71,71,.2);
+    -webkit-transition: .3s linear; 
+    -moz-transition:.3s linear; 
+    -ms-transition:.3s linear; 
+    -o-transition:.3s linear;
+    transition: .3s linear; 
+}
+.service h5>a{ 
+margin: 13px 0;
+text-decoration: none;
+margin-bottom: 20px;
+font-size:12px;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: black;
+}
+.service: last-child{margin-right: 30px;}
+
+.service:hover{
+    color: #fff;
+    background:#5356FF;
+    box-shadow: 0 5px 10px rgba(71,71,71,.4);
+}
 
 
     </style>
 </head>
 <body>
 
-<div class="tes">
+<div class="layanan">
 <h2>Berikut ini adalah obat yang tersedia di Sehat Aja!</h2>
 <p>Selamat Berbelanja</p>
-</div>
-<section class='content'> 
 <?php
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<div class="service">';
     echo '<h2>' . $row['nama_obat'] . '</h2>';
     echo '<p>Harga: ' . $row['harga_obat'] . '</p>'; // hargaobat
-    echo '<a href="payment.php" class="tbl-biru">Login</a></li>';
+    echo '<a href="payment.php" class="tbl-biru">Checkout   </a></li>';
 }
 ?>
 </div>
-</section>
 
 
 
