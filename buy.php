@@ -11,7 +11,6 @@ mysqli_close($koneksi);
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,25 +18,41 @@ mysqli_close($koneksi);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beli obat</title>
     <style>
-.layanan{
-    display: block;
-    z-index: 1;
-    margin-top: 80px;
+
+
+
+.tbl-biru {
+    background: #092635;
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 15px 20px 15px 20px;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 10px;
+    float: right;
+    margin-bottom: 40px;
+}
+
+.tbl-biru:hover {
+    background: #6AD4DD;
+    text-decoration: none;
+    transition: ease-in;
+    -webkit-transition: .3s linear; 
+    -moz-transition:.3s linear; 
+    -ms-transition:.3s linear; 
+    -o-transition:.3s linear;
+    transition: .3s linear; 
+}
+
+.service{
     position: relative;
-   
-
-}
-.layanan ul li {
-    display: grid;
-    gap: 20px; /* Memberikan jarak antara elemen grid */
-}
-
-.card{
-    display: inline-block;
-    align-items: center;
+    display:inline-block;
+    align-items: justify;
     flex-direction: column;
+    flex-wrap: wrap;
     width: 300px; 
-    height: 190px; 
+    height: 150px; 
     background: #fff;
     border-radius: 3px;
     box-shadow: 0 0px 10px rgba(71,71,71,.2);
@@ -80,32 +95,32 @@ margin-top: 40px;
 .tes p {
     text-align: center;
 }
+.content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+
     </style>
 </head>
 <body>
 
-<div class="layanan">
 <div class="tes">
 <h2>Berikut ini adalah obat yang tersedia di Sehat Aja!</h2>
 <p>Selamat Berbelanja</p>
 </div>
-<ul>
-<li>
+<section class='content'> 
 <?php
 while ($row = mysqli_fetch_assoc($result)) {
-    // Tampilkan data event di dalam div dengan class "card"
-    echo '<div class="card">';
-    echo '<h2>' . $row['nama_obat'] . '</h2>'; // Nama event
-    echo '<hr size="3px" width="70%" align="left" color="black">';
+    echo '<div class="service">';
+    echo '<h2>' . $row['nama_obat'] . '</h2>';
     echo '<p>Harga: ' . $row['harga_obat'] . '</p>'; // hargaobat
-    '</div>';
+    echo '<a href="login.php" class="tbl-biru">Login</a></li>';
 }
-
 ?>
-
-
 </div>
-</li>
+</section>
+
 
 
     

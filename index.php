@@ -62,7 +62,7 @@ nav {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    background: #AED6F1;
+    background:     ;
     z-index: 1000;
 }
 
