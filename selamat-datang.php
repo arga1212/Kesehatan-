@@ -487,7 +487,7 @@ margin-top:100px;
                         <li><a href="#home">Home</a></li>
                         <li><a href="#courses">Courses</a></li>
                         <li><a href="#example">Example</a></li>
-                        <li><a href="#partner">Partners</a></li>
+                        <li><a href="buy.php">Order</a></li>
                         <li><a href="biodata.php">About</a></li>
                         
                        <?php

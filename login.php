@@ -25,7 +25,7 @@ if(isset($_POST['login'])){
                 header("location: admin.php");
             }
             else {
-                header("location: selamat-datang.php"); 
+                header("location: buy.php"); 
             }
         } else {
             echo '<script> 

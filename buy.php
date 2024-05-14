@@ -1,12 +1,24 @@
 <?php
+session_start();
+
 // Koneksi ke database
 $koneksi = mysqli_connect("localhost", "username", "password", "kesehatan");
 // Query untuk mengambil data dari tabel obat
-$query = "SELECT nama_obat, harga_obat, id_kat FROM obat";
+$query ="SELECT 
+obat.id_obat,
+obat.nama_obat,
+obat.stok_obat,
+obat.harga_obat,
+kategori.nama_kat
+FROM 
+obat
+INNER JOIN 
+kategori ON obat.id_kat = kategori.id_kat";
 $result = mysqli_query($koneksi, $query);
 // Tutup koneksi
 mysqli_close($koneksi);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +33,70 @@ mysqli_close($koneksi);
             padding: 0;
             background-color: #f4f4f4;
         }
-        
-        .layanan {
+        .wrapper {
+    width:75%;
+    margin: auto;
+    position: relative;
+}
+
+.logo a {
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    float: left;
+    color:#002D73;
+    text-decoration:none;
+    margin-left: -100px;
+}
+
+.menu {
+    float: right;
+}
+
+nav {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    line-height: 80px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    background: #AED6F1;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    color:#211C6A;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px 16px 0px 16px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.halo {
+    font-weight: bold;
+    float: right;
+    margin-left: 20px;
+    font-family: "Montserrat", sans-serif;
+    color:
+}
+
+.layanan {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
@@ -30,15 +104,18 @@ mysqli_close($koneksi);
         
         h2 {
             font-size: 24px;
-            color: #333;
             margin-top: 20px;
             margin-bottom: 10px;
+            font-family: "Montserrat", sans-serif;
+            color: #005EB2 ; 
         }
         
         p {
             font-size: 16px;
-            color: #666;
+            font-family: "Montserrat", sans-serif;
+            color: black;
             margin-bottom: 20px;
+            font-weight: 600;
         }
         
         .tbl-biru {
@@ -56,27 +133,32 @@ mysqli_close($koneksi);
         }
         
         .card {
-            width: 200px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-bottom: 20px;
+display: inline-block;
+width: 300px;
+background-color: #fff;
+border-radius: 5px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+padding: 20px;
+margin-bottom: 20px;
+margin-right: 50px;
         }
         
         .card:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transform: translateY(-5px);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transform: translateY(-5px);
         }
         
         .card h2 {
-            font-size: 18px;
-            color: #333;
-            margin-bottom: 10px;
+font-size: 18px;
+margin-bottom: 10px;
+font-family: "Montserrat", sans-serif;
+color: #005EB2 ; 
         }
         
         .card p {
             font-size: 14px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
             color: #666;
             margin-bottom: 20px;
         }
@@ -84,21 +166,44 @@ mysqli_close($koneksi);
 </head>
 <body>
 
+<nav>
+        <div class="wrapper">
+            <div class="logo">
+                <a href=''>Sehat aja</a></div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="selamat-datang.php">Home</a></li>
+                        <li><a href="#courses">Checkout</a></li>
+                        <li><a href="cart.php">Keranjang</a></li>
+                       <?php
+                        echo '<div class="halo">' . "Halo,". $_SESSION['username'] .'</div>';
+                        ?>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
 <div class="layanan">
     <h2>Berikut ini adalah obat yang tersedia di Sehat Aja!</h2>
     <p>Selamat Berbelanja</p>
 
-    <?php
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo '<div class="card">';
-        echo '<h2>' . $row['nama_obat'] . '</h2>';
-        echo '<p>Harga: ' . $row['harga_obat'] . '</p>'; // hargaobat
-        echo '<p>Katergori: ' . $row['id_kat'] . '</p>'; // hargaobat
-        echo '<a href="payment.php" class="tbl-biru">Checkout</a>';
-        echo '</div>';
-    }
-    ?>
-</div>
 
+    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+
+    <div class="card">
+        <h2> <?php echo $row['nama_obat']; ?></h2>
+        <p> Harga: <?php echo $row['harga_obat']; ?></p>
+        <p> kategori: <?php echo $row['nama_kat']; ?></p>
+        <a href="add chart.php?id=<?php echo $row['id_obat'];?>"class= "tbl-biru">add cart</a>
+
+    </div>
+
+<?php } ?>
+
+</div>
 </body>
 </html>

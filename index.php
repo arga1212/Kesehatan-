@@ -62,7 +62,7 @@ nav {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    background:     ;
+    background: #AED6F1    ;
     z-index: 1000;
 }
 
@@ -411,7 +411,7 @@ margin-right: 30px;
     margin-top: 90px;
     font-size: 45px;
     font-family: "Montserrat", sans-serif;
-    font-weight: 1000;
+    font-weight: 1000;                      
   font-style: normal;  
   color: #005EB2 ; 
   text-align: justify;
