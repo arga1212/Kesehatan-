@@ -217,11 +217,12 @@ a.hapus {
             <div class="logo"><a href=''>Sehat aja</a></div>
                 <div class="menu">
                     <ul>
-                        <li><a href="#home">Why</a></li>
-                        <li><a href="#courses">How</a></li>
-                        <li><a href="#example">Example</a></li>
-                        <li><a href="#partners">Partners</a></li>
-                        <li><a href="biodata.php">About</a></li>
+                        <li><a href="">Tabel user</a></li>
+                        <li><a href="kategori/datakategori.php">kategori</a></li>
+                        <li><a href="obat/dataobat.php">Obat</a></li>
+                        <li><a href="ongkir/dataongkir.php">Ongkir</a></li>
+                        <li><a href="payment/datapayment.php">payment</a></li>
+                        <li><a href="pembelian/datapembelian.php">pembelian</a></li>
                         <li><a href="logout.php" class="tbl-biru">Logut</a></li>
                         <?php
                         

@@ -270,6 +270,10 @@ a.tbl-birubiru:hover {
     <a href="buy.php" class="tbl-biru">Lanjut Belanja</a>
     <a href="checkout.php" class="tbl-birubiru">Checkout</a> 
     </div>
-</body>
+
+
+    <br>
+
+    </body>
 </html>
 

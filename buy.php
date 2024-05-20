@@ -173,7 +173,7 @@ color: #005EB2 ;
                 <div class="menu">
                     <ul>
                         <li><a href="selamat-datang.php">Home</a></li>
-                        <li><a href="#courses">Checkout</a></li>
+                        <li><a href="checkout.php">Checkout</a></li>
                         <li><a href="cart.php">Keranjang</a></li>
                        <?php
                         echo '<div class="halo">' . "Halo,". $_SESSION['username'] .'</div>';
@@ -203,7 +203,7 @@ color: #005EB2 ;
     </div>
 
 <?php } ?>
-
 </div>
+
 </body>
 </html>
