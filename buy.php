@@ -132,6 +132,21 @@ nav ul li a:hover {
             background-color: #0056b3;
         }
         
+        .tbl-biru2 {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+            margin-left: 700px;
+        }
+        
+        .tbl-biru2:hover {
+            background-color: #0056b3;
+        }
+        
         .card {
 display: inline-block;
 width: 300px;
@@ -162,6 +177,8 @@ color: #005EB2 ;
             color: #666;
             margin-bottom: 20px;
         }
+
+    
     </style>
 </head>
 <body>
@@ -196,7 +213,7 @@ color: #005EB2 ;
 
     <div class="card">
         <h2> <?php echo $row['nama_obat']; ?></h2>
-        <p> Harga: <?php echo $row['harga_obat']; ?></p>
+        <p> Harga: <?php echo number_format( $row['harga_obat']); ?></p>
         <p> kategori: <?php echo $row['nama_kat']; ?></p>
         <a href="add chart.php?id=<?php echo $row['id_obat'];?>"class= "tbl-biru">add cart</a>
 
@@ -204,6 +221,8 @@ color: #005EB2 ;
 
 <?php } ?>
 </div>
+
+<a href="logout.php" class="tbl-biru2">Logut</a>
 
 </body>
 </html>

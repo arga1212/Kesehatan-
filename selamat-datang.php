@@ -493,6 +493,7 @@ margin-top:100px;
                        <?php
                         echo '<div class="halo">' . "Halo,". $_SESSION['username'] .'</div>';
                         ?>
+                        <li><a href="logout.php" class="tbl-biru">Logut</a></li>
                         
                         
                     </ul>
@@ -535,10 +536,10 @@ margin-top:100px;
 
                             <li>
 							<div class="service">
-                                <a href="https://campus.quipper.com/aptitude_test">
+                                <a href="https://akupintar.id/tes-kepribadian">
                                 <img src="belajar.png" alt="" srcset="">
                                 </a>
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.!</a></h5>
+								<h5><a href="https://akupintar.id/tes-kepribadian">Tes kepribadian</a></h5>
 
 							</div>
 
@@ -546,16 +547,16 @@ margin-top:100px;
 
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test">
+                               <a href="https://www.16personalities.com/id/tes-kepribadian">
                                 <img src="study.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+								<h5><a href="https://www.16personalities.com/id/tes-kepribadian">Tes MBTI</a></h5>
 
 							</div>
                             </li>
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="belajar.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+                               <a href="https://akupintar.id/tes-kemampuan"><img src="belajar.png"></a> 
+								<h5><a href="https://akupintar.id/tes-kemampuan">Tes Kecerdasan Majemuk</a></h5>
 
 							</div>
                             </li>
@@ -564,29 +565,29 @@ margin-top:100px;
 
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="study.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+                               <a href="https://akupintar.id/tes-gaya-belajar"><img src="study.png"></a> 
+								<h5><a href="https://akupintar.id/tes-gaya-belajar">Tes gaya belajar</a></h5>
 
 							</div>
                             </li>
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="belajar.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+                               <a href="https://www.halodoc.com/depression-test/score"><img src="belajar.png"></a> 
+								<h5><a href="https://www.halodoc.com/depression-test/score">Tes Depresi</a></h5>
 
 							</div>
                             </li>
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="study.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+                               <a href="https://www.riddle.com/view/250671"><img src="study.png"></a> 
+								<h5><a href="https://www.riddle.com/view/250671">Tes Kecerdasan Emosi</a></h5>
 
 							</div>
                             </li>
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="belajar.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+                               <a href="https://www.halodoc.com/anxiety-test/"><img src="belajar.png"></a> 
+								<h5><a href="https://www.halodoc.com/anxiety-test/">Tes anxiety</a></h5>
 
 							</div>
                             </li>

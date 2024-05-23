@@ -19,14 +19,6 @@ if (isset($_POST["checkout"])) {
 
     $totalbelanja = 0;
 
-    // Check if id_user exists in the user table
-    $user_check_query = "SELECT * FROM user WHERE id_user='$id_user'";
-    $user_check_result = mysqli_query($koneksi, $user_check_query);
-
-    if (mysqli_num_rows($user_check_result) == 0) {
-        die("Error: id_user tidak ditemukan di tabel user.");
-    }
-
     // Get shipping information
     $njupuk = $koneksi->query("SELECT * FROM ongkir WHERE id_ongkir='$id_ongkir'");
     $arrayongkir = $njupuk->fetch_assoc();
@@ -56,16 +48,12 @@ if (isset($_POST["checkout"])) {
 
     $total_pembelian = $totalbelanja + $tarif;
 
-    // If no errors, clear the cart
-    if (mysqli_error($koneksi) == "") {
-        unset($_SESSION["keranjang"]);
-
         echo "<script>
             alert('Pembayaran berhasil');
             window.location.href = 'thankyou.php';
             </script>";
     }
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -281,9 +269,10 @@ if (isset($_POST["checkout"])) {
                 <input type="text" id="username" readonly value="<?php echo $_SESSION['username']; ?>">
             </div>
             <div class="form-group">
-                <label for="Alamat">Alamat</label>
-                <input type="text" id="Alamat" name="Alamat">
-            </div>
+              <label for="Alamat">Alamat</label>
+            <input type="text" id="Alamat" name="Alamat" required>
+         </div>
+
             <div class="form-group">
     <label for="pengiriman">Pilih Pengiriman</label>
     <select id="pengiriman" name="pengiriman">

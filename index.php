@@ -463,6 +463,68 @@ margin-top:100px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+footer {
+    background: #50C4ED;
+    color: #fff;
+    padding-top: 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-top: 3px solid #0174BE;
+    font-family:  "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
+.footer-section {
+    width: 30%;
+}
+
+.footer-section h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.footer-section p, .footer-section ul, .footer-section li, .footer-section a {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-section a:hover {
+    color: #AEDEFC;
+    text-decoration: underline;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+}
+
+.copyright {
+    background: #0174BE;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.copyright p {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    font-size: 14px;
+}
+
+
 
 
     </style>
@@ -520,10 +582,10 @@ margin-top:100px;
 
                             <li>
 							<div class="service">
-                                <a href="https://campus.quipper.com/aptitude_test">
+                                <a href="https://akupintar.id/tes-kepribadian">
                                 <img src="belajar.png" alt="" srcset="">
                                 </a>
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.!</a></h5>
+								<h5><a href="https://akupintar.id/tes-kepribadian">Tes kepribadian</a></h5>
 
 							</div>
 
@@ -531,16 +593,16 @@ margin-top:100px;
 
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test">
+                               <a href="https://www.16personalities.com/id/tes-kepribadian">
                                 <img src="study.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+								<h5><a href="https://www.16personalities.com/id/tes-kepribadian">Tes MBTI</a></h5>
 
 							</div>
                             </li>
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="belajar.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+                               <a href="https://akupintar.id/tes-kemampuan"><img src="belajar.png"></a> 
+								<h5><a href="https://akupintar.id/tes-kemampuan">Tes Kecerdasan Majemuk</a></h5>
 
 							</div>
                             </li>
@@ -549,29 +611,29 @@ margin-top:100px;
 
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="study.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+                               <a href="https://akupintar.id/tes-gaya-belajar"><img src="study.png"></a> 
+								<h5><a href="https://akupintar.id/tes-gaya-belajar">Tes gaya belajar</a></h5>
 
 							</div>
                             </li>
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="belajar.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+                               <a href="https://www.halodoc.com/depression-test/score"><img src="belajar.png"></a> 
+								<h5><a href="https://www.halodoc.com/depression-test/score">Tes Depresi</a></h5>
 
 							</div>
                             </li>
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="study.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+                               <a href="https://www.riddle.com/view/250671"><img src="study.png"></a> 
+								<h5><a href="https://www.riddle.com/view/250671">Tes Kecerdasan Emosi</a></h5>
 
 							</div>
                             </li>
                             <li>
 							<div class="service">
-                               <a href="https://campus.quipper.com/aptitude_test"><img src="belajar.png"></a> 
-								<h5><a href="https://campus.quipper.com/aptitude_test">Lorem ipsum dolor sit.</a></h5>
+                               <a href="https://www.halodoc.com/anxiety-test/"><img src="belajar.png"></a> 
+								<h5><a href="https://www.halodoc.com/anxiety-test/">Tes anxiety</a></h5>
 
 							</div>
                             </li>
@@ -663,17 +725,24 @@ margin-top:100px;
 
 
 <footer>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <p>© 2024 All Rights Reserved.</a></p>
-                     </div>
-                  </div>
-               </div>
+    <div class="footer-content">
+        <div class="wrapper">
+            <div class="footer-section">
+                <h3>Sehat aja</h3>
+                <p>Menyediakan layanan pembelian obat secara mudah, aman, nyaman, dan murah. Jaminan barang original 100%.</p>
             </div>
-         </div>
-      </footer>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@sehataja.com</p>
+                <p>Phone: +62 123 4567 890</p>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2024 All Rights Reserved. Sehat aja</p>
+    </div>
+</footer>
+
 
 </body>
 </html>
