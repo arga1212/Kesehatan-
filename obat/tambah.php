@@ -15,15 +15,54 @@ if (isset($_POST["submit"])) {
     $harga_obat = $_POST["harga_obat"];
     $id_kat = $_POST["id_kat"];
 
-    // Query untuk menambahkan data obat baru
-    $query = "INSERT INTO obat (nama_obat, stok_obat, harga_obat, id_kat) 
-              VALUES ('$nama_obat', '$stok_obat', '$harga_obat', '$id_kat')";
+    // Proses upload gambar
+    $target_dir = "uploads/img"; // direktori tujuan penyimpanan gambar
+    $target_file = $target_dir . basename($_FILES["img"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    // Eksekusi query
-    if (mysqli_query($koneksi, $query)) {
-        echo "Obat berhasil ditambahkan.";
+    // Periksa apakah file adalah gambar atau bukan
+    $check = getimagesize($_FILES["img"]["tmp_name"]);
+    if ($check !== false) {
+        $uploadOk = 1;
     } else {
-        echo "Error: " . $query . "<br>" . mysqli_error($koneksi);
+        echo "File bukan gambar.";
+        $uploadOk = 0;
+    }
+
+    // Periksa ukuran file
+    if ($_FILES["img"]["size"] > 500000) { // 500KB
+        echo "Ukuran file terlalu besar.";
+        $uploadOk = 0;
+    }
+
+    // Izinkan format gambar tertentu saja
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+        echo "Hanya format JPG, JPEG, PNG & GIF yang diizinkan.";
+        $uploadOk = 0;
+    }
+
+    // Periksa apakah $uploadOk bernilai 0 karena kesalahan
+    if ($uploadOk == 0) {
+        echo "Gagal mengunggah gambar.";
+    } else {
+        if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+            echo "Gambar ". basename($_FILES["img"]["name"]). " berhasil diunggah.";
+            $img = $target_file;
+
+            // Query untuk menambahkan data obat baru
+            $query = "INSERT INTO obat (nama_obat, stok_obat, harga_obat, id_kat, img) 
+                      VALUES ('$nama_obat', '$stok_obat', '$harga_obat', '$id_kat', '$img')";
+
+            // Eksekusi query
+            if (mysqli_query($koneksi, $query)) {
+                echo "Obat berhasil ditambahkan.";
+            } else {
+                echo "Error: " . $query . "<br>" . mysqli_error($koneksi);
+            }
+        } else {
+            echo "Terjadi kesalahan saat mengunggah gambar.";
+        }
     }
 }
 ?>
@@ -33,7 +72,6 @@ if (isset($_POST["submit"])) {
 <head>
     <meta charset="UTF-8">
     <title>Tambah Obat Baru</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -63,9 +101,8 @@ if (isset($_POST["submit"])) {
             font-weight: bold;
         }
 
-        form input[type="text"], form input[type="number"], form select {
-            width: calc(100
-            % - 20px);
+        form input[type="text"], form input[type="number"], form select, form input[type="file"] {
+            width: calc(100% - 20px);
             padding: 8px 10px;
             margin-bottom: 12px;
             border: 1px solid #ccc;
@@ -110,7 +147,7 @@ if (isset($_POST["submit"])) {
 </head>
 <body>
     <h1>Tambah Obat Baru</h1>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <label for="nama_obat">Nama Obat:</label>
         <input type="text" id="nama_obat" name="nama_obat" required><br>
 
@@ -134,6 +171,9 @@ if (isset($_POST["submit"])) {
             }
             ?>
         </select><br>
+
+        <label for="img">Gambar Obat:</label>
+        <input type="file" id="img" name="img" accept="image/*" required><br>
 
         <input type="submit" name="submit" value="Submit">
     </form>

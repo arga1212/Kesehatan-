@@ -464,66 +464,57 @@ margin-top:100px;
 }
 
 footer {
-    background: #50C4ED;
-    color: #fff;
-    padding-top: 20px;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
+    background-color: #AED6F1 ;
+    color: white;
     padding: 20px 0;
-    border-top: 3px solid #0174BE;
-    font-family:  "Montserrat", sans-serif;
-    font-weight: 700;
+    text-align: center;
 }
 
-.footer-section {
-    width: 30%;
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.footer-section h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    color: #fff;
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin: 20px 0;
+}
+
+.footer-column h3 {
     margin-bottom: 15px;
+    font-size: 18px;
+    color:#211C6A;
+ 
+    
+    
 }
 
-.footer-section p, .footer-section ul, .footer-section li, .footer-section a {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
+.footer-column p, .footer-column ul, .footer-column a {
+    color: white;
     text-decoration: none;
-    font-size: 14px;
-    margin-bottom: 10px;
+    color:#211C6A;
+    font-family:"Montserrat", sans-serif;
+      font-weight: 700;
+ 
 }
 
-.footer-section a:hover {
-    color: #AEDEFC;
-    text-decoration: underline;
-}
-
-.footer-section ul {
+.footer-column ul {
     list-style-type: none;
     padding: 0;
 }
 
-.footer-section li {
-    margin-bottom: 10px;
+.footer-column ul li {
+    margin: 10px 0;
 }
 
-.copyright {
-    background: #0174BE;
-    text-align: center;
-    padding: 10px 0;
+.footer-column ul li a:hover {
+    text-decoration: underline;
 }
-
-.copyright p {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
-    font-size: 14px;
-}
-
 
 
 
@@ -540,7 +531,6 @@ footer {
                         <li><a href="#courses">Courses</a></li>
                         <li><a href="#example">Example</a></li>
                         <li><a href="#partner">Partners</a></li>
-                        <li><a href="biodata.php">About</a></li>
                         <li><a href="login.php" class="tbl-biru">Login</a></li>
                     </ul>
                 </div>
@@ -725,23 +715,31 @@ footer {
 
 
 <footer>
-    <div class="footer-content">
-        <div class="wrapper">
-            <div class="footer-section">
-                <h3>Sehat aja</h3>
-                <p>Menyediakan layanan pembelian obat secara mudah, aman, nyaman, dan murah. Jaminan barang original 100%.</p>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>We are a company dedicated to providing the best services in the industry.</p>
             </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@sehataja.com</p>
-                <p>Phone: +62 123 4567 890</p>
-            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+             </ul>
         </div>
-    </div>
-    <div class="copyright">
-        <p>© 2024 All Rights Reserved. Sehat aja</p>
-    </div>
-</footer>
+            <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>Email: arga.laptop1202@gmail.com</p>
+            <p>Phone: +123 456 7890</p>
+            <p>Sidoarjo</p>
+            <a href="biodata.php">About</a>
+
+            </div>
+            </div>
+            <h3>@2024 copyright</h3>
+            </footer>
 
 
 </body>

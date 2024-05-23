@@ -147,6 +147,7 @@ $result = mysqli_query($koneksi, $query);
     <div class="center">
         <a href="tambah.php" class="button-add">Tambah Obat Baru</a>
         <a href="../admin.php" class="button-back">Kembali</a>
+        <a href="../buyforadmin.php" class="button-back">CEK DATA</a>
     </div>
 </body>
 </html>
