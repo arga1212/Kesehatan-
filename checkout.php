@@ -19,6 +19,21 @@ if (isset($_POST["checkout"])) {
 
     $totalbelanja = 0;
 
+    foreach ($_SESSION["keranjang"] as $id_obat => $jumlah) {
+        // Ambil stok obat sebelum transaksi
+        $ambil_stok = $koneksi->query("SELECT stok_obat FROM obat WHERE id_obat ='$id_obat'");
+        $data_stok = $ambil_stok->fetch_assoc();
+        $stok_sekarang = $data_stok['stok_obat'];
+
+        // Perbarui stok obat setelah transaksi
+        $stok_baru = $stok_sekarang - $jumlah;
+        $update_stok = $koneksi->query("UPDATE obat SET stok_obat='$stok_baru' WHERE id_obat ='$id_obat'");
+
+        if (!$update_stok) {
+            // Handle error jika gagal memperbarui stok
+            echo "Error updating stock for item ID: $id_obat";
+        }
+
     // Get shipping information
     $njupuk = $koneksi->query("SELECT * FROM ongkir WHERE id_ongkir='$id_ongkir'");
     $arrayongkir = $njupuk->fetch_assoc();
@@ -53,7 +68,7 @@ if (isset($_POST["checkout"])) {
             window.location.href = 'thankyou.php';
             </script>";
     }
-
+}
 ?>
 
 <!DOCTYPE html>

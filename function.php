@@ -31,6 +31,11 @@ function registrasi($data){
 }
 
 
+function check_login() {
+    return isset($_SESSION['username']);
+}
+
+
 
 
 

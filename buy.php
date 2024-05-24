@@ -2,6 +2,7 @@
 require 'function.php';
 session_start();
 
+
 // Koneksi ke database
 $koneksi = mysqli_connect("localhost", "username", "password", "kesehatan");
 
@@ -18,6 +19,7 @@ if(isset($_POST["cari"])) {
               obat.nama_obat,
               obat.stok_obat,
               obat.harga_obat,
+              obat.,img
               kategori.nama_kat
               FROM 
               obat
@@ -37,6 +39,7 @@ if(isset($_POST["cari"])) {
               obat.nama_obat,
               obat.stok_obat,
               obat.harga_obat,
+              obat.img,
               kategori.nama_kat
               FROM 
               obat
@@ -184,7 +187,8 @@ nav ul li a:hover {
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease-in-out;
-            margin-left: 700px;
+            margin-left: 500px;
+
         }
         
         .tbl-biru2:hover {
@@ -253,6 +257,14 @@ color: #005EB2 ;
         background-color: #0056b3;
     }
 
+.card img {
+    width: 100%; /* Lebar gambar mengikuti lebar kartu */
+    height: auto; /* Menjaga aspek rasio gambar */
+    border-radius: 5px; /* Sudut melengkung untuk gambar */
+    margin-bottom: 10px; /* Jarak antara gambar dengan teks */
+}
+
+
     
     </style>
 </head>
@@ -267,6 +279,7 @@ color: #005EB2 ;
                         <li><a href="selamat-datang.php">Home</a></li>
                         <li><a href="checkout.php">Checkout</a></li>
                         <li><a href="cart.php">Keranjang</a></li>
+                        <li><a href="history.php">Riwayat</a></li>
                        <?php
                         echo '<div class="halo">' . "Halo,". $_SESSION['username'] .'</div>';
                         ?>
@@ -291,18 +304,16 @@ color: #005EB2 ;
 </div>  
 <br>
 
-    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-
+<?php while ($row = mysqli_fetch_assoc($result)) { ?>
     <div class="card">
-        <h2> <?php echo $row['nama_obat']; ?></h2>
-        <p> Harga: <?php echo number_format( $row['harga_obat']); ?></p>
-        <p> kategori: <?php echo $row['nama_kat']; ?></p>
-        <a href="add chart.php?id=<?php echo $row['id_obat'];?>"class= "tbl-biru">add cart</a>
-
+        <img src="../foto<?php echo $row['img']; ?>">
+        <h2><?php echo $row['nama_obat']; ?></h2>
+        <p>Harga: <?php echo number_format($row['harga_obat']); ?></p>
+        <p>Kategori: <?php echo $row['nama_kat']; ?></p>
+        <a href="add chart.php?id=<?php echo $row['id_obat']; ?>" class="tbl-biru">Add to Cart</a>
     </div>
-
 <?php } ?>
-</div>
+
 
 <a href="logout.php" class="tbl-biru2">Logut</a>
 

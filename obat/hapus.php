@@ -1,15 +1,16 @@
 <?php
-// Koneksi ke database
 $koneksi = mysqli_connect("localhost", "username", "password", "kesehatan");
 
-// Periksa koneksi
 if (mysqli_connect_errno()) {
     echo "Koneksi database gagal: " . mysqli_connect_error();
     exit();
 }
 
-// Ambil ID obat dari URL
 $id_obat = $_GET['id'];
+
+// Hapus data terkait dari tabel pembelian
+$query_delete_pembelian = "DELETE FROM pembelian WHERE id_obat = $id_obat";
+mysqli_query($koneksi, $query_delete_pembelian);
 
 // Query untuk menghapus obat berdasarkan ID
 $query = "DELETE FROM obat WHERE id_obat = $id_obat";

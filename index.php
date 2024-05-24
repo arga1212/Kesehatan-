@@ -463,58 +463,67 @@ margin-top:100px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-footer {
-    background-color: #AED6F1 ;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-}
-
 .footer-container {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    justify-content: space-between;
+    background-color: #282828;
+    color: #ffffff;
+    padding: 40px 20px;
+    background-color: #50C4ED;
 }
 
-.footer-column {
+.footer-section {
     flex: 1;
-    min-width: 250px;
-    margin: 20px 0;
+    margin: 0 20px;
 }
 
-.footer-column h3 {
-    margin-bottom: 15px;
-    font-size: 18px;
-    color:#211C6A;
- 
-    
-    
+.footer-section h2 {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #444444;
+    padding-bottom: 10px;
 }
 
-.footer-column p, .footer-column ul, .footer-column a {
-    color: white;
+.footer-section p, .footer-section a {
+    color: ffffff;
+}
+
+.footer-section a {
     text-decoration: none;
-    color:#211C6A;
-    font-family:"Montserrat", sans-serif;
-      font-weight: 700;
- 
 }
 
-.footer-column ul {
-    list-style-type: none;
-    padding: 0;
+.footer-section a:hover {
+    color: #ffffff;
 }
 
-.footer-column ul li {
-    margin: 10px 0;
+.socials {
+    margin-top: 20px;
 }
 
-.footer-column ul li a:hover {
-    text-decoration: underline;
+.socials a {
+    display: inline-block;
+    background-color: #444444;
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 10px;
+    text-align: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
 }
+
+.socials a:hover {
+    background-color: #ffff;
+}
+
+.footer-bottom {
+    background-color: #AED6F1;
+    color: ffffff;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #444444;
+}
+
 
 
 
@@ -530,7 +539,7 @@ footer {
                         <li><a href="#home">Home</a></li>
                         <li><a href="#courses">Courses</a></li>
                         <li><a href="#example">Example</a></li>
-                        <li><a href="#partner">Partners</a></li>
+                        <li><a href="#partner">Reason</a></li>
                         <li><a href="login.php" class="tbl-biru">Login</a></li>
                     </ul>
                 </div>
@@ -713,34 +722,40 @@ footer {
 </div>
 </div>
 
+<footer class="bg">
 
-<footer>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>About Us</h3>
-                <p>We are a company dedicated to providing the best services in the industry.</p>
+<div class="footer-container">
+            <div class="footer-section about">
+                <h2>Tentang Kami</h2>
+                <p>Kami adalah perusahaan yang berfokus pada menyediakan solusi terbaik untuk kebutuhan digital Anda. Hubungi kami untuk informasi lebih lanjut.</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
-            <div class="footer-column">
-                <h3>Quick Links</h3>
+            <div class="footer-section links">
+                <h2>Tautan</h2>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-             </ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Layanan</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h2>Kontak Kami</h2>
+                <p><i class="fas fa-envelope"></i> info@contoh.com</p>
+                <p><i class="fas fa-phone"></i> +62 123 456 789</p>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. Contoh No. 123, Jakarta, Indonesia</p>
+            </div>
         </div>
-            <div class="footer-column">
-            <h3>Contact Us</h3>
-            <p>Email: arga.laptop1202@gmail.com</p>
-            <p>Phone: +123 456 7890</p>
-            <p>Sidoarjo</p>
-            <a href="biodata.php">About</a>
-
-            </div>
-            </div>
-            <h3>@2024 copyright</h3>
-            </footer>
-
+        <div class="footer-bottom">
+            <p>&copy; 2024 Contoh Website. All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>

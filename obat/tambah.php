@@ -13,55 +13,35 @@ if (isset($_POST["submit"])) {
     $nama_obat = $_POST["nama_obat"];
     $stok_obat = $_POST["stok_obat"];
     $harga_obat = $_POST["harga_obat"];
-    $id_kat = $_POST["id_kat"];
+    $id_kat = $_POST["id_kat"]; 
+    $file = $_FILES["img"]["name"];
+    $filetmp = $_FILES['img']['tmp_name'];
+
 
     // Proses upload gambar
-    $target_dir = "uploads/img"; // direktori tujuan penyimpanan gambar
-    $target_file = $target_dir . basename($_FILES["img"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-    // Periksa apakah file adalah gambar atau bukan
-    $check = getimagesize($_FILES["img"]["tmp_name"]);
-    if ($check !== false) {
-        $uploadOk = 1;
-    } else {
-        echo "File bukan gambar.";
-        $uploadOk = 0;
-    }
-
-    // Periksa ukuran file
-    if ($_FILES["img"]["size"] > 500000) { // 500KB
-        echo "Ukuran file terlalu besar.";
-        $uploadOk = 0;
-    }
-
-    // Izinkan format gambar tertentu saja
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-        echo "Hanya format JPG, JPEG, PNG & GIF yang diizinkan.";
-        $uploadOk = 0;
-    }
-
-    // Periksa apakah $uploadOk bernilai 0 karena kesalahan
-    if ($uploadOk == 0) {
-        echo "Gagal mengunggah gambar.";
-    } else {
-        if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-            echo "Gambar ". basename($_FILES["img"]["name"]). " berhasil diunggah.";
-            $img = $target_file;
-
-            // Query untuk menambahkan data obat baru
-            $query = "INSERT INTO obat (nama_obat, stok_obat, harga_obat, id_kat, img) 
-                      VALUES ('$nama_obat', '$stok_obat', '$harga_obat', '$id_kat', '$img')";
-
-            // Eksekusi query
-            if (mysqli_query($koneksi, $query)) {
-                echo "Obat berhasil ditambahkan.";
-            } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($koneksi);
-            }
-        } else {
-            echo "Terjadi kesalahan saat mengunggah gambar.";
+    $rand = rand();
+    $ekstensi =  array('png','jpg','jpeg');
+    $filename = $_FILES['img']['name'];
+    $ukuran = $_FILES['img']['size'];
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+     
+    if(!in_array($ext,$ekstensi) ) {
+        header("location:tambah.php?alert=gagal_ekstensi");
+    }else{
+        if($ukuran < 10000000000){		
+            $xx = $rand.'_'.$filename;
+            move_uploaded_file($filetmp, '../foto/'.$rand.'_'.$filename);
+             // Query untuk menambahkan data obat baru
+                            $query = "INSERT INTO obat (nama_obat, stok_obat, harga_obat, id_kat, img) 
+                            VALUES ('$nama_obat', '$stok_obat', '$harga_obat', '$id_kat', '$xx')";
+           
+                       // Eksekusi query
+                       if (mysqli_query($koneksi, $query)) {
+                           echo "Obat berhasil ditambahkan.";
+                       }
+            header("location:tambah.php?alert=berhasil");
+        }else{
+            header("location:tambah.php?alert=gagal_ukuran");
         }
     }
 }

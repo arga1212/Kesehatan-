@@ -21,16 +21,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama_obat = $_POST["nama_obat"];
     $stok_obat = $_POST["stok_obat"];
     $harga_obat = $_POST["harga_obat"];
+    $file = $_FILES["img"]["name"];
+    $filetmp = $_FILES['img']['tmp_name'];
 
-    // Query untuk mengupdate data obat
-    $query = "UPDATE obat SET nama_obat='$nama_obat', stok_obat='$stok_obat', harga_obat='$harga_obat' WHERE id_obat=$id_obat";
 
+    // Proses upload gambar
+    $rand = rand();
+    $ekstensi =  array('png','jpg','jpeg');
+    $filename = $_FILES['img']['name'];
+    $ukuran = $_FILES['img']['size'];
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+     
+    if(!in_array($ext,$ekstensi) ) {
+        header("location:tambah.php?alert=gagal_ekstensi");
+    }else{
+        if($ukuran < 10000000000){		
+            $xx = $rand.'_'.$filename;
+            move_uploaded_file($filetmp, '../foto/'.$rand.'_'.$filename);
+             // Query untuk menambahkan data obat baru
+             $query = "UPDATE obat SET nama_obat='$nama_obat', stok_obat='$stok_obat', harga_obat='$harga_obat' img= $xx WHERE id_obat=$id_obat";
     if (mysqli_query($koneksi, $query)) {
         echo "Obat berhasil diperbarui.";
-        header("Location: index.php");
+        header("Location: dataobat.php");
         exit();
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($koneksi);
+    }
+}
     }
 }
 ?>
@@ -125,6 +142,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <label for="harga_obat">Harga Obat:</label>
         <input type="number" id="harga_obat" name="harga_obat" value="<?php echo $row['harga_obat']; ?>" required><br>
+
+        <label for="img">Gambar Obat:</label>
+        <input type="file" id="img" name="img" accept="image/*" required><br>
+
 
         <input type="submit" value="Update">
     </form>
