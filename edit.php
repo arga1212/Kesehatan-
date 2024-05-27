@@ -18,7 +18,7 @@ if(isset($_POST['simpan'])){
     // apakah query update berhasil?
     if($query) {
         // jika berhasil, alihkan ke halaman data.php atau halaman lain yang diinginkan
-        header('Location: crud.php');
+        header('Location: admin.php');
         exit; // pastikan untuk keluar dari skrip setelah mengalihkan pengguna
     } else {
         // jika gagal, tampilkan pesan error

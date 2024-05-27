@@ -251,7 +251,7 @@ a.tbl-birubiru:hover {
             <tr>
                 <td><?php echo $nomor; ?></td>
                 <td><?php echo $pecah["nama_obat"]; ?></td>
-                <td><?php echo $pecah["harga_obat"]; ?></td>
+                <td><?php echo number_format ($pecah["harga_obat"]); ?></td>
                 <td><?php echo $jumlah; ?></td>
                 <td>Rp. <?php echo number_format($total); ?></td>
                 <td>

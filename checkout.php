@@ -76,7 +76,7 @@ if (isset($_POST["checkout"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keranjang Obat</title>
+    <title>Checkout</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -262,7 +262,7 @@ if (isset($_POST["checkout"])) {
             <tr>
                 <td><?php echo $nomor; ?></td>
                 <td><?php echo $pecah["nama_obat"]; ?></td>
-                <td><?php echo $pecah["harga_obat"]; ?></td>
+                <td><?php echo number_format($pecah["harga_obat"]); ?></td>
                 <td><?php echo $jumlah; ?></td>
                 <td><?php echo number_format($total); ?></td>
             </tr>
@@ -290,7 +290,7 @@ if (isset($_POST["checkout"])) {
 
             <div class="form-group">
     <label for="pengiriman">Pilih Pengiriman</label>
-    <select id="pengiriman" name="pengiriman">
+    <select id="pengiriman" name="pengiriman" required>
         <option value="">Pilih Pengiriman</option>
         <?php 
         $take = $koneksi->query("SELECT * FROM ongkir");
@@ -305,7 +305,7 @@ if (isset($_POST["checkout"])) {
 
 <div class="form-group">
     <label for="payment">Pilih Metode Pembayaran</label>
-    <select id="payment" name="payment">
+    <select id="payment" name="payment" require>
         <?php 
         $jupuk = $koneksi->query("SELECT * FROM payment");
         while ($methodpay = $jupuk->fetch_assoc()) {

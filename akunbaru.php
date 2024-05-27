@@ -22,153 +22,127 @@ if (isset($_POST['register'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regristrasi</title>
-    
+    <title>Registrasi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <style>
-       *{margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins , sans serif';
+        /* CSS */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f4ec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-}
+        .container {
+            max-width: 400px;
+            width: 90%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            box-sizing: border-box;
+        }
 
-body {
-    min-height: 100vh;
-    width: 100%;
-    background-color: #F8F4EC;
-}
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0c2d57;
+        }
 
-.container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 430px;
-    width: 100%;
-    background-color: #50C4ED;
-    border-radius: 7px;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0, 3);
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-}
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #333;
+        }
 
-.container .registration {
-    display: none;
-}
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            outline: none;
+        }
 
-#check:checked ~ .registration{
-    display: block;
-}
+        .form-group input:focus {
+            border-color: #0c2d57;
+        }
 
-#check:checked ~ .login{
-    display: block;
-}
+        .error-message {
+            color: #ff0000;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
 
-#check{
-    display: none;
-}
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color:#002D73;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
 
-.container .form{
-    padding: 2rem;
-}
+        .btn-submit:hover {
+            background-color: #40679e;
+        }
 
-.form header {
-    font-size: 2rem;
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-.form input {
-    height: 60px;
-    width: 100%;
-    padding: 0 15px;
-    font-size: 17px;
-    margin-bottom: 1.3rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    outline: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+        .signup-link a {
+            color: #0c2d57;
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-.form input:focus {
-    box-shadow: 0 1px 0 rgba(0,0,0, 0.2);
-
-}
-
-
-.form input .button{
-    color: #fff;
-    background-color: #0C2D57;
-    font-size: 1.2rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    margin-top: 1.7rem;
-    cursor: pointer;
-    transition: 0.4s;
-}
-
-.form input .button:hover{
-    background: #FFFF;
-}  
-
-.signup{
-    font-size: 17px;
-    text-align: center;
-}
-
-.signup label{
-    color: black;
-    cursor: pointer;
-}
-
-.signup label:hover {
-    text-decoration: underline;
-} 
-
-.form a{
-    font-size: 16px;
-    color: white  ;
-    text-decoration: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.form a:hover {
-    text-decoration: underline;
-    color: #F57D1F;
-}
-
-.backtologin {
-    font-size: 17px;
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
     </style>
-    
 </head>
 <body>
-    <div class="container">
-        <input type="checkbox" id="check">
-        <div class="form">
-            <header>Ayo buat</header>
-            <form action="" method="post">
-                <input type="text" name="username" id="username" placeholder="Masukkan Nama Anda" required>
-                <input type="text" name="email" id="email" placeholder="Masukkan email" required>
-                <input type="password" name="password" id="password" placeholder="Masukkan password" required>
-                <input type="submit" value="Register" class="button" name="register">  
 
-            <div class="backtologin">
-            <span class="backtologin"> lanjut login!
-            <label for="check"><a href="login.php">Klik disini</label>
-
-            </form>
-
-            </div>
+<div class="container">
+    <h2>Ayo Daftar</h2>
+    <?php if (isset($error)) : ?>
+        <p class="error-message">Username atau password salah</p>
+    <?php endif; ?>
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="username">Nama</label>
+            <input type="text" id="username" name="username" required>
         </div>
-     </div>
-
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn-submit" name="register">Daftar</button>
+    </form>
+    <div class="signup-link">
+        <span>Sudah punya akun? <a href="login.php">Login disini</a></span>
+    </div>
+</div>
 
 </body>
 </html>

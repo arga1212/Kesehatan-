@@ -25,517 +25,497 @@ session_start();
 <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <title>Sehat aja</title>
     <style>
-    *{
-    padding: 0;
-    margin: 0;
-}
-body {
-    margin: 0px;
-    padding: 0px;
-    font-family: 'Open Sans', sans-serif;
-    width: 100%;
-    
-}
-
-.wrapper {
-    width:75%;
-    margin: auto;
-    position: relative;
-}
-
-.logo a {
-    font-family: "Montserrat", sans-serif;
-    font-size: 30px;
-    font-weight: 700;
-    float: left;
-    color:#002D73;
-    text-decoration:none;
-    margin-left: -100px;
-}
-
-.menu {
-    float: right;
-}
-
-nav {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    line-height: 80px;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-    background: #AED6F1;
-    z-index: 1000;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-nav ul li {
-    float: left;
-}
-
-nav ul li a {
-    color:#211C6A;
-    font-weight: bold;
-    text-align: center;
-    padding: 0px 16px 0px 16px;
-    text-decoration: none;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-section {
-    margin: auto;
-    display: flex;
-    margin-bottom: 50px;
-}
-
-.text-box{
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-.text-box .deskripsi {
-    font-size: 25px;
-    font-weight: bold;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #352F44;
-    margin-top: 60px;
-}
-
-.text-box h2 {
-    color: black;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-}
-
-.text-box h1 {
-    font-family: 'Times New Roman', Times, serif;
-    color: black;
-    margin-top: 58px;
-}
-
-a.tbl-biru {
-    background: #092635;
-    border-radius: 20px;
-    margin-top: 20px;
-    padding: 15px 20px 15px 20px;
-    color: #ffffff;
-    cursor: pointer;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-a.tbl-biru:hover {
-    background: #6AD4DD;
-    text-decoration: none;
-    transition: ease-in;
-    -webkit-transition: .3s linear; 
-    -moz-transition:.3s linear; 
-    -ms-transition:.3s linear; 
-    -o-transition:.3s linear;
-    transition: .3s linear; 
-}
-
-a.tbl-birubiru {
-    width: 100px;
-    height: 90px;
-    text-decoration: none;
-    background: #0174BE;
-    border-radius: 10px;
-    margin-top: 20px;
-    padding: 15px 20px 15px 20px;
-    color: #ffffff;
-    cursor: pointer;
-    font-weight: bold;
-    
-}
-
-a.tbl-birubiru:hover {
-    background: #AEDEFC;
-    transition: ease-in;
-    text-decoration: none;
-}
-p {
-    margin: 10px 0px 10px 0px;
-    padding: 10px 0px 10px 0px;
-    color: black;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.tengah {
-     text-align: center;
-     width: 100%;
-}
-
-.tutor-list{
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-}
-
-.kartu-tutor {
-    width: 20%;
-    margin: 0 auto;
-}
-
-.kartu-tutor img {
-    width: 80%;
-    border-radius: 50%;
-    border: 1px solid #ddd;
-    padding: 5px;
-}
-
-.text-box h2 {
-    text-align: center;
-}
-.list{
-    position: relative;
-    z-index: 1;
-    margin-top: 30px;
-}
-
-.list ul li{
-    display: inline-block;
-    margin-left: 30px;
-    margin-top: 15px;
-   
-}
-
-.grid{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 200px;
-    height: 150px;
-    background:#fff;
-    border-radius: 3px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    margin-left: 190px;
-    box-shadow: 0 0px 10px rgba(71,71,71,.2);
-    -webkit-transition: .3s linear; 
-    -moz-transition:.3s linear; 
-    -ms-transition:.3s linear; 
-    -o-transition:.3s linear;
-    transition: .3s linear; 
-}
-.grid h5{ 
-margin: 13px 0;
-margin-top: 20px;
-margin-right: 10px;
-text-decoration: none;
-margin-bottom: 20px;
-font-size:12px;
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-color: black;
-}
-.grid:last-child{margin-right: 30px;}
-.grid:hover{
-    color: #fff;
-    background:#5356FF;
-    box-shadow: 0 5px 10px rgba(71,71,71,.4);
-}
-
-.grid img{
-width: 30%;
-padding: auto;
-margin-right: 20px;
-}
-
-.grid a{
-    margin-left: 60px;
-    margin-right: 50px;
-    position: relative;
-    
-}
-
-
-.content {
-  text-align: center;
-}
-.content p {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.content h5 {
-  text-align: center;
-  font-size: 15px;
-  margin-top: 10px; 
-}
-
-.gambar {
-  margin-bottom: 20px;
-}
-
-.grid p{
-    font-size:5px;
-    margin-left: 135px;
-}
-.grid:hover{
-    color: #fff;
-    background:#5356FF;
-    box-shadow: 0 5px 10px rgba(71,71,71,.4);
-}
-
-
-.grid a{
-   margin-bottom: 30px;
-}
-
-.welcome{
-    display: block;
-    position: relative;
-}
-.teks{
-    margin-top: 60px;
-}
-.teks h2{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    margin-top:30px;
-    text-align: center;
-}
-
-.teks p{
-font-weight: normal;
-margin-top: 20px;
-font-size: 17px;
-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifs;
-text-align: center;
-}
-
-.layanan{
-    display: block;
-    z-index: 1;
-    margin-top: 80px;
-    position: relative;
-    margin-left: 250px;
-
-}
-
-.layanan ul li{
-    display: inline-block;
-    margin-left: 30px;
-    margin-top: 15px;
-   
-}
-
-.service{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 200px;
-    height: 190px;
-    background:#fff;
-    border-radius: 3px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    margin-top: 100px;
-    box-shadow: 0 0px 10px rgba(71,71,71,.2);
-    -webkit-transition: .3s linear; 
-    -moz-transition:.3s linear; 
-    -ms-transition:.3s linear; 
-    -o-transition:.3s linear;
-    transition: .3s linear; 
-}
-.service h5>a{ 
-margin: 13px 0;
-text-decoration: none;
-margin-bottom: 20px;
-font-size:12px;
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-color: black;
-}
-.service: last-child{margin-right: 30px;}
-
-.service:hover{
-    color: #fff;
-    background:#5356FF;
-    box-shadow: 0 5px 10px rgba(71,71,71,.4);
-}
-
-.service img{
-width: 85%;
-padding: auto;
-margin-right: 30px;
-
-}
-
-.service a{
-    margin-left: 60px;
-    margin-right: 50px;
-    position: relative;
-    
-}
-.copyright {
-     margin-top: 90px;
-     padding-bottom: 25px;
-     background: #50C4ED;   
-}
-
-.copyright p {
-     color: #fff;
-     font-size: 17 px;
-     line-height: 22px;
-     text-align: center;
-     padding-top: 25px;
-     font-weight: 400;
-     font-weight: normal;
-}
-
-.copyright a {
-     color: #fff;
-}
-
-.copyright a:hover {
-     color: #3e0bce;
-}
-.home {
-    display: flex;
-    position: relative;
-}
-
-.content {
-  overflow: auto;
-}
-
-.content h1{
-    margin-top: 90px;
-    font-size: 45px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 1000;
-  font-style: normal;  
-  color: #005EB2 ; 
-  text-align: justify;
-  margin-left: 18px;
-}
-.content h5{
-    margin-left: 40px;
-    margin-top: 40px;
-    font-size: 30px;
-    font-family:  "Montserrat", sans-serif;
-    font-weight: 800;
-    margin-left: 20px;
-  font-style: normal;  
-  color:#5DBEFF; 
-  text-align: left;
-}
-
-.content p {
-    text-align: justify;
-  font-size: 19px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  margin-top: 40px;
-  margin-left: -1px ; 
-  margin-left: 30px;     
-  color:#8DC9FF;
-  
-
-}
-
-.gambar {
-  float: right;
-  margin-right: 5px; 
-  width: 50%;
-}
-
-.u {
-    margin-top: 90px;
-}
-
-.tes h2{
-text-align: center;
-margin-top:100px;
-}
-
-.tes p{
-    text-align:center;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.halo {
-    font-weight: bold;
-    float: right;
-    margin-left: 20px;
-    font-family: "Montserrat", sans-serif;
-}
-
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    background-color: #282828;
-    color: #ffffff;
-    padding: 40px 20px;
-}
-
-.footer-section {
-    flex: 1;
-    margin: 0 20px;
-}
-
-.footer-section h2 {
-    margin-bottom: 20px;
-    border-bottom: 2px solid #444444;
-    padding-bottom: 10px;
-}
-
-.footer-section p, .footer-section a {
-    color: #cccccc;
-}
-
-.footer-section a {
-    text-decoration: none;
-}
-
-.footer-section a:hover {
-    color: #ffffff;
-}
-
-.socials {
-    margin-top: 20px;
-}
-
-.socials a {
-    display: inline-block;
-    background-color: #444444;
-    color: #ffffff;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    margin-right: 10px;
-    text-align: center;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-}
-
-.socials a:hover {
-    background-color: #555555;
-}
-
-.footer-bottom {
-    background-color: #1c1c1c;
-    color: #999999;
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid #444444;
-}
-
-
-
+    /* CSS */
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Open Sans', sans-serif;
+        width: 100%;
+    }
+
+    .wrapper {
+        width: 75%;
+        margin: auto;
+        position: relative;
+    }
+
+    .logo a {
+        font-family: "Montserrat", sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        float: left;
+        color: #002D73;
+        text-decoration: none;
+        margin-left: -100px;
+    }
+
+    .menu {
+        float: right;
+    }
+
+    nav {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        line-height: 80px;
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        background: #AED6F1;
+        z-index: 1000;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    nav ul li {
+        float: left;
+    }
+
+    nav ul li a {
+        color: #211C6A;
+        font-weight: bold;
+        text-align: center;
+        padding: 0px 16px 0px 16px;
+        text-decoration: none;
+    }
+
+    nav ul li a:hover {
+        text-decoration: underline;
+    }
+
+    section {
+        margin: auto;
+        display: flex;
+        margin-bottom: 50px;
+    }
+
+    .text-box {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .text-box .deskripsi {
+        font-size: 25px;
+        font-weight: bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #352F44;
+        margin-top: 60px;
+    }
+
+    .text-box h2 {
+        color: black;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+    }
+
+    .text-box h1 {
+        font-family: 'Times New Roman', Times, serif;
+        color: black;
+        margin-top: 58px;
+    }
+
+    a.tbl-biru {
+        background: #092635;
+        border-radius: 20px;
+        margin-top: 20px;
+        padding: 15px 20px 15px 20px;
+        color: #ffffff;
+        cursor: pointer;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    a.tbl-biru:hover {
+        background: #6AD4DD;
+        text-decoration: none;
+        transition: ease-in;
+        -webkit-transition: .3s linear;
+        -moz-transition: .3s linear;
+        -ms-transition: .3s linear;
+        -o-transition: .3s linear;
+        transition: .3s linear;
+    }
+
+    a.tbl-birubiru {
+        width: 100px;
+        height: 90px;
+        text-decoration: none;
+        background: #0174BE;
+        border-radius: 10px;
+        margin-top: 20px;
+        padding: 15px 20px 15px 20px;
+        color: #ffffff;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    a.tbl-birubiru:hover {
+        background: #AEDEFC;
+        transition: ease-in;
+        text-decoration: none;
+    }
+
+    p {
+        margin: 10px 0px 10px 0px;
+        padding: 10px 0px 10px 0px;
+        color: black;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .tengah {
+        text-align: center;
+        width: 100%;
+    }
+
+    .tutor-list {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .kartu-tutor {
+        width: 20%;
+        margin: 0 auto;
+    }
+
+    .kartu-tutor img {
+        width: 80%;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        padding: 5px;
+    }
+
+    .text-box h2 {
+        text-align: center;
+    }
+
+    .list {
+        position: relative;
+        z-index: 1;
+        margin-top: 30px;
+    }
+
+    .list ul li {
+        display: inline-block;
+        margin-left: 30px;
+        margin-top: 15px;
+    }
+
+    .grid {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 200px;
+        height: 150px;
+        background: #fff;
+        border-radius: 3px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        margin-left: 190px;
+        box-shadow: 0 0px 10px rgba(71, 71, 71, .2);
+        transition: .3s linear;
+    }
+
+    .grid h5 {
+        margin: 13px 0;
+        margin-top: 20px;
+        margin-right: 10px;
+        text-decoration: none;
+        margin-bottom: 20px;
+        font-size: 12px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: black;
+    }
+
+    .grid:last-child {
+        margin-right: 30px;
+    }
+
+    .grid:hover {
+        color: #fff;
+        background: #5356FF;
+        box-shadow: 0 5px 10px rgba(71, 71, 71, .4);
+    }
+
+    .grid img {
+        width: 30%;
+        padding: auto;
+        margin-right: 20px;
+    }
+
+    .grid a {
+        margin-left: 60px;
+        margin-right: 50px;
+        position: relative;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    .content p {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .content h5 {
+        text-align: center;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .gambar {
+        margin-bottom: 20px;
+    }
+
+    .grid p {
+        font-size: 5px;
+        margin-left: 135px;
+    }
+
+    .grid:hover {
+        color: #fff;
+        background: #5356FF;
+        box-shadow: 0 5px 10px rgba(71, 71, 71, .4);
+    }
+
+    .grid a {
+        margin-bottom: 30px;
+    }
+
+    .welcome {
+        display: block;
+        position: relative;
+    }
+
+    .teks {
+        margin-top: 60px;
+    }
+
+    .teks h2 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .teks p {
+        font-weight: normal;
+        margin-top: 20px;
+        font-size: 17px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifs;
+        text-align: center;
+    }
+
+    .layanan {
+        display: block;
+        z-index: 1;
+        margin-top: 80px;
+        position: relative;
+        margin-left: 250px;
+    }
+
+    .layanan ul li {
+        display: inline-block;
+        margin-left: 30px;
+        margin-top: 15px;
+    }
+
+    .service {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 200px;
+        height: 190px;
+        background: #fff;
+        border-radius: 3px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        margin-top: 100px;
+        box-shadow: 0 0px 10px rgba(71, 71, 71, .2);
+        transition: .3s linear;
+    }
+
+    .service h5>a {
+        margin: 13px 0;
+        text-decoration: none;
+        margin-bottom: 20px;
+        font-size: 12px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: black;
+    }
+
+    .service:last-child {
+        margin-right: 30px;
+    }
+
+    .service:hover {
+        color: #fff;
+        background: #5356FF;
+        box-shadow: 0 5px 10px rgba(71, 71, 71, .4);
+    }
+
+    .service img {
+        width: 85%;
+        padding: auto;
+        margin-right: 30px;
+    }
+
+    .service a {
+        margin-left: 60px;
+        margin-right: 50px;
+        position: relative;
+    }
+
+    .home {
+        display: flex;
+        position: relative;
+    }
+
+    .content {
+        overflow: auto;
+    }
+
+    .content h1 {
+        margin-top: 90px;
+        font-size: 45px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 1000;
+        font-style: normal;
+        color: #005EB2;
+        text-align: justify;
+        margin-left: 18px;
+    }
+
+    .content h5 {
+        margin-left: 40px;
+        margin-top: 40px;
+        font-size: 30px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        margin-left: 20px;
+        font-style: normal;
+        color: #5DBEFF;
+        text-align: left;
+    }
+
+    .content p {
+        text-align: justify;
+        font-size: 19px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+        margin-top: 40px;
+        margin-left: -1px;
+        margin-left: 30px;
+        color: #8DC9FF;
+    }
+
+    .gambar {
+        float: right;
+        margin-right: 5px;
+        width: 50%;
+    }
+
+    .u {
+        margin-top: 90px;
+    }
+
+    .tes h2 {
+        text-align: center;
+        margin-top: 100px;
+    }
+
+    .tes p {
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .halo {
+        font-weight: bold;
+        float: right;
+        margin-left: 20px;
+        font-family: "Montserrat", sans-serif;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        background-color: #50C4ED;
+        color: #ffffff;
+        padding: 40px 20px;
+    }
+
+    .footer-section {
+        flex: 1;
+        margin: 0 20px;
+    }
+
+    .footer-section h2 {
+        margin-bottom: 20px;
+        border-bottom: 2px solid #444444;
+        padding-bottom: 10px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+    }
+
+    .footer-section p,
+    .footer-section a {
+        color: #ffffff;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+    }
+
+    .footer-section a {
+        text-decoration: none;
+    }
+
+    .footer-section a:hover {
+        color: #ffffff;
+    }
+
+    .socials {
+        margin-top: 20px;
+    }
+
+    .socials a {
+        display: inline-block;
+        background-color: #444444;
+        color: #ffffff;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin-right: 10px;
+        text-align: center;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;     
+    }
+
+    .socials a:hover {
+        background-color: #ffffff;
+    }
+
+    .footer-bottom {
+        background-color: #AED6F1;
+        color: #211C6A;
+        text-align: center;
+        padding: 20px;
+        border-top: 1px solid #444444;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+    }
 
     </style>
 </head>
@@ -739,15 +719,15 @@ margin-top:100px;
 </div>
 </div>
 
-<li><a href="logout.php" class="tbl-biru">Logut</a></li>
 
+<footer class="bg">
 
 <div class="footer-container">
             <div class="footer-section about">
                 <h2>Tentang Kami</h2>
-                <p>Kami adalah perusahaan yang berfokus pada menyediakan solusi terbaik untuk kebutuhan digital Anda. Hubungi kami untuk informasi lebih lanjut.</p>
+                <p>Kami adalah perusahaan yang berfokus pada menyediakan solusi terbaik untuk menyediakan obat obatan untuk anda, dengan kualitas terbaik namun dengan harga terjangkau</p>
                 <div class="socials">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/argaakbr/"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -756,23 +736,23 @@ margin-top:100px;
             <div class="footer-section links">
                 <h2>Tautan</h2>
                 <ul>
-                    <li><a href="#">Beranda</a></li>
-                    <li><a href="#">Tentang Kami</a></li>
-                    <li><a href="#">Layanan</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Kontak</a></li>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="biodata.php">Tentang Kami</a></li>
+                    <li><a href="#courses">Layanan</a></li>
+                    <li><a href="#example">Example</a></li>
                 </ul>
             </div>
             <div class="footer-section contact">
                 <h2>Kontak Kami</h2>
-                <p><i class="fas fa-envelope"></i> info@contoh.com</p>
-                <p><i class="fas fa-phone"></i> +62 123 456 789</p>
-                <p><i class="fas fa-map-marker-alt"></i> Jl. Contoh No. 123, Jakarta, Indonesia</p>
+                <p><i class="fas fa-envelope"></i> arga.fikri1202@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +6281182131</p>
+                <p><i class="fas fa-map-marker-alt"></i> SMK Telkom Sidoarjo</p>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 Contoh Website. All rights reserved.</p>
         </div>
     </footer>
+
 </body>
 </html>
