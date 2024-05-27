@@ -5,6 +5,14 @@ session_start();
 
 $query = "SELECT * FROM user";
 $result = mysqli_query($conn, $query);
+
+if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'admin') {
+    header('Location: index.php');
+    exit;
+}
+
+
+
 ?>
 
 

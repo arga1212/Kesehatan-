@@ -1,33 +1,35 @@
 <?php
-session_start();
-require 'function.php';
-
-// Periksa jika pengguna sudah login
-if (isset($_SESSION["email"])) {
-    header("location: admin.php");
-    exit();
-}
+ require 'function.php';
+ session_start();
 
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Pengambilan data
-    $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username' " );
+  
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    
 
-    if (mysqli_num_rows($result) === 1) {
+    // pengambilan data dari database
+ $result= mysqli_query ($conn, "SELECT * FROM user WHERE email = '$email'");
+
+//  pengecekan email
+if (mysqli_num_rows($result) === 1) {
+  // cek passwordo
         $row = mysqli_fetch_assoc($result);
         // Verifikasi password
-        if ($password == $row["password"]) { // Ganti ini dengan password_verify jika Anda menggunakan hashing password
-            $_SESSION['login'] = true;
+        if ($password == $row["password"]) { 
             $_SESSION['email'] = $row['email'];
             $_SESSION['id_user'] = $row['id_user']; // Setel id_user di sesi
             $_SESSION['username'] = $row['username'];
+            $_SESSION['level'] = $row['level']; 
             $level = $row['level'];
             if ($level == 'admin') {
                 header("location: admin.php");
-            } else {
+            }
+             else {
                 header("location: buy.php");
             }
             exit();
@@ -79,7 +81,7 @@ if (isset($_POST['login'])) {
     <div class="form">
         <header>Ayo login</header>
         <form action="" method="post">
-            <label for="username">Username</label>
+            <label for="username">Masukkan Nama Anda</label>
             <input type="text" id="username" name="username" required>
 
             <label for="email">Email</label>

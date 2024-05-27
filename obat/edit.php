@@ -11,8 +11,11 @@ if (mysqli_connect_errno()) {
 // Ambil ID obat dari URL
 $id_obat = $_GET['id'];
 
-// Query untuk mendapatkan data obat berdasarkan ID
-$query = "SELECT * FROM obat WHERE id_obat = $id_obat";
+// Query untuk mendapatkan data obat berdasarkan ID dan nama kategori
+$query = "SELECT obat.*, kategori.nama_kat 
+          FROM obat 
+          INNER JOIN kategori ON obat.id_kat = kategori.id_kat 
+          WHERE obat.id_obat = $id_obat";
 $result = mysqli_query($koneksi, $query);
 $row = mysqli_fetch_assoc($result);
 
@@ -21,33 +24,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama_obat = $_POST["nama_obat"];
     $stok_obat = $_POST["stok_obat"];
     $harga_obat = $_POST["harga_obat"];
-    $file = $_FILES["img"]["name"];
-    $filetmp = $_FILES['img']['tmp_name'];
-
-
-    // Proses upload gambar
-    $rand = rand();
-    $ekstensi =  array('png','jpg','jpeg');
-    $filename = $_FILES['img']['name'];
-    $ukuran = $_FILES['img']['size'];
-    $ext = pathinfo($filename, PATHINFO_EXTENSION);
-     
-    if(!in_array($ext,$ekstensi) ) {
-        header("location:tambah.php?alert=gagal_ekstensi");
-    }else{
-        if($ukuran < 10000000000){		
-            $xx = $rand.'_'.$filename;
-            move_uploaded_file($filetmp, '../foto/'.$rand.'_'.$filename);
-             // Query untuk menambahkan data obat baru
-             $query = "UPDATE obat SET nama_obat='$nama_obat', stok_obat='$stok_obat', harga_obat='$harga_obat' img= $xx WHERE id_obat=$id_obat";
+    $id_kat = $_POST["id_kat"];
+    
+    $query = "UPDATE obat 
+              SET nama_obat='$nama_obat', stok_obat='$stok_obat', harga_obat='$harga_obat', id_kat='$id_kat' 
+              WHERE id_obat=$id_obat";
     if (mysqli_query($koneksi, $query)) {
         echo "Obat berhasil diperbarui.";
         header("Location: dataobat.php");
         exit();
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($koneksi);
-    }
-}
     }
 }
 ?>
@@ -142,10 +129,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <label for="harga_obat">Harga Obat:</label>
         <input type="number" id="harga_obat" name="harga_obat" value="<?php echo $row['harga_obat']; ?>" required><br>
-
-        <label for="img">Gambar Obat:</label>
-        <input type="file" id="img" name="img" accept="image/*" required><br>
-
+        
+        <label for="id_kat">Kategori:</label>
+   <select name="id_kat" id="id_kat" required>
+    <?php
+    // Ambil semua kategori dari hasil join dengan DISTINCT
+    $query_kategori = "SELECT DISTINCT kategori.id_kat, kategori.nama_kat FROM obat JOIN kategori ON obat.id_kat = kategori.id_kat";
+    $result_kategori = mysqli_query($koneksi, $query_kategori);
+    if (mysqli_num_rows($result_kategori) > 0) {
+        while ($row_kategori = mysqli_fetch_assoc($result_kategori)) {
+            $selected = ($row_kategori['id_kat'] == $row['id_kat']) ? "selected" : "";
+            
+            // Tampilkan opsi kategori
+            echo "<option value='" . $row_kategori['id_kat'] . "' $selected>" . $row_kategori['nama_kat'] . "</option>";
+        }
+    } else {
+        // Jika tidak ada kategori, berikan opsi default
+        echo "<option value=''>Tidak ada kategori</option>";
+    }
+    ?>
+</select><br>
 
         <input type="submit" value="Update">
     </form>

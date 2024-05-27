@@ -1,10 +1,3 @@
-<?php
-    
-?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -481,10 +474,14 @@ margin-top:100px;
     margin-bottom: 20px;
     border-bottom: 2px solid #444444;
     padding-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
 }
 
 .footer-section p, .footer-section a {
-    color: ffffff;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
 }
 
 .footer-section a {
@@ -518,10 +515,12 @@ margin-top:100px;
 
 .footer-bottom {
     background-color: #AED6F1;
-    color: ffffff;
+    color: #211C6A;
     text-align: center;
     padding: 20px;
     border-top: 1px solid #444444;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
 }
 
 
@@ -727,9 +726,9 @@ margin-top:100px;
 <div class="footer-container">
             <div class="footer-section about">
                 <h2>Tentang Kami</h2>
-                <p>Kami adalah perusahaan yang berfokus pada menyediakan solusi terbaik untuk kebutuhan digital Anda. Hubungi kami untuk informasi lebih lanjut.</p>
+                <p>Kami adalah perusahaan yang berfokus pada menyediakan solusi terbaik untuk menyediakan obat obatan untuk anda, dengan kualitas terbaik namun dengan harga terjangkau</p>
                 <div class="socials">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/argaakbr/"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -738,18 +737,17 @@ margin-top:100px;
             <div class="footer-section links">
                 <h2>Tautan</h2>
                 <ul>
-                    <li><a href="#">Beranda</a></li>
-                    <li><a href="#">Tentang Kami</a></li>
-                    <li><a href="#">Layanan</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Kontak</a></li>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="biodata.php">Tentang Kami</a></li>
+                    <li><a href="#courses">Layanan</a></li>
+                    <li><a href="#example">Example</a></li>
                 </ul>
             </div>
             <div class="footer-section contact">
                 <h2>Kontak Kami</h2>
-                <p><i class="fas fa-envelope"></i> info@contoh.com</p>
-                <p><i class="fas fa-phone"></i> +62 123 456 789</p>
-                <p><i class="fas fa-map-marker-alt"></i> Jl. Contoh No. 123, Jakarta, Indonesia</p>
+                <p><i class="fas fa-envelope"></i> arga.fikri1202@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +6281182131</p>
+                <p><i class="fas fa-map-marker-alt"></i> SMK Telkom Sidoarjo</p>
             </div>
         </div>
         <div class="footer-bottom">

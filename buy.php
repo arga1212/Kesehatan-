@@ -1,6 +1,11 @@
 <?php
 require 'function.php';
 session_start();
+  
+if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'user') {
+    header('Location: index.php');
+    exit;
+}
 
 
 // Koneksi ke database
@@ -13,13 +18,12 @@ if(isset($_POST["cari"])) {
     $keyword = $_POST["keyword"];
     $kategori_id = isset($_POST["kategori"]) ? $_POST["kategori"] : null;
 
-    // Modifikasi query untuk mencari obat dan menyertakan nama_kat
     $query = "SELECT 
               obat.id_obat,
               obat.nama_obat,
               obat.stok_obat,
               obat.harga_obat,
-              obat.,img
+              obat.img, 
               kategori.nama_kat
               FROM 
               obat
@@ -32,7 +36,7 @@ if(isset($_POST["cari"])) {
     if ($kategori_id !== null && $kategori_id !== "") {
         $query .= " AND obat.id_kat = '$kategori_id'";
     }
-} else {
+} else {    
     // Query untuk mengambil data dari tabel obat (tanpa pencarian)
     $query = "SELECT 
               obat.id_obat,
@@ -196,26 +200,26 @@ nav ul li a:hover {
         }
         
         .card {
-display: inline-block;
-width: 300px;
-background-color: #fff;
-border-radius: 5px;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-padding: 20px;
-margin-bottom: 20px;
-margin-right: 50px;
+    display: inline-block;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-right: 50px;
         }
         
         .card:hover {
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
         }
         
         .card h2 {
-font-size: 18px;
-margin-bottom: 10px;
-font-family: "Montserrat", sans-serif;
-color: #005EB2 ; 
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    color: #005EB2 ; 
         }
         
         .card p {
@@ -258,7 +262,7 @@ color: #005EB2 ;
     }
 
 .card img {
-    width: 100%; /* Lebar gambar mengikuti lebar kartu */
+    width: 30%; /* Lebar gambar mengikuti lebar kartu */
     height: auto; /* Menjaga aspek rasio gambar */
     border-radius: 5px; /* Sudut melengkung untuk gambar */
     margin-bottom: 10px; /* Jarak antara gambar dengan teks */
@@ -281,7 +285,7 @@ color: #005EB2 ;
                         <li><a href="cart.php">Keranjang</a></li>
                         <li><a href="history.php">Riwayat</a></li>
                        <?php
-                        echo '<div class="halo">' . "Halo,". $_SESSION['username'] .'</div>';
+                        echo '<div class="halo">' . "Halo,".  $_SESSION['username'] .'</div>';
                         ?>
                         
                         
@@ -306,7 +310,7 @@ color: #005EB2 ;
 
 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
     <div class="card">
-        <img src="../foto<?php echo $row['img']; ?>">
+        <img src="foto/<?php echo $row['img']; ?>">
         <h2><?php echo $row['nama_obat']; ?></h2>
         <p>Harga: <?php echo number_format($row['harga_obat']); ?></p>
         <p>Kategori: <?php echo $row['nama_kat']; ?></p>

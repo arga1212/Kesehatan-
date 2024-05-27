@@ -8,8 +8,17 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-// Query untuk mendapatkan daftar obat
-$query = "SELECT * FROM obat";
+// Query untuk mendapatkan daftar obat beserta kategori
+$query = "SELECT 
+            obat.id_obat,
+            obat.nama_obat,
+            obat.stok_obat,
+            obat.harga_obat,
+            kategori.nama_kat
+          FROM 
+            obat
+          INNER JOIN 
+            kategori ON obat.id_kat = kategori.id_kat";
 $result = mysqli_query($koneksi, $query);
 ?>
 
@@ -130,6 +139,7 @@ $result = mysqli_query($koneksi, $query);
             <th>Nama Obat</th>
             <th>Stok Obat</th>
             <th>Harga Obat</th>
+            <th>Kategori</th>
             <th>Aksi</th>
         </tr>
         <?php while ($row = mysqli_fetch_assoc($result)) : ?>
@@ -137,6 +147,7 @@ $result = mysqli_query($koneksi, $query);
                 <td><?php echo $row['nama_obat']; ?></td>
                 <td><?php echo $row['stok_obat']; ?></td>
                 <td><?php echo $row['harga_obat']; ?></td>
+                <td><?php echo $row['nama_kat']; ?></td>
                 <td class="action-buttons">
                     <a href="edit.php?id=<?php echo $row['id_obat']; ?>" class="button-edit">Edit</a>
                     <a href="hapus.php?id=<?php echo $row['id_obat']; ?>" class="button-delete" onclick="return confirm('Yakin ingin menghapus?');">Hapus</a>
