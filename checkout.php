@@ -15,7 +15,7 @@ if (isset($_POST["checkout"])) {
     $id_user = $_SESSION['id_user'];
     $nama_pembeli = $_SESSION["username"];
     $alamat = $_POST["Alamat"];
-    $tanggal_pembelian = date("Y-m-d");
+    $tanggal_pembelian = date("Y-m-d"); 
 
     $totalbelanja = 0;
 
