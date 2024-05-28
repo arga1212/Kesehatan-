@@ -22,7 +22,7 @@ if (mysqli_num_rows($result) === 1) {
         // Verifikasi password
         if ($password == $row["password"]) { 
             $_SESSION['email'] = $row['email'];
-            $_SESSION['id_user'] = $row['id_user']; // Setel id_user di sesi
+            $_SESSION['id_user'] = $row['id_user'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['level'] = $row['level']; 
             $level = $row['level'];
@@ -49,9 +49,9 @@ if (mysqli_num_rows($result) === 1) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* CSS */
         body {
             margin: 0;
             padding: 0;

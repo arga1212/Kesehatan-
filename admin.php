@@ -6,11 +6,11 @@ session_start();
 $query = "SELECT * FROM user";
 $result = mysqli_query($conn, $query);
 
-if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'admin') {
-    header('Location: index.php');
-    exit;
+if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'admin')  {
+    echo "<script>alert('Maaf kamu bukan admin!');</script>";
+    echo "<script>window.location.href='logout.php';</script>";
+    exit();
 }
-
 
 
 ?>

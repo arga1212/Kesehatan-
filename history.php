@@ -26,6 +26,8 @@ $result = mysqli_query($koneksi, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Pembelian</title>
+    <link rel="icon" type="image/png" href="logo.png">
+
     <style>
         /* Tambahkan gaya CSS di sini sesuai kebutuhan */
         body {
@@ -112,6 +114,7 @@ $result = mysqli_query($koneksi, $query);
                 echo "<p><strong>Nama Obat:</strong> " . $row['nama_obat'] . "</p>";
                 echo "<p><strong>Jumlah:</strong> " . $row['qty'] . "</p>";
                 echo "<p><strong>Total Harga:</strong> Rp " . number_format($row['total']) . "</p>";
+                echo "<p><strong>Alamat Pengiriman:</strong> " . $row['Alamat'] . "</p>";
                 echo "<hr>";
                 echo "</div>";
             }

@@ -14,6 +14,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poetsen+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -44,15 +45,21 @@ session_start();
         position: relative;
     }
 
-    .logo a {
-        font-family: "Montserrat", sans-serif;
-        font-size: 30px;
-        font-weight: 700;
-        float: left;
-        color: #002D73;
-        text-decoration: none;
-        margin-left: -100px;
-    }
+    .logo2 a {
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    float: left;
+    color:#002D73;
+    text-decoration:none;
+    margin-left: -30px;
+}
+.logo img {
+  width: 50px;
+  float: left;
+  margin-left: -100px;
+  margin-top: 15px
+}
 
     .menu {
         float: right;
@@ -450,87 +457,101 @@ session_start();
         font-family: "Montserrat", sans-serif;
     }
 
-    .footer-container {
-        display: flex;
-        justify-content: space-between;
-        background-color: #50C4ED;
-        color: #ffffff;
-        padding: 40px 20px;
-    }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            background-color: #fff;
+            color: #ffffff;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 0px 10px rgba(71, 71, 71, .2);
+        }
 
-    .footer-section {
-        flex: 1;
-        margin: 0 20px;
-    }
+        .footer-section {
+            flex: 1;
+            margin: 0 20px;
+        }
 
-    .footer-section h2 {
-        margin-bottom: 20px;
-        border-bottom: 2px solid #444444;
-        padding-bottom: 10px;
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-    }
+        .footer-section h2 {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 10px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+            color: #1C315E;
+        }
 
-    .footer-section p,
-    .footer-section a {
-        color: #ffffff;
-        font-family: "Montserrat", sans-serif;
-        font-weight: 500;
-    }
+        .footer-section a {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            color: #1C315E;
+        }
+        .footer-section p{
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            color: #1C315E;
+        }
 
-    .footer-section a {
-        text-decoration: none;
-    }
+        .footer-section a:hover {
+            color: #ddd;
+        }
 
-    .footer-section a:hover {
-        color: #ffffff;
-    }
+        .socials {
+            margin-top: 20px;
+        }
 
-    .socials {
-        margin-top: 20px;
-    }
+        .socials a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            margin-right: 10px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #ffffff;
+            
+        }
 
-    .socials a {
-        display: inline-block;
-        background-color: #444444;
-        color: #ffffff;
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        margin-right: 10px;
-        text-align: center;
-        border-radius: 50%;
-        transition: background-color 0.3s ease;     
-    }
+        .socials img {
+            width: 24px;
+            height: 24px;
+            margin: 8px;
+        }
 
-    .socials a:hover {
-        background-color: #ffffff;
-    }
+        .socials a:hover img {
+            filter: invert(1);
+        }
 
-    .footer-bottom {
-        background-color: #AED6F1;
-        color: #211C6A;
-        text-align: center;
-        padding: 20px;
-        border-top: 1px solid #444444;
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-    }
+        .footer-bottom {
+            background-color: #ffff;
+            color: #211C6A;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #ffffff;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+            box-shadow: 0 0px 10px rgba(71, 71, 71, .2);
+        }
 
     </style>
 </head>
 <body>
     <nav>
         <div class="wrapper">
-            <div class="logo">
-                <a href=''>Sehat aja</a></div>
+        <div class="logo">
+            <img src="logo.png">
+            </div>
+            <div class="logo2">
+            <a href=''>Sehat aja</a>
+      </div>
                 <div class="menu">
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#courses">Courses</a></li>
                         <li><a href="#example">Example</a></li>
                         <li><a href="buy.php">Order</a></li>
-                        <li><a href="biodata.php">About</a></li>
                         
                        <?php
                         echo '<div class="halo">' . "Halo,". $_SESSION['username'] .'</div>';
@@ -727,10 +748,8 @@ session_start();
                 <h2>Tentang Kami</h2>
                 <p>Kami adalah perusahaan yang berfokus pada menyediakan solusi terbaik untuk menyediakan obat obatan untuk anda, dengan kualitas terbaik namun dengan harga terjangkau</p>
                 <div class="socials">
-                    <a href="https://www.instagram.com/argaakbr/"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/argaakbr/"><img src="instagram.png"></a>
+                    <a href="https://github.com/arga1212"><img src="github.png"></a>
                 </div>
             </div>
             <div class="footer-section links">
