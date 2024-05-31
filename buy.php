@@ -297,11 +297,11 @@ mysqli_close($koneksi);
                 <h2><?php echo $row['nama_obat']; ?></h2>
                 <p>Harga: <?php echo number_format($row['harga_obat']); ?></p>
                 <p>Kategori: <?php echo $row['nama_kat']; ?></p>
-                <a href="add chart.php?id=<?php echo $row['id_obat']; ?>" class="tbl-biru">Add to Cart</a>
+                <a href="confirm.php?id=<?php echo $row['id_obat']; ?>" class="tbl-biru">Add to Cart</a>
             </div>
         <?php } ?>
     <?php endif; ?>
-
+            
     <a href="logout.php" class="tbl-biru2">Logout</a>
 </div>
 

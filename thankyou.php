@@ -1,17 +1,4 @@
-<?php
-session_start();
 
-// Jika user tidak melakukan checkout, alihkan ke halaman buy.php
-if (!isset($_SESSION["keranjang"]) || empty($_SESSION["keranjang"])) {
-    echo "<script>alert('Keranjang Anda kosong, silakan belanja terlebih dahulu.');</script>";
-    echo "<script>location='buy.php';</script>";
-    exit();
-}
-
-// Hapus keranjang setelah checkout
-unset($_SESSION["keranjang"]);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

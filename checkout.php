@@ -1,75 +1,112 @@
 <?php
-$koneksi = mysqli_connect("localhost", "username", "password", "kesehatan");
 session_start();
 
-
-if(empty($_SESSION["keranjang"])  OR !isset($_SESSION["keranjang"]))
-{
-    echo "<script>alert('Masih kosong nih, Belanja dulu yuk!');</script>";
-echo  "<script>location='buy.php';</script>";
+if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'user') {
+    header('Location: index.php');
+    exit;
 }
 
-if (isset($_POST["checkout"])) {
-    $id_ongkir = $_POST["pengiriman"];
-    $id_pay = $_POST["payment"];
-    $id_user = $_SESSION['id_user'];
-    $nama_pembeli = $_SESSION["username"];
-    $alamat = $_POST["Alamat"];
-    $tanggal_pembelian = date("Y-m-d"); 
+// Koneksi ke database
+$koneksi = mysqli_connect("localhost", "username", "password", "kesehatan");
 
-    $totalbelanja = 0;
+// Periksa koneksi
+if (!$koneksi) {
+    die("Koneksi database gagal: " . mysqli_connect_error());
+}
 
-    foreach ($_SESSION["keranjang"] as $id_obat => $jumlah) {
-        // Ambil stok obat sebelum transaksi
-        $ambil_stok = $koneksi->query("SELECT stok_obat FROM obat WHERE id_obat ='$id_obat'");
-        $data_stok = $ambil_stok->fetch_assoc();
-        $stok_sekarang = $data_stok['stok_obat'];
+// Mulai transaksi
+mysqli_begin_transaction($koneksi);
 
-        // Perbarui stok obat setelah transaksi
-        $stok_baru = $stok_sekarang - $jumlah;
-        $update_stok = $koneksi->query("UPDATE obat SET stok_obat='$stok_baru' WHERE id_obat ='$id_obat'");
+// Ambil ID pengguna dari sesi
+$id_user = $_SESSION['id_user'];
 
-        if (!$update_stok) {
-            // Handle error jika gagal memperbarui stok
-            echo "Error updating stock for item ID: $id_obat";
-        }
+// Ambil data dari tabel keranjang
+$query_keranjang = "SELECT keranjang.id_keranjang, keranjang.id_obat, obat.nama_obat, obat.harga_obat, keranjang.jumlah, 
+                    (obat.harga_obat * keranjang.jumlah) AS total_harga, obat.img
+                    FROM keranjang 
+                    INNER JOIN obat ON keranjang.id_obat = obat.id_obat 
+                    WHERE keranjang.id_user = '$id_user'";
+$result_keranjang = mysqli_query($koneksi, $query_keranjang);
 
-    // Get shipping information
-    $njupuk = $koneksi->query("SELECT * FROM ongkir WHERE id_ongkir='$id_ongkir'");
-    $arrayongkir = $njupuk->fetch_assoc();
-    $tarif = $arrayongkir['Harga_ongkir'];
-    $ongkir = $arrayongkir['Jenis'];
+// Ambil data metode pembayaran
+$query_payment = "SELECT * FROM payment";
+$result_payment = mysqli_query($koneksi, $query_payment);
 
-    // Loop through each item in the cart and insert into the database
-    foreach ($_SESSION["keranjang"] as $id_obat => $jumlah) {
-        $ambil = $koneksi->query("SELECT * FROM obat WHERE id_obat ='$id_obat'");
-        $pecah = $ambil->fetch_assoc();
-        $total = $pecah["harga_obat"] * $jumlah;
-        $totalbelanja += $total;
+// Ambil data ongkir
+$query_ongkir = "SELECT * FROM ongkir";
+$result_ongkir = mysqli_query($koneksi, $query_ongkir);
 
-        $nama_obat = $pecah["nama_obat"];
-        $harga = $pecah["harga_obat"];
-        $qty = $jumlah;
+// Jika form disubmit
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $alamat = $_POST['alamat'];
+    $payment_id = $_POST['payment'];
+    $ongkir_id = $_POST['ongkir'];
+    $tanggal_checkout = date('Y-m-d H:i:s'); // Mendapatkan tanggal dan waktu saat ini
+    
+    // Validasi data
+if (!empty($alamat) && !empty($payment_id) && !empty($ongkir_id)) {
+    // Hitung total biaya
+    $total_biaya = 0;
+    $id_keranjang = 0;
+    $id_obat_array = array(); // Inisialisasi array untuk menyimpan id_obat
+    $jumlah_array = array();  // Inisialisasi array untuk menyimpan jumlah
 
-        $query_insert = "INSERT INTO pembelian (id_user, id_obat, id_ongkir, id_pay, nama_pembeli, Alamat, nama_obat, harga, qty, total, payment, Jenis, Harga_ongkir, tanggal_pembelian)
-        VALUES ('$id_user', '$id_obat', '$id_ongkir', '$id_pay', '$nama_pembeli', '$alamat', '$nama_obat', '$harga', '$qty', '$total', '$id_pay', '$ongkir', '$tarif', '$tanggal_pembelian')";
-
-        if (!mysqli_query($koneksi, $query_insert)) {
-            echo "Error: " . $query_insert . "<br>" . mysqli_error($koneksi);
-            // Exit the loop and do not continue with the rest of the items
-            break;
-        }
+    while ($row = mysqli_fetch_assoc($result_keranjang)) {
+        $total_biaya += $row['total_harga'];
+        // Retrieve id_keranjang
+        $id_keranjang = $row['id_keranjang'];
+        $id_obat_array[] = $row['id_obat'];
+        $jumlah[] = $row['jumlah']; // Simpan jumlah yang dibeli
+        $jumlah_array[] = $row['jumlah'];
+     
     }
 
-    $total_pembelian = $totalbelanja + $tarif;
+    // Ambil biaya ongkir
+    $ongkir_query = "SELECT Harga_ongkir FROM ongkir WHERE id_ongkir = '$ongkir_id'";
+    $result_ongkir = mysqli_query($koneksi, $ongkir_query);
+    $row_ongkir = mysqli_fetch_assoc($result_ongkir);
+    $total_biaya += $row_ongkir['Harga_ongkir'];
 
-        echo "<script>
-            alert('Pembayaran berhasil');
-            window.location.href = 'thankyou.php';
-            </script>";
+    // Convert array id_obat to comma separated string
+    $id_obat_string = implode(",", $id_obat_array);
+    $jumlah_string = implode(",", $jumlah_array); // Convert jumlah array to comma separated string
+
+    // Masukkan data ke tabel checkout
+    $insert_query = "INSERT INTO checkout (id_keranjang, id_user, id_pay, id_ongkir, id_obat, Alamat, jumlah, total_biaya,tanggal_checkout) 
+                     VALUES ('$id_keranjang', '$id_user', '$payment_id', '$ongkir_id', '$id_obat_string', '$alamat', '$jumlah_string', '$total_biaya' ,'$tanggal_checkout')";
+    // Lanjutan kode...
+
+        if (mysqli_query($koneksi, $insert_query)) {
+            // Ambil id_keranjang untuk pengguna saat ini
+            $delete_keranjang = "DELETE FROM keranjang WHERE id_user = '$id_user'";
+            if (mysqli_query($koneksi, $delete_keranjang)) {
+                // Kurangi stok obat dengan jumlah yang dibeli
+                foreach ($id_obat_array as $index => $id_obat) {
+                    $jumlah = $jumlah_array[$index];
+                    $query_stok = "UPDATE obat SET stok_obat = stok_obat - '$jumlah' WHERE id_obat = '$id_obat'";
+                    if (!mysqli_query($koneksi, $query_stok)) {
+                        mysqli_rollback($koneksi);
+                        die("Gagal memperbarui stok obat: " . mysqli_error($koneksi));
+                    }
+                }
+
+                // Komit transaksi
+                mysqli_commit($koneksi);
+
+                // Redirect ke halaman konfirmasi atau halaman lain yang diinginkan
+                header('Location: thankyou.php');
+                exit;
+            } else {
+                mysqli_rollback($koneksi);
+                die("Gagal menghapus data dari keranjang: " . mysqli_error($koneksi));
+            }
+        } else {
+            mysqli_rollback($koneksi);
+            die("Gagal melakukan checkout: " . mysqli_error($koneksi));
+        }
     }
 }
-?>
+?>    
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,8 +114,6 @@ if (isset($_POST["checkout"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-    <link rel="icon" type="image/png" href="logo.png">
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -86,246 +121,121 @@ if (isset($_POST["checkout"])) {
             padding: 0;
             background-color: #f4f4f4;
         }
-        .wrapper {
+        .container {
             width: 75%;
             margin: auto;
-            position: relative;
-        }
-        .logo a {
-            font-family: "Montserrat", sans-serif;
-            font-size: 30px;
-            font-weight: 700;
-            float: left;
-            color: #002D73;
-            text-decoration: none;
-            margin-left: -100px;
-        }
-        .menu {
-            float: right;
-        }
-        nav {
-            width: 100%;
-            display: flex;
-            line-height: 80px;
-            position: sticky;
-            top: 0;
-            background: #AED6F1;
-            z-index: 1000;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            float: left;
-        }
-        nav ul li a {
-            color: #211C6A;
-            font-weight: bold;
-            padding: 0 16px;
-            text-decoration: none;
-        }
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-        .halo {
-            font-weight: bold;
-            float: right;
-            margin-left: 20px;
-            font-family: "Montserrat", sans-serif;
-            color: #002D73;
-        }
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-        }
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin: 20px auto;
+            padding: 20px;
             background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
         }
-        table, th, td {
-            border: 1px solid #ddd;
-            height: 40px;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-        .tbl-biru, .tbl-birubiru {
-            display: inline-block;
-            border-radius: 10px;
-            margin-top: 20px;
-            padding: 15px 20px;
-            color: #ffffff;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-            margin-left: 10px;
-        }
-        .tbl-biru {
-            background: #092635;
-        }
-        .tbl-biru:hover {
-            background: #6AD4DD;
-            transition: .3s linear;
-        }
-        .tbl-birubiru {
-            background: #0174BE;
-        }
-        .tbl-birubiru:hover {
-            background: #AEDEFC;
-            transition: .3s linear;
-        }
-        .button {
+        h2 {
             text-align: center;
-            margin-top: 20px;
+            color: #333;
+            grid-column: span 2;
+        }
+        .cart-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .cart-item img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
         }
         .form-group {
             margin-bottom: 15px;
-            width: 80%;
-            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
         }
         .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            text-align: right;
         }
-        .form-group input, .form-group select, .form-group textarea {
+        .form-group input, .form-group select {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 16px;
         }
-        .form-container {
-            margin-top: 20px;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            margin: 20px auto;
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+            grid-column: span 2;
         }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="wrapper">
-            <div class="logo">
-                <a href=''>Sehat aja</a>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="selamat-datang.php">Home</a></li>
-                    <li><a href="#courses">Checkout</a></li>
-                    <li><a href="cart.php">Keranjang</a></li>
-                    <?php
-                    echo '<div class="halo">' . "Halo,". $_SESSION['username'] .'</div>';
-                    ?>
-                </ul>
-            </div>
+
+<div class="container">
+    <h2>Checkout</h2>
+
+    <?php
+    // Jalankan ulang query untuk menampilkan item di keranjang belanja
+    $result_keranjang = mysqli_query($koneksi, $query_keranjang);
+    if (mysqli_num_rows($result_keranjang) > 0): ?>
+        <div class="cart-items">
+            <?php while ($row = mysqli_fetch_assoc($result_keranjang)): ?>
+                <div class="cart-item">
+                    <img src="foto/<?php echo $row['img']; ?>" alt="Gambar Obat">
+                    <p><?php echo $row['nama_obat']; ?> Rp. <?php echo number_format($row['harga_obat']); ?> <br>
+                    Anda membeli sebanyak <?php echo $row['jumlah']; ?> item <br>
+                    Total harga = Rp <?php echo number_format($row['total_harga']); ?></p>
+                </div>
+            <?php endwhile; ?>
         </div>
-    </nav>
+    <?php else: ?>
+        <p>Keranjang belanja Anda kosong.</p>
+    <?php endif; ?>
 
-    <h1>Checkout Yuk</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama Obat</th>
-                <th>Harga Obat</th>
-                <th>Jumlah</th>
-                <th>Total Harga</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php  $nomor=1; ?>
-        <?php $totalbelanja =0;?>
-
-        <?php  foreach ($_SESSION["keranjang"] as $id_obat =>$jumlah):   ?>
-            <!-- show data sesuai yang ada di keranjang sesuai id_obat -->
-            <?php
-            $ambil = $koneksi->query("SELECT * FROM obat WHERE id_obat ='$id_obat'");
-            $pecah = $ambil->fetch_assoc();
-            $total = $pecah["harga_obat"] * $jumlah;
-            ?>
-            <tr>
-                <td><?php echo $nomor; ?></td>
-                <td><?php echo $pecah["nama_obat"]; ?></td>
-                <td><?php echo number_format($pecah["harga_obat"]); ?></td>
-                <td><?php echo $jumlah; ?></td>
-                <td><?php echo number_format($total); ?></td>
-            </tr>
-            <?php $nomor++; ?>
-            <?php $totalbelanja+=$total;?>
-        <?php endforeach; ?>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th colspan="4">Total Belanja</th>
-                <th>Rp. <?php  echo number_format($totalbelanja); ?> </th>
-            </tr>
-        </tfoot>
-    </table>
     <form method="post">
-    <div class="form-container">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" readonly value="<?php echo $_SESSION['username']; ?>">
-            </div>
-            <div class="form-group">
-              <label for="Alamat">Alamat</label>
-            <input type="text" id="Alamat" name="Alamat" required>
-         </div>
+        <div class="form-group">
+            <label for="alamat">Alamat</label>
+            <input type="text" id="alamat" name="alamat" required>
+        </div>
 
-            <div class="form-group">
-    <label for="pengiriman">Pilih Pengiriman</label>
-    <select id="pengiriman" name="pengiriman" required>
-        <option value="">Pilih Pengiriman</option>
-        <?php 
-        $take = $koneksi->query("SELECT * FROM ongkir");
-        while ($perongkir = $take->fetch_assoc()) {
-        ?>
-        <option value="<?php echo $perongkir['id_ongkir']; ?>">
-            <?php echo $perongkir['Jenis']; ?> - Rp. <?php echo number_format($perongkir['Harga_ongkir']); ?>
-        </option>
-        <?php } ?>
-    </select>
+        <div class="form-group">
+            <label for="payment">Metode Pembayaran</label>
+            <select id="payment" name="payment" required>
+                <?php while ($row = mysqli_fetch_assoc($result_payment)): ?>
+                    <option value="<?php echo $row['id_pay']; ?>"><?php echo $row['method']; ?></option>
+                <?php endwhile; ?>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="ongkir">Ongkos Kirim</label>
+            <select id="ongkir" name="ongkir" required>
+                <?php while ($row = mysqli_fetch_assoc($result_ongkir)): ?>
+                    <option value="<?php echo $row['id_ongkir']; ?>"><?php echo $row['Jenis']; ?> - Rp <?php echo number_format($row['Harga_ongkir']); ?></option>
+                <?php endwhile; ?>
+            </select>
+        </div>
+
+        <button type="submit" class="button">Checkout</button>
+        <?php if (isset($error)): ?>
+            <p class="error"><?php echo $error; ?></p>
+        <?php endif; ?>
+    </form>
 </div>
-
-<div class="form-group">
-    <label for="payment">Pilih Metode Pembayaran</label>
-    <select id="payment" name="payment" require>
-        <?php 
-        $jupuk = $koneksi->query("SELECT * FROM payment");
-        while ($methodpay = $jupuk->fetch_assoc()) {
-        ?>
-        <option value="<?php echo $methodpay['id_pay']; ?>">
-            <?php echo $methodpay['method']; ?>
-        </option>
-        <?php } ?>
-    </select>
-</div>
-
-            <div class="button">
-                <a href="buy.php" class="tbl-biru">Lanjut Belanja</a>
-                <button type="submit" name="checkout" class="tbl-birubiru">Checkout</button>
-            </div>
-        </form>
-
-    </div>
 
 </body>
 </html>

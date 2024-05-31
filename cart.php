@@ -1,13 +1,49 @@
 <?php
-
 session_start();
-$koneksi = mysqli_connect("localhost", "username", "password", "kesehatan");    
 
-if(empty($_SESSION["keranjang"])  OR !isset($_SESSION["keranjang"]))
-{
-    echo "<script>alert('Keranjang kosong nih, Belanja dulu yuk!');</script>";
-echo  "<script>location='buy.php';</script>";
+if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'user') {
+    header('Location: index.php');
+    exit;
 }
+
+$koneksi = mysqli_connect("localhost", "username", "password", "kesehatan");
+
+if (!$koneksi) {
+    die("Koneksi database gagal: " . mysqli_connect_error());
+}
+
+$id_user = $_SESSION['id_user'];
+
+// Jika form update jumlah dikirim
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_jumlah'])) {
+    $id_keranjang = $_POST['id_keranjang'];
+    $jumlah_baru = $_POST['jumlah'];
+
+    $update_query = "UPDATE keranjang SET jumlah = '$jumlah_baru' WHERE id_keranjang = '$id_keranjang'";
+    mysqli_query($koneksi, $update_query);
+    header('Location: cart.php');
+    exit;
+}
+
+// Query untuk mendapatkan data keranjang
+$query = "SELECT keranjang.id_keranjang, obat.nama_obat, obat.harga_obat, keranjang.jumlah, 
+                 (obat.harga_obat * keranjang.jumlah) AS total_harga, obat.img 
+          FROM keranjang 
+          INNER JOIN obat ON keranjang.id_obat = obat.id_obat 
+          WHERE keranjang.id_user = '$id_user'";
+
+$result = mysqli_query($koneksi, $query);
+
+// Jika item di keranjang dibatalkan
+if (isset($_GET['cancel'])) {
+    $id_keranjang = $_GET['cancel'];
+    $delete_query = "DELETE FROM keranjang WHERE id_keranjang = '$id_keranjang'";
+    mysqli_query($koneksi, $delete_query);
+    header('Location: cart.php');
+    exit;
+}
+
+mysqli_close($koneksi);
 ?>
 
 <!DOCTYPE html>
@@ -15,267 +51,225 @@ echo  "<script>location='buy.php';</script>";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keranjang Obat</title>
-    <link rel="icon" type="image/png" href="logo.png">
-
-   <style>
-    body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    margin: 0;
+    <title>Keranjang Belanja</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
             padding: 0;
-}
+            background-color: #f4f4f4;
+        }
 
-.wrapper {
-    width:75%;
-    margin: auto;
-    position: relative;
-}
+        .wrapper {
+            width: 75%;
+            margin: auto;
+            position: relative;
+        }
 
-.logo a {
-    font-family: "Montserrat", sans-serif;
-    font-size: 30px;
-    font-weight: 700;
-    float: left;
-    color:#002D73;
-    text-decoration:none;
-    margin-left: -100px;
-}
+        .logo a {
+            font-family: "Montserrat", sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            float: left;
+            color: #002D73;
+            text-decoration: none;
+            margin-left: -100px;
+        }
 
-.menu {
-    float: right;
-}
+        .menu {
+            float: right;
+        }
 
-nav {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    line-height: 80px;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-    background: #AED6F1;
-    z-index: 1000;
-}
+        nav {
+            width: 100%;
+            margin: auto;
+            display: flex;
+            line-height: 80px;
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+            background: #AED6F1;
+            z-index: 1000;
+        }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
 
-nav ul li {
-    float: left;
-}
+        nav ul li {
+            float: left;
+        }
 
-nav ul li a {
-    color:#211C6A;
-    font-weight: bold;
-    text-align: center;
-    padding: 0px 16px 0px 16px;
-    text-decoration: none;
-}
+        nav ul li a {
+            color: #211C6A;
+            font-weight: bold;
+            text-align: center;
+            padding: 0px 16px 0px 16px;
+            text-decoration: none;
+        }
 
-nav ul li a:hover {
-    text-decoration: underline;
-}
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
 
-.halo {
-    font-weight: bold;
-    float: right;
-    margin-left: 20px;
-    font-family: "Montserrat", sans-serif;
-    color:
-}
+        .halo {
+            font-weight: bold;
+            float: right;
+            margin-left: 20px;
+            font-family: "Montserrat", sans-serif;
+        }
 
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
 
-h1 {
-    text-align: center;
-}
+        .cart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
 
-table {
-    width: 80%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    margin-left: 120px;
-}
+        .cart-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-table, th, td {
-    border: 1px solid #ddd;
-    height: 40px;
-}
+        .cart-card img {
+            width: 60%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            margin-left:50px;
+            min-height: 150px;
+            object-fit: contain; 
+        }
 
-th, td {
-    padding: 8px;
-    text-align: left;
-}
+        .cart-details {
+            flex-grow: 1;
+        }
 
-th {
-    background-color: #f2f2f2;
-}
+        .cart-details h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
 
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
+        .cart-details p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
 
-tr:hover {
-    background-color: #f1f1f1;
-}
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
-a.tbl-biru {
-    background: #092635;
-    border-radius: 10px;
-    margin-top: 20px;
-    padding: 15px 20px 15px 20px;
-    color: #ffffff;
-    cursor: pointer;
-    font-weight: bold;
-    margin-right: 50C4EDpx;
-    width: 100px;
-    height: 90px;
-    margin-right: 30px;
-    text-decoration: none;
-    margin-left: 120px;
-}
+        .button:hover {
+            background-color: #0056b3;
+        }
 
-a.tbl-biru:hover {
-    background: #6AD4DD;
-    text-decoration: none;
-    transition: ease-in;
-    -webkit-transition: .3s linear; 
-    -moz-transition:.3s linear; 
-    -ms-transition:.3s linear; 
-    -o-transition:.3s linear;
-    transition: .3s linear; 
-}
+        .actions {
+            text-align: center;
+            margin: 20px 0;
+        }
 
-a.tbl-birubiru {
-    background: #0174BE;
-    border-radius: 10px;
-    margin-top: 20px;
-    padding: 15px 20px 15px 20px;
-    color: #ffffff;
-    cursor: pointer;
-    font-weight: bold;
-    margin-right: 10px;
-    width: 100px;
-    height: 90px;
-    margin-right: 30px;
-    text-decoration: none;
-   
-    
-}
+        .update-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-a.tbl-birubiru:hover {
-    background: #AEDEFC;
-    transition: ease-in;
-    text-decoration: none;
-}
+        .update-form input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
 
-.button{
-    margin-right: 60px;
-}
+        .update-form input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
 
-.btnhapus{
-    background: #0174BE;
-    border-radius: 10px;
-    margin-top: 20px;
-    padding: 15px 20px 15px 20px;
-    color: #ffffff;
-    cursor: pointer;
-    font-weight: bold;
-    width: 10px;
-    height: 90px;
-    align: center;
-    text-decoration: none;
-    font-size: 10px;
-
-
-}
-
-.btnhapus:hover{
-    background: #AEDEFC;
-    transition: ease-in;
-    text-decoration: none;
-}
-
-   </style>
+        .update-form input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <div class="wrapper">
-            <div class="logo">
-                <a href=''>Sehat aja</a></div>
-                <div class="menu">
-                    <ul>
-                        <li><a href="selamat-datang.php">Home</a></li>
-                        <li><a href="#courses">Checkout</a></li>
-                        <li><a href="cart.php">Keranjang</a></li>
-                       <?php
-                        echo '<div class="halo">' . "Halo,". $_SESSION['username'] .'</div>';
-                        ?>
-                        
-                        
-                    </ul>
-                </div>
-            </div>
+<nav>
+    <div class="wrapper">
+        <div class="logo">
+            <a href=''>Sehat aja</a>
         </div>
-    </nav>
+        <div class="menu">
+            <ul>
+                <li><a href="selamat-datang.php">Home</a></li>
+                <li><a href="checkout.php">Checkout</a></li>
+                <li><a href="cart.php">Keranjang</a></li>
+                <?php
+                echo '<div class="halo">' . "Halo," . $_SESSION['username'] . '</div>';
+                ?>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h2>Keranjang Belanja</h2>
+
+<div class="cart-container">
+    <?php if (mysqli_num_rows($result) > 0): ?>
+        <?php while ($row = mysqli_fetch_assoc($result)): ?>
+            <div class="cart-card">
+                <img src="foto/<?php echo $row['img']; ?>" alt="Gambar Obat">
+                <div class="cart-details">
+                    <h3><?php echo $row['nama_obat']; ?></h3>
+                    <p>Harga: Rp <?php echo number_format($row['harga_obat']); ?></p>
+                    <p>Jumlah: <?php echo $row['jumlah']; ?></p>
+                    <p>Total Harga: Rp <?php echo number_format($row['total_harga']); ?></p>
+                    <form class="update-form" method="POST" action="cart.php">
+                        <input type="hidden" name="id_keranjang" value="<?php echo $row['id_keranjang']; ?>">
+                        <input type="number" name="jumlah" value="<?php echo $row['jumlah']; ?>" min="1" required>
+                        <input type="submit" name="update_jumlah" value="Update">
+                    </form>
+                </div>
+                <a href="cart.php?cancel=<?php echo $row['id_keranjang']; ?>" class="button">Cancel</a>
+            </div>
+        <?php endwhile; ?>
+    <?php else: ?>
+        <p>Keranjang belanja Anda kosong.</p>
+    <?php endif; ?>
 </div>
 
+<div class="actions">
+    <a href="checkout.php" class="button">Checkout</a>
+    <a href="buy.php" class="button">Lanjut Belanja</a>
+</div>
 
-
-
-    <h1>Keranjang Belanja</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama Obat</th>
-                <th>Harga Obat</th>
-                <th>Jumlah</th>
-                <th>Total Harga</th>
-                <th>Aksi</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-        <?php  $nomor=1; ?>
-
-        <?php  foreach ($_SESSION["keranjang"] as $id_obat =>$jumlah):   ?>
-            <!-- show data sesuai yang ada di keranjang sesuai id_obat -->
-        <?php
-            $ambil = $koneksi->query("SELECT * FROM obat WHERE id_obat ='$id_obat'");
-            $pecah = $ambil->fetch_assoc();
-            $total = $pecah["harga_obat"] * $jumlah;
-        ?>        
-            <tr>
-                <td><?php echo $nomor; ?></td>
-                <td><?php echo $pecah["nama_obat"]; ?></td>
-                <td><?php echo number_format ($pecah["harga_obat"]); ?></td>
-                <td><?php echo $jumlah; ?></td>
-                <td>Rp. <?php echo number_format($total); ?></td>
-                <td>
-                <a href="hapuscart.php?id=<?php echo $id_obat;?>" class="btnhapus">Cancel</a>
-                </td>
-         </tr>
-         <?php $nomor++; ?>
-         <?php endforeach ?>;   
-        </tbody>
-    </table>
-    <br>
-    <br>
-    <br> 
-    <br>
-    <div class="button">
-    <a href="buy.php" class="tbl-biru">Lanjut Belanja</a>
-    <a href="checkout.php" class="tbl-birubiru">Checkout</a> 
-    </div>
-
-
-    <br>
-
-    </body>
+</body>
 </html>
-
