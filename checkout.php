@@ -114,6 +114,16 @@ if (!empty($alamat) && !empty($payment_id) && !empty($ongkir_id)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poetsen+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -121,6 +131,69 @@ if (!empty($alamat) && !empty($payment_id) && !empty($ongkir_id)) {
             padding: 0;
             background-color: #f4f4f4;
         }
+
+        .wrapper {
+            width: 75%;
+            margin: auto;
+            position: relative;
+        }
+
+        .logo a {
+            font-family: "Montserrat", sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            float: left;
+            color: #002D73;
+            text-decoration: none;
+            margin-left: -100px;
+        }
+
+        .menu {
+            float: right;
+        }
+
+        nav {
+            width: 100%;
+            margin: auto;
+            display: flex;
+            line-height: 80px;
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+            background: #AED6F1;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        nav ul li {
+            float: left;
+        }
+
+        nav ul li a {
+            color: #211C6A;
+            font-weight: bold;
+            text-align: center;
+            padding: 0px 16px 0px 16px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .halo {
+            font-weight: bold;
+            float: right;
+            margin-left: 20px;
+            font-family: "Montserrat", sans-serif;
+        }
+
         .container {
             width: 75%;
             margin: auto;
@@ -136,6 +209,9 @@ if (!empty($alamat) && !empty($payment_id) && !empty($ongkir_id)) {
             text-align: center;
             color: #333;
             grid-column: span 2;
+            font-weight: 700;
+            font-family: "Montserrat", sans-serif;
+            
         }
         .cart-item {
             margin-bottom: 15px;
@@ -143,6 +219,8 @@ if (!empty($alamat) && !empty($payment_id) && !empty($ongkir_id)) {
             padding-bottom: 10px;
             display: flex;
             align-items: center;
+            font-weight: 600;
+            font-family: "Montserrat", sans-serif;
         }
         .cart-item img {
             width: 50px;
@@ -153,15 +231,21 @@ if (!empty($alamat) && !empty($payment_id) && !empty($ongkir_id)) {
             margin-bottom: 15px;
             display: grid;
             grid-template-columns: 1fr;
+            font-weight: 700;
+            font-family: "Montserrat", sans-serif;
         }
         .form-group label {
-            text-align: right;
+            text-align: left;
+            font-weight: 700;
+            font-family: "Montserrat", sans-serif;
         }
         .form-group input, .form-group select {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-weight: 700;
+            font-family: "Montserrat", sans-serif;
         }
         .button {
             display: inline-block;
@@ -184,6 +268,24 @@ if (!empty($alamat) && !empty($payment_id) && !empty($ongkir_id)) {
     </style>
 </head>
 <body>
+<nav>
+    <div class="wrapper">
+        <div class="logo">
+            <a href=''>Sehat aja</a>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="selamat-datang.php">Home</a></li>
+                <li><a href="checkout.php">Checkout</a></li>
+                <li><a href="cart.php">Keranjang</a></li>
+                <li><a href="buy.php">Beli Lagi</a></li>
+                <?php
+                echo '<div class="halo">' . "Halo," . $_SESSION['username'] . '</div>';
+                ?>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <div class="container">
     <h2>Checkout</h2>
