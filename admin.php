@@ -230,7 +230,8 @@ a.hapus {
                         <li><a href="obat/dataobat.php">Obat</a></li>
                         <li><a href="ongkir/dataongkir.php">Ongkir</a></li>
                         <li><a href="payment/datapayment.php">payment</a></li>
-                        <li><a href="pembelian/datapembelian.php">pembelian</a></li>
+                        <li><a href="keranjang/datakeranjang.php">Keranjang</a></li>
+                        <li><a href="checkout/datacheckout.php">Checkout</a></li>
                         <li><a href="logout.php" class="tbl-biru">Logut</a></li>
                         <?php
                         

@@ -1,14 +1,11 @@
 <?php
-require 'function.php';
+require "koneksi.php";
 session_start();        
 
 if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'user') {
     header('Location: index.php');
     exit;
 }
-
-// Koneksi ke database
-$koneksi = mysqli_connect("localhost", "username", "password", "kesehatan");
 
 
 $query = "";
@@ -246,11 +243,13 @@ mysqli_close($koneksi);
             background-color: #0056b3;
         }
         .card img {
-            width: 30%; /* Lebar gambar mengikuti lebar kartu */
-            height: auto; /* Menjaga aspek rasio gambar */
-            border-radius: 5px; /* Sudut melengkung untuk gambar */
-            margin-bottom: 10px; /* Jarak antara gambar dengan teks */
-        }
+    width: 60%; 
+    height: auto; 
+    max-height: 100px;
+    object-fit: contain;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
     </style>
 </head>
 <body>

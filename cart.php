@@ -1,4 +1,5 @@
 <?php
+require "koneksi.php";
 session_start();
 
 if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'user') {
@@ -6,7 +7,6 @@ if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'user') {
     exit;
 }
 
-$koneksi = mysqli_connect("localhost", "username", "password", "kesehatan");
 
 if (!$koneksi) {
     die("Koneksi database gagal: " . mysqli_connect_error());

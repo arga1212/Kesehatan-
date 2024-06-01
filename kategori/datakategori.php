@@ -1,6 +1,6 @@
 <?php
-// Database connection
-$koneksi = mysqli_connect("localhost", "username", "password", "kesehatan");
+// Koneksi ke database
+require "../koneksi.php";
 if (!$koneksi) {
     die("Koneksi database gagal: " . mysqli_connect_error());
 }
@@ -52,126 +52,122 @@ if(isset($_POST['delete'])) {
     <title>CRUD Kategori Atribut</title>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f4f4f4;
-}
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
 
-.container {
-    width: 80%;
-    margin-top: 20px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
+        .container {
+            width: 80%;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
 
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-input[type="text"] {
-    padding: 10px;
-    margin: 10px 0;
-    width: 80%;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-button {
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-button:hover {
-    background-color: #0056b3;
-}
+        button:hover {
+            background-color: #0056b3;
+        }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-table, th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-}
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
 
-th {
-    background-color: #f2f2f2;
-}
+        th {
+            background-color: #f2f2f2;
+        }
 
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-tr:hover {
-    background-color: #e2e2e2;
-}
+        tr:hover {
+            background-color: #e2e2e2;
+        }
 
-.btn-warning {
-    background-color: #ffc107;
-}
+        .btn-warning {
+            background-color: #ffc107;
+        }
 
-.btn-danger {
-    background-color: #dc3545;
-}
-
+        .btn-danger {
+            background-color: #dc3545;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Daftar Kategori</h2>
         <table>
-            <tbody>
-            <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Nama Kategori</th>
-            <th>Aksi</th>
-        </tr>
-        <?php while($row = mysqli_fetch_assoc($result)): ?>
             <tr>
-                <td><?php echo $row['id_kat']; ?></td>
-                <td><?php echo $row['nama_kat']; ?></td>
-                <td>
-                    <form method="post">
-                        <input type="hidden" name="id_kat" value="<?php echo $row['id_kat']; ?>">
-                        <input type="text" name="nama_kategori" value="<?php echo $row['nama_kat']; ?>">
-                        <button type="submit" name="update">Update</button>
-                        <button type="submit" name="delete">Delete</button>
-                    </form>
-                </td>
+                <th>ID</th>
+                <th>Nama Kategori</th>
+                <th>Aksi</th>
             </tr>
-        <?php endwhile;?>
-</table>
-              
-            </tbody>
+            <?php while($row = mysqli_fetch_assoc($result)): ?>
+                <tr>
+                    <td><?php echo $row['id_kat']; ?></td>
+                    <td><?php echo $row['nama_kat']; ?></td>
+                    <td>
+                        <form method="post" style="display:inline;">
+                            <input type="hidden" name="id_kat" value="<?php echo $row['id_kat']; ?>">
+                            <input type="text" name="nama_kategori" value="<?php echo $row['nama_kat']; ?>">
+                            <button type="submit" name="update" class="btn-warning">Update</button>
+                            <button type="submit" name="delete" class="btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endwhile;?>
         </table>
+        
         <h2>Tambah Kategori</h2>
-        <form action="insert.php" method="POST">
-            <input type="text" id="nama_kat" name="nama_kat" placeholder="Nama Kategori" required>
-            <button type="submit">Tambah Kategori</button>
+        <form method="POST">
+            <input type="text" name="nama_kategori" placeholder="Nama Kategori">
+            <button type="submit" name="submit">Tambah Kategori</button>
+            <button class="btn-danger"><a href="../admin.php">Back</a></button>
         </form>
     </div>
 </body>

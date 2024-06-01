@@ -1,6 +1,6 @@
 <?php
 // Koneksi ke database
-$koneksi = mysqli_connect("localhost", "username", "password", "kesehatan");
+require "../koneksi.php";
 
 // Periksa koneksi
 if (mysqli_connect_errno()) {

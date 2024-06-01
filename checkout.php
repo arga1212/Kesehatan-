@@ -1,13 +1,11 @@
 <?php
+require "koneksi.php";
 session_start();
 
 if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'user') {
     header('Location: index.php');
     exit;
 }
-
-// Koneksi ke database
-$koneksi = mysqli_connect("localhost", "username", "password", "kesehatan");
 
 // Periksa koneksi
 if (!$koneksi) {
@@ -44,55 +42,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tanggal_checkout = date('Y-m-d H:i:s'); // Mendapatkan tanggal dan waktu saat ini
     
     // Validasi data
-if (!empty($alamat) && !empty($payment_id) && !empty($ongkir_id)) {
-    // Hitung total biaya
-    $total_biaya = 0;
-    $id_keranjang = 0;
-    $id_obat_array = array(); // Inisialisasi array untuk menyimpan id_obat
-    $jumlah_array = array();  // Inisialisasi array untuk menyimpan jumlah
+    if (!empty($alamat) && !empty($payment_id) && !empty($ongkir_id)) {
+        // Hitung total biaya
+        $total_biaya = 0;
+        $item_checkout_success = true;
+        
+        while ($row = mysqli_fetch_assoc($result_keranjang)) {
+            $total_harga = $row['total_harga'];
+            $id_keranjang = $row['id_keranjang'];
+            $id_obat = $row['id_obat'];
+            $jumlah = $row['jumlah'];
+            
+            // Ambil biaya ongkir
+            $ongkir_query = "SELECT Harga_ongkir FROM ongkir WHERE id_ongkir = '$ongkir_id'";
+            $result_ongkir = mysqli_query($koneksi, $ongkir_query);
+            $row_ongkir = mysqli_fetch_assoc($result_ongkir);
+            $total_biaya += $total_harga + $row_ongkir['Harga_ongkir'];
 
-    while ($row = mysqli_fetch_assoc($result_keranjang)) {
-        $total_biaya += $row['total_harga'];
-        // Retrieve id_keranjang
-        $id_keranjang = $row['id_keranjang'];
-        $id_obat_array[] = $row['id_obat'];
-        $jumlah[] = $row['jumlah']; // Simpan jumlah yang dibeli
-        $jumlah_array[] = $row['jumlah'];
-     
-    }
+            // Masukkan data ke tabel checkout
+            $insert_query = "INSERT INTO checkout (id_keranjang, id_user, id_pay, id_ongkir, id_obat, Alamat, jumlah, total_biaya, tanggal_checkout) 
+                             VALUES ('$id_keranjang', '$id_user', '$payment_id', '$ongkir_id', '$id_obat', '$alamat', '$jumlah', '$total_harga', '$tanggal_checkout')";
 
-    // Ambil biaya ongkir
-    $ongkir_query = "SELECT Harga_ongkir FROM ongkir WHERE id_ongkir = '$ongkir_id'";
-    $result_ongkir = mysqli_query($koneksi, $ongkir_query);
-    $row_ongkir = mysqli_fetch_assoc($result_ongkir);
-    $total_biaya += $row_ongkir['Harga_ongkir'];
+            if (mysqli_query($koneksi, $insert_query)) {
+                // Kurangi stok obat dengan jumlah yang dibeli
+                $query_stok = "UPDATE obat SET stok_obat = stok_obat - '$jumlah' WHERE id_obat = '$id_obat'";
+                if (!mysqli_query($koneksi, $query_stok)) {
+                    $item_checkout_success = false;
+                    break;
+                }
+            } else {
+                $item_checkout_success = false;
+                break;
+            }
+        }
 
-    // Convert array id_obat to comma separated string
-    $id_obat_string = implode(",", $id_obat_array);
-    $jumlah_string = implode(",", $jumlah_array); // Convert jumlah array to comma separated string
-
-    // Masukkan data ke tabel checkout
-    $insert_query = "INSERT INTO checkout (id_keranjang, id_user, id_pay, id_ongkir, id_obat, Alamat, jumlah, total_biaya,tanggal_checkout) 
-                     VALUES ('$id_keranjang', '$id_user', '$payment_id', '$ongkir_id', '$id_obat_string', '$alamat', '$jumlah_string', '$total_biaya' ,'$tanggal_checkout')";
-    // Lanjutan kode...
-
-        if (mysqli_query($koneksi, $insert_query)) {
-            // Ambil id_keranjang untuk pengguna saat ini
+        if ($item_checkout_success) {
+            // Hapus item dari keranjang setelah checkout
             $delete_keranjang = "DELETE FROM keranjang WHERE id_user = '$id_user'";
             if (mysqli_query($koneksi, $delete_keranjang)) {
-                // Kurangi stok obat dengan jumlah yang dibeli
-                foreach ($id_obat_array as $index => $id_obat) {
-                    $jumlah = $jumlah_array[$index];
-                    $query_stok = "UPDATE obat SET stok_obat = stok_obat - '$jumlah' WHERE id_obat = '$id_obat'";
-                    if (!mysqli_query($koneksi, $query_stok)) {
-                        mysqli_rollback($koneksi);
-                        die("Gagal memperbarui stok obat: " . mysqli_error($koneksi));
-                    }
-                }
-
                 // Komit transaksi
                 mysqli_commit($koneksi);
-
                 // Redirect ke halaman konfirmasi atau halaman lain yang diinginkan
                 header('Location: thankyou.php');
                 exit;
@@ -106,7 +95,7 @@ if (!empty($alamat) && !empty($payment_id) && !empty($ongkir_id)) {
         }
     }
 }
-?>    
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -116,14 +105,8 @@ if (!empty($alamat) && !empty($payment_id) && !empty($ongkir_id)) {
     <title>Checkout</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poetsen+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poetsen+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
