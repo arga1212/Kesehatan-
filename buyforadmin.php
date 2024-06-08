@@ -1,12 +1,7 @@
 <?php
 require "koneksi.php";
 session_start();        
-
-if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'user') {
-    header('Location: index.php');
-    exit;
-}
-
+    
 
 $query = "";
 $result = null;

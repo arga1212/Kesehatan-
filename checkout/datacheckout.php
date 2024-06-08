@@ -138,27 +138,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_id'])) {
 }
 
 // Read data using JOIN
-$query = "SELECT c.id_checkout, c.id_keranjang, c.id_user, c.id_pay, p.method, c.id_ongkir, o.Jenis, o.Harga_ongkir, c.id_obat, ob.nama_obat, ob.stok_obat, ob.harga_obat, ob.id_kat, k.nama_kat, c.Alamat, c.jumlah, c.total_biaya, c.tanggal_checkout FROM checkout c
-            INNER JOIN payment p ON c.id_pay = p.id_pay
-            INNER JOIN ongkir o ON c.id_ongkir = o.id_ongkir
-            INNER JOIN obat ob ON c.id_obat = ob.id_obat
-            INNER JOIN kategori k ON ob.id_kat = k.id_kat";
+$query = "SELECT c.id_checkout, c.id_keranjang, c.id_user, u.username, c.id_pay, p.method, c.id_ongkir, o.Jenis, o.Harga_ongkir, c.id_obat, ob.nama_obat, ob.stok_obat, ob.harga_obat, ob.id_kat, k.nama_kat, c.Alamat, c.jumlah, c.total_biaya, c.tanggal_checkout 
+          FROM checkout c
+          INNER JOIN user u ON c.id_user = u.id_user
+          INNER JOIN payment p ON c.id_pay = p.id_pay
+          INNER JOIN ongkir o ON c.id_ongkir = o.id_ongkir
+          INNER JOIN obat ob ON c.id_obat = ob.id_obat
+          INNER JOIN kategori k ON ob.id_kat = k.id_kat";
 $result = mysqli_query($koneksi, $query);
 
 if (mysqli_num_rows($result) > 0) {
     echo "<table>";
-    echo "<tr><th>ID Checkout</th><th>ID Keranjang</th><th>ID User</th><th>ID Payment</th><th>Payment Method</th><th>ID Ongkir</th><th>Jenis Pengiriman</th><th>Harga Ongkir</th><th>ID Obat</th><th>Nama Obat</th><th>Stok Obat</th><th>Harga Obat</th><th>Kategori</th><th>Alamat</th><th>Jumlah</th><th>Total Biaya</th><th>Tanggal Checkout</th><th>Action</th></tr>";
+    echo "<tr><th>Username</th><th>Payment Method</th><th>Jenis Pengiriman</th><th>Harga Ongkir</th><th>Obat</th><th>Stok Obat</th><th>Harga Obat</th><th>Kategori</th><th>Alamat</th><th>Jumlah</th><th>Total Biaya</th><th>Tanggal Checkout</th><th>Action</th></tr>";
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
-        echo "<td>" . $row['id_checkout'] . "</td>";
-        echo "<td>" . $row['id_keranjang'] . "</td>";
-        echo "<td>" . $row['id_user'] . "</td>";
-        echo "<td>" . $row['id_pay'] . "</td>";
+        echo "<td>" . $row['username'] . "</td>";
         echo "<td>" . $row['method'] . "</td>";
-        echo "<td>" . $row['id_ongkir'] . "</td>";
         echo "<td>" . $row['Jenis'] . "</td>";
         echo "<td>" . $row['Harga_ongkir'] . "</td>";
-        echo "<td>" . $row['id_obat'] . "</td>";
         echo "<td>" . $row['nama_obat'] . "</td>";
         echo "<td>" . $row['stok_obat'] . "</td>";
         echo "<td>" . $row['harga_obat'] . "</td>";
@@ -170,11 +167,11 @@ if (mysqli_num_rows($result) > 0) {
         echo "<td class='action-links'>
                 <form method='post' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "'>
                     <input type='hidden' name='update_id' value='" . $row['id_checkout'] . "'>
-                    <input type='text' name='id_keranjang' value='" . $row['id_keranjang'] . "' required>
-                    <input type='text' name='id_user' value='" . $row['id_user'] . "' required>
-                    <input type='text' name='id_pay' value='" . $row['id_pay'] . "' required>
-                    <input type='text' name='id_ongkir' value='" . $row['id_ongkir'] . "' required>
-                    <input type='text' name='id_obat' value='" . $row['id_obat'] . "' required>
+                    <input type='hidden' name='id_keranjang' value='" . $row['id_keranjang'] . "' required>
+                    <input type='hidden' name='id_user' value='" . $row['id_user'] . "' required>
+                    <input type='hidden' name='id_pay' value='" . $row['id_pay'] . "' required>
+                    <input type='hidden' name='id_ongkir' value='" . $row['id_ongkir'] . "' required>
+                    <input type='hidden' name='id_obat' value='" . $row['id_obat'] . "' required>
                     <input type='text' name='alamat' value='" . $row['Alamat'] . "' required>
                     <input type='number' name='jumlah' value='" . $row['jumlah'] . "' required>
                     <input type='number' name='total_biaya' value='" . $row['total_biaya'] . "' required>
